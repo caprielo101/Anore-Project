@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138262E322D44E8B006E5B73 /* AppDelegate.swift */; };
+		138262E622D44E8B006E5B73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138262E522D44E8B006E5B73 /* ViewController.swift */; };
+		138262E922D44E8B006E5B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138262E722D44E8B006E5B73 /* Main.storyboard */; };
+		138262EC22D44E8B006E5B73 /* Anore_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 138262EA22D44E8B006E5B73 /* Anore_Project.xcdatamodeld */; };
+		138262EE22D44E8C006E5B73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 138262ED22D44E8C006E5B73 /* Assets.xcassets */; };
+		138262F122D44E8C006E5B73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138262EF22D44E8C006E5B73 /* LaunchScreen.storyboard */; };
+		20FDB8E1EDD2F64514CA4431 /* Pods_Anore_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E0603D32441E7061BEDE44 /* Pods_Anore_Project.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		138262E022D44E8B006E5B73 /* Anore Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anore Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		138262E322D44E8B006E5B73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		138262E522D44E8B006E5B73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		138262E822D44E8B006E5B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		138262EB22D44E8B006E5B73 /* Anore_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Anore_Project.xcdatamodel; sourceTree = "<group>"; };
+		138262ED22D44E8C006E5B73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		138262F022D44E8C006E5B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		138262F222D44E8C006E5B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43E0603D32441E7061BEDE44 /* Pods_Anore_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anore_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DDB57F9CAF7793F441FE7A8 /* Pods-Anore Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anore Project.debug.xcconfig"; path = "Target Support Files/Pods-Anore Project/Pods-Anore Project.debug.xcconfig"; sourceTree = "<group>"; };
+		E718E0CFD7B8DD3C6BF80900 /* Pods-Anore Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anore Project.release.xcconfig"; path = "Target Support Files/Pods-Anore Project/Pods-Anore Project.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		138262DD22D44E8B006E5B73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FDB8E1EDD2F64514CA4431 /* Pods_Anore_Project.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		138262D722D44E8B006E5B73 = {
+			isa = PBXGroup;
+			children = (
+				138262E222D44E8B006E5B73 /* Anore Project */,
+				138262E122D44E8B006E5B73 /* Products */,
+				A1C520C6F1B5AEFB8C6BE63B /* Pods */,
+				86D8E7BCB976FF4FFC65FA5A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		138262E122D44E8B006E5B73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				138262E022D44E8B006E5B73 /* Anore Project.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		138262E222D44E8B006E5B73 /* Anore Project */ = {
+			isa = PBXGroup;
+			children = (
+				138262E322D44E8B006E5B73 /* AppDelegate.swift */,
+				138262E522D44E8B006E5B73 /* ViewController.swift */,
+				138262E722D44E8B006E5B73 /* Main.storyboard */,
+				138262ED22D44E8C006E5B73 /* Assets.xcassets */,
+				138262EF22D44E8C006E5B73 /* LaunchScreen.storyboard */,
+				138262F222D44E8C006E5B73 /* Info.plist */,
+				138262EA22D44E8B006E5B73 /* Anore_Project.xcdatamodeld */,
+			);
+			path = "Anore Project";
+			sourceTree = "<group>";
+		};
+		86D8E7BCB976FF4FFC65FA5A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				43E0603D32441E7061BEDE44 /* Pods_Anore_Project.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A1C520C6F1B5AEFB8C6BE63B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4DDB57F9CAF7793F441FE7A8 /* Pods-Anore Project.debug.xcconfig */,
+				E718E0CFD7B8DD3C6BF80900 /* Pods-Anore Project.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		138262DF22D44E8B006E5B73 /* Anore Project */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 138262F522D44E8C006E5B73 /* Build configuration list for PBXNativeTarget "Anore Project" */;
+			buildPhases = (
+				0CC049BBE51D5D56D18DB8FB /* [CP] Check Pods Manifest.lock */,
+				138262DC22D44E8B006E5B73 /* Sources */,
+				138262DD22D44E8B006E5B73 /* Frameworks */,
+				138262DE22D44E8B006E5B73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Anore Project";
+			productName = "Anore Project";
+			productReference = 138262E022D44E8B006E5B73 /* Anore Project.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		138262D822D44E8B006E5B73 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Josiah Elisha";
+				TargetAttributes = {
+					138262DF22D44E8B006E5B73 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 138262DB22D44E8B006E5B73 /* Build configuration list for PBXProject "Anore Project" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 138262D722D44E8B006E5B73;
+			productRefGroup = 138262E122D44E8B006E5B73 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				138262DF22D44E8B006E5B73 /* Anore Project */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		138262DE22D44E8B006E5B73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				138262F122D44E8C006E5B73 /* LaunchScreen.storyboard in Resources */,
+				138262EE22D44E8C006E5B73 /* Assets.xcassets in Resources */,
+				138262E922D44E8B006E5B73 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CC049BBE51D5D56D18DB8FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Anore Project-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		138262DC22D44E8B006E5B73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				138262EC22D44E8B006E5B73 /* Anore_Project.xcdatamodeld in Sources */,
+				138262E622D44E8B006E5B73 /* ViewController.swift in Sources */,
+				138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		138262E722D44E8B006E5B73 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				138262E822D44E8B006E5B73 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		138262EF22D44E8C006E5B73 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				138262F022D44E8C006E5B73 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		138262F322D44E8C006E5B73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		138262F422D44E8C006E5B73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		138262F622D44E8C006E5B73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DDB57F9CAF7793F441FE7A8 /* Pods-Anore Project.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NZQAU3W3J4;
+				INFOPLIST_FILE = "Anore Project/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.josiah.Anore-Project";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		138262F722D44E8C006E5B73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E718E0CFD7B8DD3C6BF80900 /* Pods-Anore Project.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NZQAU3W3J4;
+				INFOPLIST_FILE = "Anore Project/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.josiah.Anore-Project";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		138262DB22D44E8B006E5B73 /* Build configuration list for PBXProject "Anore Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				138262F322D44E8C006E5B73 /* Debug */,
+				138262F422D44E8C006E5B73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		138262F522D44E8C006E5B73 /* Build configuration list for PBXNativeTarget "Anore Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				138262F622D44E8C006E5B73 /* Debug */,
+				138262F722D44E8C006E5B73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		138262EA22D44E8B006E5B73 /* Anore_Project.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				138262EB22D44E8B006E5B73 /* Anore_Project.xcdatamodel */,
+			);
+			currentVersion = 138262EB22D44E8B006E5B73 /* Anore_Project.xcdatamodel */;
+			path = Anore_Project.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 138262D822D44E8B006E5B73 /* Project object */;
+}
