@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1357DB6222D46249008B163D /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357DB6122D46249008B163D /* Note.swift */; };
+		1357DB6422D46290008B163D /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357DB6322D46290008B163D /* NoteView.swift */; };
 		138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138262E322D44E8B006E5B73 /* AppDelegate.swift */; };
 		138262E622D44E8B006E5B73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138262E522D44E8B006E5B73 /* ViewController.swift */; };
 		138262E922D44E8B006E5B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138262E722D44E8B006E5B73 /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1357DB6122D46249008B163D /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		1357DB6322D46290008B163D /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		138262E022D44E8B006E5B73 /* Anore Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anore Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		138262E322D44E8B006E5B73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		138262E522D44E8B006E5B73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,11 +69,13 @@
 			children = (
 				138262E322D44E8B006E5B73 /* AppDelegate.swift */,
 				138262E522D44E8B006E5B73 /* ViewController.swift */,
+				1357DB6122D46249008B163D /* Note.swift */,
 				138262E722D44E8B006E5B73 /* Main.storyboard */,
 				138262ED22D44E8C006E5B73 /* Assets.xcassets */,
 				138262EF22D44E8C006E5B73 /* LaunchScreen.storyboard */,
 				138262F222D44E8C006E5B73 /* Info.plist */,
 				138262EA22D44E8B006E5B73 /* Anore_Project.xcdatamodeld */,
+				1357DB6322D46290008B163D /* NoteView.swift */,
 			);
 			path = "Anore Project";
 			sourceTree = "<group>";
@@ -88,7 +94,6 @@
 				4DDB57F9CAF7793F441FE7A8 /* Pods-Anore Project.debug.xcconfig */,
 				E718E0CFD7B8DD3C6BF80900 /* Pods-Anore Project.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -190,8 +195,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				138262EC22D44E8B006E5B73 /* Anore_Project.xcdatamodeld in Sources */,
+				1357DB6422D46290008B163D /* NoteView.swift in Sources */,
 				138262E622D44E8B006E5B73 /* ViewController.swift in Sources */,
 				138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */,
+				1357DB6222D46249008B163D /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

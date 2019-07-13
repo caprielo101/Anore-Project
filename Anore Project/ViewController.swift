@@ -10,12 +10,21 @@ import UIKit
 import AudioKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var indicate: UIView!
+    @IBOutlet weak var ProgressView: NoteView!
+    @IBOutlet weak var ProgressView2: NoteView!
+    @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var amplitudeLabel: UILabel!
     @IBOutlet weak var frequencyLabel: UILabel!
     
     @IBOutlet weak var noteNameWithFlatsLabel: UILabel!
     @IBOutlet weak var noteNameWithSharpsLabel: UILabel!
+    
+    //need to make note array (note view array) variables
+    var notes: [NoteView] = []
+    
+    var isHittingNote = false
+    
     var mic: AKMicrophone!
     var tracker: AKFrequencyTracker!
     var silence: AKBooster!
@@ -27,10 +36,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mic = AKMicrophone()
-        tracker = AKFrequencyTracker(mic)
-        silence = AKBooster(tracker, gain: 1)
-        AKSettings.audioInputEnabled = true
+        
+        configure()
+        configureUI()
+        
+        ProgressView.note = Note(octave: 0, frequency: 0, pitch: "", distance: 0, isHit: false)
+        ProgressView2.note = Note(octave: 0, frequency: 0, pitch: "", distance: 0, isHit: false)
+        
+        notes.append(ProgressView)
+        notes.append(ProgressView2)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,11 +58,54 @@ class ViewController: UIViewController {
         } catch {
             AKLog("error")
         }
-        _ = Timer.scheduledTimer(timeInterval: 0.1,
+        
+        _ = Timer.scheduledTimer(timeInterval: 0.01,
                                  target: self,
                                  selector: #selector(updateUI),
                                  userInfo: nil,
                                  repeats: true)
+        
+        _ = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true, block: { (Timer) in
+            UIView.animate(withDuration: 0.01, animations: {
+                for note in self.notes {
+                    note.center.x -= 1
+                }
+//                if let pview = self.ProgressView {
+//                    pview.center.x -= 1
+//                    if pview.center.x < 0 {
+//                        self.ProgressView.removeFromSuperview()
+//                    }
+//                }
+//                if let pview2 = self.ProgressView2 {
+//                    pview2.center.x -= 1
+//                    if pview2.center.x < 0 {
+//                        self.ProgressView2.removeFromSuperview()
+//                    }
+//                }
+            })
+        })
+        
+        _ = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(checkForNotes), userInfo: nil, repeats: true)
+    }
+    
+    
+    //randomising notes
+    func randomizeNotes() {
+        
+    }
+    
+    func configure() {
+        mic = AKMicrophone()
+        tracker = AKFrequencyTracker(mic)
+        silence = AKBooster(tracker, gain: 1)
+        AKSettings.audioInputEnabled = true
+    }
+    
+    //configure UI
+    func configureUI() {
+        indicate.layer.cornerRadius = indicate.frame.height/2
+//        indicate.layer.borderColor = UIColor.red.cgColor
+//        indicate.layer.borderWidth = 1
     }
     
     @objc func updateUI() {
@@ -75,8 +133,37 @@ class ViewController: UIViewController {
             let octave = Int(log2f(Float(tracker.frequency) / frequency))
             noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
             noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
+//            print("\(noteNameWithSharpsLabel.text!) f=\(tracker.frequency) A=\(tracker.amplitude)")
+            //            _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (Timer) in
+            //                self.indicate.center.y = self.view.frame.height - (CGFloat(self.tracker.frequency/2000))*self.view.frame.height
+            //            })
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+                self.indicate.center.y = self.view.frame.height - (CGFloat(self.tracker.frequency/1000))*self.view.frame.height
+            }, completion: nil)
+        } else {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+                self.indicate.center.y = self.view.frame.height - (self.indicate.frame.height/2)
+            }, completion: nil)
         }
         amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
+        //        checkForNotes()
+        
     }
+    
+    @objc func checkForNotes() -> Bool {
+        
+        for note in notes {
+            if note.frame.intersects(indicate.frame) {
+//                print("intersect")
+                note.note.isHit = true
+                print(note.note.isHit)
+                return true
+                
+            }
+        }
+        return false
+        
+    }
+    
 }
 
