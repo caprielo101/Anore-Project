@@ -74,21 +74,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tdv-mq-BJw" customClass="NoteView" customModule="Anore_Project" customModuleProvider="target">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tdv-mq-BJw" customClass="NoteView" customModule="Anore_Project" customModuleProvider="target">
                                 <rect key="frame" x="510" y="552" width="32" height="10"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="avG-m1-FM5"/>
-                                    <constraint firstAttribute="width" constant="32" id="jQs-Cc-jW5"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="progressTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="trackTintColor" red="0.9192116857" green="0.41357366919999999" blue="0.32157194140000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </progressView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ebI-CR-4XI" customClass="NoteView" customModule="Anore_Project" customModuleProvider="target">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebI-CR-4XI" customClass="NoteView" customModule="Anore_Project" customModuleProvider="target">
                                 <rect key="frame" x="400" y="609" width="102" height="10"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="102" id="RW8-df-zQs"/>
-                                    <constraint firstAttribute="height" constant="10" id="d8x-KF-eEM"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="trackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPY-Hg-8nV">
@@ -103,11 +97,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rPY-Hg-8nV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5UD-ca-BD9"/>
-                            <constraint firstAttribute="bottom" secondItem="tdv-mq-BJw" secondAttribute="bottom" constant="334" id="Ll6-uU-O3H"/>
-                            <constraint firstAttribute="trailing" secondItem="ebI-CR-4XI" secondAttribute="trailing" constant="-88" id="dYR-FQ-u8j"/>
                             <constraint firstItem="rPY-Hg-8nV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m0y-8H-Htu"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ebI-CR-4XI" secondAttribute="bottom" constant="243" id="rad-AG-cE3"/>
-                            <constraint firstAttribute="trailing" secondItem="tdv-mq-BJw" secondAttribute="trailing" constant="-128" id="xDz-i3-KYl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

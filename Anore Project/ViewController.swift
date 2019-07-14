@@ -34,15 +34,44 @@ class ViewController: UIViewController {
     let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
     let noteNamesWithFlats = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
     
+    let bpm: Float = 120
+    var crochet: Float = 0
+    
+    var noteLength: Float = 100
     override func viewDidLoad() {
         super.viewDidLoad()
+        crochet = 60.0/bpm
         
         configure()
         configureUI()
         
+        let note1 = NoteView(note: Note(octave: 1, frequency: 200, pitch: "", distance: 0, isHit: false), duration: crochet)
+        view.addSubview(note1)
+        NSLayoutConstraint.activate([
+            note1.widthAnchor.constraint(equalToConstant: CGFloat(note1.duration*noteLength*2)),
+            note1.heightAnchor.constraint(equalToConstant: 10),
+            note1.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            note1.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            ])
+        note1.translatesAutoresizingMaskIntoConstraints = false
+        
         ProgressView.note = Note(octave: 0, frequency: 0, pitch: "", distance: 0, isHit: false)
         ProgressView2.note = Note(octave: 0, frequency: 0, pitch: "", distance: 0, isHit: false)
+        ProgressView.duration = crochet
+        ProgressView2.duration = crochet/2
+        ProgressView.widthAnchor.constraint(equalToConstant: CGFloat(ProgressView.duration * noteLength)).isActive = true
+        ProgressView.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        ProgressView.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(ProgressView.frame.width/2)).isActive = true
+        ProgressView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 300).isActive = true
+        ProgressView2.widthAnchor.constraint(equalToConstant: CGFloat(ProgressView2.duration * noteLength)).isActive = true
+        ProgressView2.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        ProgressView2.leadingAnchor.constraint(equalTo: ProgressView.trailingAnchor, constant: -(ProgressView.frame.width/2)).isActive = true
+        ProgressView2.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 400).isActive = true
         
+        
+//        ProgressView.translatesAutoresizingMaskIntoConstraints = false
+//        ProgressView2.translatesAutoresizingMaskIntoConstraints = false
+        notes.append(note1)
         notes.append(ProgressView)
         notes.append(ProgressView2)
         
@@ -65,7 +94,8 @@ class ViewController: UIViewController {
                                  userInfo: nil,
                                  repeats: true)
         
-        _ = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true, block: { (Timer) in
+        //1 pt/duration for 1 sec
+        _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (Timer) in
             UIView.animate(withDuration: 0.01, animations: {
                 for note in self.notes {
                     note.center.x -= 1
