@@ -59,10 +59,12 @@ class ViewController: UIViewController {
         ProgressView2.note = Note(octave: 0, frequency: 0, pitch: "", distance: 0, isHit: false)
         ProgressView.duration = crochet
         ProgressView2.duration = crochet/2
+        
         ProgressView.widthAnchor.constraint(equalToConstant: CGFloat(ProgressView.duration * noteLength)).isActive = true
         ProgressView.heightAnchor.constraint(equalToConstant: 10).isActive = true
         ProgressView.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: -(ProgressView.frame.width/2)).isActive = true
         ProgressView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 300).isActive = true
+        
         ProgressView2.widthAnchor.constraint(equalToConstant: CGFloat(ProgressView2.duration * noteLength)).isActive = true
         ProgressView2.heightAnchor.constraint(equalToConstant: 10).isActive = true
         ProgressView2.leadingAnchor.constraint(equalTo: ProgressView.trailingAnchor, constant: -(ProgressView.frame.width/2)).isActive = true
