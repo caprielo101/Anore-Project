@@ -36,8 +36,8 @@ class ViewController: UIViewController {
     
     let bpm: Float = 120
     var crochet: Float = 0
-    
     var noteLength: Float = 100
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         crochet = 60.0/bpm
