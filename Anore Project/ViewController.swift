@@ -152,7 +152,6 @@ class ViewController: UIViewController {
     
     fileprivate func drawLines() {
         let xVal: CGFloat = 0.0
-        let yVal: CGFloat = BaseView.frame.origin.y
         let yVall = height/CGFloat(noteNumber-1)
         
         for i in 0..<noteNumber {
@@ -231,7 +230,7 @@ class ViewController: UIViewController {
             }, completion: nil)
         }
 //        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
-        
+        checkForNotes()
     }
     
     func getCentsInterval(voiceFrequency: Double, _ minFrequency: Float, _ maxFrequency: Float) -> CGFloat {
