@@ -164,7 +164,7 @@ class ViewController: UIViewController {
     fileprivate func drawLines() {
         let xVal: CGFloat = 0.0
         let yVal: CGFloat = BaseView.frame.origin.y
-        var yVall = height/CGFloat(noteNumber-1)
+        let yVall = height/CGFloat(noteNumber-1)
         
         for i in 0..<noteNumber {
             let lineView = LineView()
@@ -199,8 +199,6 @@ class ViewController: UIViewController {
         indicate.layer.cornerRadius = indicate.frame.height/2
         view.bringSubviewToFront(indicate)
         BaseView.bringSubviewToFront(indicate)
-//        indicate.layer.borderColor = UIColor.red.cgColor
-//        indicate.layer.borderWidth = 1
     }
     
     @objc func updateUI() {
@@ -257,11 +255,9 @@ class ViewController: UIViewController {
         
         for note in notes {
             if note.frame.intersects(indicate.frame) {
-//                print("intersect")
                 note.note.isHit = true
                 print(note.note.isHit)
                 return true
-                
             }
         }
         return false
