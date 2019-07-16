@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoteView: UIProgressView {
+class NoteView: UIView {
     var note: Note!
     var duration: Float = 0  //miliseconds
     var tempProgress: Float = 0
@@ -20,14 +20,14 @@ class NoteView: UIProgressView {
         self.note = note
         self.duration = duration
         
-        backgroundColor = .cyan
+        backgroundColor = .lightGray
     }
     
     required init?(coder aDecoder: NSCoder) {
 //        fatalError("init(coder:) has not been implemented")
         super.init(coder: aDecoder)
         
-        backgroundColor = .cyan
+        backgroundColor = .black
     }
     
     func startTimer() {

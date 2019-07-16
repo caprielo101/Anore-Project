@@ -39,6 +39,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSU-s0-Ric" userLabel="Base View">
+                                <rect key="frame" x="0.0" y="94" width="414" height="718"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDR-l7-P8i">
                                 <rect key="frame" x="44" y="206" width="331" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -46,14 +50,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rd5-vu-QPf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rd5-vu-QPf">
                                 <rect key="frame" x="44" y="252" width="331" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbc-sP-vN7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbc-sP-vN7">
                                 <rect key="frame" x="44" y="305" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -61,30 +65,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEN-bM-URc">
-                                <rect key="frame" x="44" y="353" width="42" height="21"/>
+                                <rect key="frame" x="132" y="206" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLI-Mv-Nlc">
-                                <rect key="frame" x="108" y="99" width="200" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tdv-mq-BJw" customClass="NoteView" customModule="Anore_Project" customModuleProvider="target">
-                                <rect key="frame" x="510" y="552" width="32" height="10"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="progressTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="trackTintColor" red="0.9192116857" green="0.41357366919999999" blue="0.32157194140000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </progressView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebI-CR-4XI" customClass="NoteView" customModule="Anore_Project" customModuleProvider="target">
-                                <rect key="frame" x="400" y="609" width="102" height="10"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="trackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </progressView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPY-Hg-8nV">
                                 <rect key="frame" x="202" y="443" width="10" height="10"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -97,17 +83,25 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rPY-Hg-8nV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5UD-ca-BD9"/>
+                            <constraint firstItem="wSU-s0-Ric" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LxP-wy-vjB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wSU-s0-Ric" secondAttribute="trailing" id="WMq-Fq-Qn3"/>
                             <constraint firstItem="rPY-Hg-8nV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m0y-8H-Htu"/>
+                            <constraint firstItem="wSU-s0-Ric" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="nOv-Tm-FG9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wSU-s0-Ric" secondAttribute="bottom" constant="50" id="pOs-gB-h07"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Rd5-vu-QPf"/>
+                                <exclude reference="wbc-sP-vN7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="ProgressView" destination="tdv-mq-BJw" id="DAs-wW-geB"/>
-                        <outlet property="ProgressView2" destination="ebI-CR-4XI" id="XQP-E5-l7P"/>
+                        <outlet property="BaseView" destination="wSU-s0-Ric" id="4DA-mm-8xm"/>
                         <outlet property="amplitudeLabel" destination="Rd5-vu-QPf" id="wnm-V0-Fhd"/>
                         <outlet property="frequencyLabel" destination="gDR-l7-P8i" id="dj1-aP-8Wm"/>
                         <outlet property="indicate" destination="rPY-Hg-8nV" id="f4Q-Zl-1xP"/>
-                        <outlet property="myLabel" destination="nLI-Mv-Nlc" id="Asz-2m-Ae1"/>
                         <outlet property="noteNameWithFlatsLabel" destination="wbc-sP-vN7" id="mii-l8-vnO"/>
                         <outlet property="noteNameWithSharpsLabel" destination="NEN-bM-URc" id="iPC-vU-59r"/>
                     </connections>
