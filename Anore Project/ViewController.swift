@@ -148,17 +148,6 @@ class ViewController: UIViewController {
                                  selector: #selector(updateUI),
                                  userInfo: nil,
                                  repeats: true)
-        
-        //1 pt/duration for 1 sec
-        _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (Timer) in
-            UIView.animate(withDuration: 0.01, animations: {
-                for note in self.notes {
-                    note.center.x -= 1
-                }
-            })
-        })
-        
-        _ = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(checkForNotes), userInfo: nil, repeats: true)
     }
     
     fileprivate func drawLines() {
@@ -242,6 +231,7 @@ class ViewController: UIViewController {
             }, completion: nil)
         }
 //        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
+        
     }
     
     func getCentsInterval(voiceFrequency: Double, _ minFrequency: Float, _ maxFrequency: Float) -> CGFloat {
@@ -251,17 +241,18 @@ class ViewController: UIViewController {
         return cent
     }
     
-    @objc func checkForNotes() -> Bool {
-        
+    func checkForNotes()  {
+        UIView.animate(withDuration: 0.01, animations: {
+            for note in self.notes {
+                note.center.x -= 1
+            }
+        })
         for note in notes {
             if note.frame.intersects(indicate.frame) {
                 note.note.isHit = true
                 print(note.note.isHit)
-                return true
             }
         }
-        return false
-        
     }
     
 }
