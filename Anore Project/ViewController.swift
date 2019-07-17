@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     
     //small circle for indicator (biji bulat kecil)
     private let indicate =  UIView()
+    private let verticalLine = LineView()
     
     var isHittingNote = false
     
@@ -46,12 +47,14 @@ class ViewController: UIViewController {
     var noteLength: Float = 100.0 //note length in points
     var maxFrequency: Float = 493.889050 //b4
     var minFrequency: Float = 98.0 //g2
-//    
+//
 //    var maxFrequency: Float = 493.889050*2
 //    var minFrequency: Float = 98.0*2
-    
+//
+//    var minFrequency: Float = 16.35*2*2*2
+//    var maxFrequency: Float = 27.5*2*2*2
     let noteNumber = 29
-
+    
     //base view dimension
     var width: CGFloat = 0
     var height: CGFloat = 0
@@ -69,10 +72,10 @@ class ViewController: UIViewController {
         height = BaseView.frame.height
         
         configure()
+        drawVerticalLines()
         configureNotes()
         configureUI()
         drawHorizontalLines()
-        drawVerticalLines()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -98,28 +101,46 @@ class ViewController: UIViewController {
     
     fileprivate func RoundingNotes() {
         for note in notes {
-            note.layer.cornerRadius = note.frame.height/6
+            note.layer.cornerRadius = note.frame.height/4
             note.clipsToBounds = true
             note.layer.masksToBounds = true
         }
     }
     
     fileprivate func configureNotes() {
-        notes.append(NoteView(note: Note(octave: 3, frequency: 220, pitch: "A", distance: noteLength, isHit: false), duration: crochet/2))
-        notes.append(NoteView(note: Note(octave: 4, frequency: 440, pitch: "A", distance: noteLength*crochet, isHit: false), duration: crochet*2))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2, 3), pitch: "C", distance: 0, isHit: false), duration: crochet/2))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: 0, isHit: false), duration: crochet/2))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: 0, isHit: false), duration: crochet/2))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: 0, isHit: false), duration: crochet/2))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
+        let distanceBeforeStart = 4 * noteLength
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 220, pitch: "A", distance: noteLength, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 4, frequency: 440, pitch: "A", distance: noteLength/2, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2, 3), pitch: "C", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: noteLength/2, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 2, frequency: 24.5*pow(2, 2), pitch: "G", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 2, frequency: 24.5*pow(2, 2), pitch: "G", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 2, frequency: 24.5*pow(2, 2), pitch: "G", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 4, frequency: 24.5*pow(2, 4), pitch: "G", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2,3), pitch: "C", distance: noteLength/2, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2,3), pitch: "C", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: noteLength/2, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: noteLength/2, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: noteLength/2, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet*2))
+        
         
         for (index, note) in notes.enumerated() {
             
             view.addSubview(note)
             
-            let previousLeading = index == 0 ? view.trailingAnchor : notes[index-1].trailingAnchor
-            let previousDistance = index == 0 ? 0 : notes[index-1].note.distance
-            
+//            let previousLeading = index == 0 ? view.trailingAnchor : notes[index-1].trailingAnchor
+            let previousLeading = index == 0 ? verticalLine.leadingAnchor : notes[index-1].trailingAnchor
+//            let previousDistance = index == 0 ? 0 : notes[index-1].note.distance
+            let previousDistance = index == 0 ? distanceBeforeStart : notes[index-1].note.distance
             note.widthAnchor.constraint(equalToConstant: CGFloat(note.duration*noteLength)).isActive = true
             note.heightAnchor.constraint(equalToConstant: self.height/CGFloat((noteNumber-1))).isActive = true
             note.leadingAnchor.constraint(equalTo: previousLeading, constant: CGFloat(previousDistance)).isActive = true
@@ -142,7 +163,7 @@ class ViewController: UIViewController {
             BaseView.addSubview(lineView)
             
             NSLayoutConstraint.activate([
-                lineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+                lineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
                 lineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
                 lineView.topAnchor.constraint(equalTo: BaseView.topAnchor, constant: CGFloat(i)*yVall),
 //                lineView.bottomAnchor.constraint(equalTo: BaseView.bottomAnchor, constant: -(yVall)),
@@ -154,7 +175,6 @@ class ViewController: UIViewController {
     }
     
     fileprivate func drawVerticalLines() {
-        let verticalLine = LineView()
         verticalLine.alpha = 1
         verticalLine.backgroundColor = .black
         verticalLine.startPoint = CGPoint(x: indicate.center.x, y: BaseView.frame.origin.y)
@@ -166,7 +186,8 @@ class ViewController: UIViewController {
             verticalLine.topAnchor.constraint(equalTo: BaseView.topAnchor, constant: -25),
             verticalLine.bottomAnchor.constraint(equalTo: BaseView.bottomAnchor, constant: 25),
             verticalLine.widthAnchor.constraint(equalToConstant: 1),
-            verticalLine.leadingAnchor.constraint(equalTo: BaseView.leadingAnchor, constant: width/4)
+//            verticalLine.leadingAnchor.constraint(equalTo: BaseView.leadingAnchor, constant: width/8)
+            verticalLine.centerXAnchor.constraint(equalTo: BaseView.leadingAnchor, constant: width/8)
             ])
     }
     
@@ -181,7 +202,7 @@ class ViewController: UIViewController {
     //configure UI
     func configureUI() {
         indicate.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-        indicate.center = CGPoint(x: width/4, y: 0)
+        indicate.center = CGPoint(x: width/8, y: 0)
         indicate.layer.cornerRadius = indicate.frame.height/2
         indicate.backgroundColor = .black
         view.addSubview(indicate)
@@ -218,7 +239,7 @@ class ViewController: UIViewController {
             }, completion: nil)
         } else {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
-                self.indicate.center.y = self.BaseView.frame.origin.y + self.height //-  (self.indicate.frame.height/2)
+                self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height/2 //-  (self.indicate.frame.height/2)
             }, completion: nil)
         }
 //        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
