@@ -23,12 +23,14 @@ class ViewController: UIViewController {
     var notes: [NoteView] = []
     
     //small circle for indicator (biji bulat kecil)
-    private let indicate =  UIView()
+//    private let indicate =  UIView()
+    private let indicate = UIImageView()
     private let verticalLine = LineView()
     
+    //boolean value for checking if note is hit
     var isHittingNote = false
     
-    //AudioKit
+    //AudioKit declaration
     var mic: AKMicrophone!
     var tracker: AKFrequencyTracker!
     var silence: AKBooster!
@@ -37,9 +39,9 @@ class ViewController: UIViewController {
     var timer: Timer!
     
     //note frequencies
-    let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
-    let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
-    let noteNamesWithFlats = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
+//    let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
+//    let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
+//    let noteNamesWithFlats = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
     
     //song configuration
     let bpm: Float = 60.0 //in beat per seconds
@@ -105,6 +107,8 @@ class ViewController: UIViewController {
             note.layer.cornerRadius = note.frame.height/4
             note.clipsToBounds = true
             note.layer.masksToBounds = true
+            note.layer.borderColor = UIColor.textColor.cgColor
+            note.layer.borderWidth = 0.5
         }
     }
     
@@ -154,7 +158,7 @@ class ViewController: UIViewController {
 //            let previousDistance = index == 0 ? 0 : notes[index-1].note.distance
             let previousDistance = index == 0 ? distanceBeforeStart : notes[index-1].note.distance
             note.widthAnchor.constraint(equalToConstant: CGFloat(note.duration*noteLength)).isActive = true
-            note.heightAnchor.constraint(equalToConstant: self.height/CGFloat((noteNumber-1))).isActive = true
+            note.heightAnchor.constraint(equalToConstant: self.height/CGFloat((noteNumber-1))*0.8).isActive = true
             note.leadingAnchor.constraint(equalTo: previousLeading, constant: CGFloat(previousDistance)).isActive = true
             note.centerYAnchor.constraint(equalTo: BaseView.bottomAnchor, constant: -(CGFloat(getCentsInterval(voiceFrequency: Double(note.note?.frequency ?? 0), minFrequency, maxFrequency))*height)).isActive = true
             note.translatesAutoresizingMaskIntoConstraints = false
@@ -213,10 +217,11 @@ class ViewController: UIViewController {
     
     //configure UI
     func configureUI() {
-        indicate.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        indicate.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         indicate.center = CGPoint(x: width/8, y: 0)
+        indicate.image = UIImage(named: "indicator")
         indicate.layer.cornerRadius = indicate.frame.height/2
-        indicate.backgroundColor = .black
+        indicate.backgroundColor = .clear //black
         view.addSubview(indicate)
     }
     
@@ -225,33 +230,33 @@ class ViewController: UIViewController {
             frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
             
             var frequency = Float(tracker.frequency)
-            while (frequency > Float(noteFrequencies[noteFrequencies.count-1])) {
+            while (frequency > Float(MusicConstants.noteFrequencies[MusicConstants.noteFrequencies.count-1])) {
                 frequency = frequency / 2.0
             }
-            while (frequency < Float(noteFrequencies[0])) {
+            while (frequency < Float(MusicConstants.noteFrequencies[0])) {
                 frequency = frequency * 2.0
             }
             
             var minDistance: Float = 10000.0
             var index = 0
             
-            for i in 0..<noteFrequencies.count {
-                let distance = fabsf(Float(noteFrequencies[i]) - frequency)
+            for i in 0..<MusicConstants.noteFrequencies.count {
+                let distance = fabsf(Float(MusicConstants.noteFrequencies[i]) - frequency)
                 if (distance < minDistance){
                     index = i
                     minDistance = distance
                 }
             }
             let octave = Int(log2f(Float(tracker.frequency) / frequency))
-            noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
-            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
+//            noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
+//            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
 //            print("\(noteNameWithSharpsLabel.text!) f=\(tracker.frequency) A=\(tracker.amplitude)")
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
                 self.indicate.center.y = self.height + self.BaseView.frame.origin.y - self.getCentsInterval(voiceFrequency: self.tracker.frequency, self.minFrequency, self.maxFrequency) * self.height
             }, completion: nil)
         } else {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
-                self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height*2.5 //-  (self.indicate.frame.height/2)
+                self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height //-  (self.indicate.frame.height/2)
             }, completion: nil)
         }
 //        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
@@ -274,10 +279,23 @@ class ViewController: UIViewController {
         })
         for note in notes {
             if note.frame.intersects(indicate.frame) {
-                note.note.isHit = true
-                print(note.note.isHit)
+                isHittingNote = true
+//                note.note.isHit = true
+//                print(note.note.isHit)
+            } else {
+                isHittingNote = false
             }
         }
+        if isHittingNote {
+            //timer berapa detik kalo lebih dari duration bikin noteisHit jadi true
+            //start timer
+        } else {
+            //stop timer
+        }
+    }
+    
+    func timerForNotes() {
+        //selama timer itu bikin is hitnya true
     }
     
 }
