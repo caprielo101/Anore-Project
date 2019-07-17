@@ -13,6 +13,7 @@
         <!--View Controller-->
         <scene sceneID="UC1-Id-gLA">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uNV-hJ-Dda" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="zLZ-rj-8bY" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bko-av-78Q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -27,7 +28,6 @@
                         <viewLayoutGuide key="safeArea" id="5sr-Bn-FhK"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uNV-hJ-Dda" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-952.17391304347836" y="129.91071428571428"/>
         </scene>
@@ -71,21 +71,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPY-Hg-8nV">
-                                <rect key="frame" x="202" y="443" width="10" height="10"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="10" id="IjE-TR-iAO"/>
-                                    <constraint firstAttribute="height" constant="10" id="Kk9-KB-Re4"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="rPY-Hg-8nV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5UD-ca-BD9"/>
                             <constraint firstItem="wSU-s0-Ric" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LxP-wy-vjB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wSU-s0-Ric" secondAttribute="trailing" id="WMq-Fq-Qn3"/>
-                            <constraint firstItem="rPY-Hg-8nV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m0y-8H-Htu"/>
                             <constraint firstItem="wSU-s0-Ric" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="nOv-Tm-FG9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wSU-s0-Ric" secondAttribute="bottom" constant="50" id="pOs-gB-h07"/>
                         </constraints>
@@ -101,7 +91,6 @@
                         <outlet property="BaseView" destination="wSU-s0-Ric" id="4DA-mm-8xm"/>
                         <outlet property="amplitudeLabel" destination="Rd5-vu-QPf" id="wnm-V0-Fhd"/>
                         <outlet property="frequencyLabel" destination="gDR-l7-P8i" id="dj1-aP-8Wm"/>
-                        <outlet property="indicate" destination="rPY-Hg-8nV" id="f4Q-Zl-1xP"/>
                         <outlet property="noteNameWithFlatsLabel" destination="wbc-sP-vN7" id="mii-l8-vnO"/>
                         <outlet property="noteNameWithSharpsLabel" destination="NEN-bM-URc" id="iPC-vU-59r"/>
                     </connections>
