@@ -65,7 +65,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .backgroundColor
+        BaseView.backgroundColor = .clear
         crochet = 60.0/bpm //in seconds
         
         width = BaseView.frame.width
@@ -111,27 +112,38 @@ class ViewController: UIViewController {
         let distanceBeforeStart = 4 * noteLength
 //        notes.append(NoteView(note: Note(octave: 3, frequency: 220, pitch: "A", distance: noteLength, isHit: false), duration: crochet))
 //        notes.append(NoteView(note: Note(octave: 4, frequency: 440, pitch: "A", distance: noteLength/2, isHit: false), duration: crochet))
-//        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2, 3), pitch: "C", distance: 0, isHit: false), duration: crochet))
-//        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2, 4), pitch: "C", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 4), pitch: "D", distance: 0, isHit: false), duration: crochet))
 //        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: 0, isHit: false), duration: crochet))
-//        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: 0, isHit: false), duration: crochet))
-//        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: noteLength/2, isHit: false), duration: crochet))
-//        notes.append(NoteView(note: Note(octave: 2, frequency: 24.5*pow(2, 2), pitch: "G", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 4), pitch: "F", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 4), pitch: "G", distance: noteLength/2, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 2, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
 //        notes.append(NoteView(note: Note(octave: 2, frequency: 24.5*pow(2, 2), pitch: "G", distance: 0, isHit: false), duration: crochet))
 //        notes.append(NoteView(note: Note(octave: 2, frequency: 24.5*pow(2, 2), pitch: "G", distance: 0, isHit: false), duration: crochet))
 //        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
 //        notes.append(NoteView(note: Note(octave: 4, frequency: 24.5*pow(2, 4), pitch: "G", distance: 0, isHit: false), duration: crochet))
 //        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2,3), pitch: "C", distance: noteLength/2, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2,3), pitch: "C", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: noteLength/2, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: noteLength/2, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: noteLength/2, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet*2))
-        
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2,3), pitch: "C", distance: noteLength/2, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2,3), pitch: "C", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: noteLength/2, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: noteLength/2, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: noteLength/2, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: 0, isHit: false), duration: crochet))
+//        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet*2))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[0]*pow(2, 3), pitch: "C", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[1]*pow(2, 3), pitch: "CS", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[2]*pow(2, 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[3]*pow(2, 3), pitch: "DS", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[4]*pow(2, 3), pitch: "E", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[5]*pow(2, 3), pitch: "F", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[6]*pow(2, 3), pitch: "FS", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[7]*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[8]*pow(2, 3), pitch: "GS", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[9]*pow(2, 3), pitch: "A", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[10]*pow(2, 3), pitch: "AS", distance: 0, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[11]*pow(2, 3), pitch: "B", distance: 0, isHit: false), duration: crochet))
         
         for (index, note) in notes.enumerated() {
             
@@ -239,7 +251,7 @@ class ViewController: UIViewController {
             }, completion: nil)
         } else {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
-                self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height/2 //-  (self.indicate.frame.height/2)
+                self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height*2.5 //-  (self.indicate.frame.height/2)
             }, completion: nil)
         }
 //        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
@@ -253,6 +265,7 @@ class ViewController: UIViewController {
         return cent
     }
     
+    //cek note dibenerin nding anjay
     func checkForNotes()  {
         UIView.animate(withDuration: 0.01, animations: {
             for note in self.notes {

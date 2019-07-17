@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1349095C22DEEAA700A3908C /* MusicConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1349095B22DEEAA700A3908C /* MusicConstants.swift */; };
+		1349095E22DF0C5700A3908C /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1349095D22DF0C5700A3908C /* UIColor+extension.swift */; };
 		1357DB6222D46249008B163D /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357DB6122D46249008B163D /* Note.swift */; };
 		1357DB6422D46290008B163D /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357DB6322D46290008B163D /* NoteView.swift */; };
 		138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138262E322D44E8B006E5B73 /* AppDelegate.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1349095B22DEEAA700A3908C /* MusicConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicConstants.swift; sourceTree = "<group>"; };
+		1349095D22DF0C5700A3908C /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		1357DB6122D46249008B163D /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		1357DB6322D46290008B163D /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		138262E022D44E8B006E5B73 /* Anore Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anore Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +76,8 @@
 				138262E322D44E8B006E5B73 /* AppDelegate.swift */,
 				138262E522D44E8B006E5B73 /* ViewController.swift */,
 				13F04D8922DD6995009915CF /* LineView.swift */,
+				1349095B22DEEAA700A3908C /* MusicConstants.swift */,
+				1349095D22DF0C5700A3908C /* UIColor+extension.swift */,
 				1357DB6122D46249008B163D /* Note.swift */,
 				1357DB6322D46290008B163D /* NoteView.swift */,
 				138262E722D44E8B006E5B73 /* Main.storyboard */,
@@ -199,10 +205,12 @@
 			files = (
 				138262EC22D44E8B006E5B73 /* Anore_Project.xcdatamodeld in Sources */,
 				1357DB6422D46290008B163D /* NoteView.swift in Sources */,
+				1349095C22DEEAA700A3908C /* MusicConstants.swift in Sources */,
 				13F04D8A22DD6995009915CF /* LineView.swift in Sources */,
 				138262E622D44E8B006E5B73 /* ViewController.swift in Sources */,
 				138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */,
 				1357DB6222D46249008B163D /* Note.swift in Sources */,
+				1349095E22DF0C5700A3908C /* UIColor+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
