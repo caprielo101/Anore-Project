@@ -69,6 +69,23 @@ class ViewController: UIViewController {
         return true
     }
 
+    fileprivate func configureLabel() {
+        songNameLabel.text = song.songName
+        view.addSubview(songNameLabel)
+        songNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        songNameLabel.font = UIFont(name: "Young", size: 22)
+        songNameLabel.textColor = .textColor
+        songNameLabel.textAlignment = .center
+        songNameLabel.numberOfLines = 0
+        NSLayoutConstraint.activate([
+            //            songNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            songNameLabel.centerYAnchor.constraint(equalTo: pauseButton.centerYAnchor, constant: 0),
+            songNameLabel.heightAnchor.constraint(equalToConstant: 50),
+            songNameLabel.trailingAnchor.constraint(equalTo: pauseButton.leadingAnchor, constant: -20),
+            songNameLabel.leadingAnchor.constraint(equalTo: verticalLine.trailingAnchor, constant: 20)
+            ])
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -88,21 +105,7 @@ class ViewController: UIViewController {
         configureNotes()
         configureUI()
         drawHorizontalLines()
-        
-        songNameLabel.text = song.songName
-        view.addSubview(songNameLabel)
-        songNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        songNameLabel.font = UIFont(name: "Young", size: 22)
-        songNameLabel.textColor = .textColor
-        songNameLabel.textAlignment = .center
-        songNameLabel.numberOfLines = 0
-        NSLayoutConstraint.activate([
-//            songNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            songNameLabel.centerYAnchor.constraint(equalTo: pauseButton.centerYAnchor, constant: 0),
-            songNameLabel.heightAnchor.constraint(equalToConstant: 50),
-            songNameLabel.trailingAnchor.constraint(equalTo: pauseButton.leadingAnchor, constant: -20),
-            songNameLabel.leadingAnchor.constraint(equalTo: verticalLine.trailingAnchor, constant: 20)
-            ])
+        configureLabel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
