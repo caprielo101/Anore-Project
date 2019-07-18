@@ -22,6 +22,7 @@
 		13D900CD22E02EEB00AA6C74 /* Song0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900CC22E02EEB00AA6C74 /* Song0.swift */; };
 		13D900D122E038D300AA6C74 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900D022E038D300AA6C74 /* Song.swift */; };
 		13D900D322E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13D900D222E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav */; };
+		13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900D722E0613D00AA6C74 /* PageViewController.swift */; };
 		13F04D8A22DD6995009915CF /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F04D8922DD6995009915CF /* LineView.swift */; };
 		20FDB8E1EDD2F64514CA4431 /* Pods_Anore_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E0603D32441E7061BEDE44 /* Pods_Anore_Project.framework */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,8 @@
 		13D900CC22E02EEB00AA6C74 /* Song0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song0.swift; sourceTree = "<group>"; };
 		13D900D022E038D300AA6C74 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		13D900D222E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = twinkleTwinkleLittleStar.wav; sourceTree = "<group>"; };
+		13D900D722E0613D00AA6C74 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		13D900D922E0622800AA6C74 /* Young.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Young.ttf; sourceTree = "<group>"; };
 		13F04D8922DD6995009915CF /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		43E0603D32441E7061BEDE44 /* Pods_Anore_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anore_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDB57F9CAF7793F441FE7A8 /* Pods-Anore Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anore Project.debug.xcconfig"; path = "Target Support Files/Pods-Anore Project/Pods-Anore Project.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 				13F04D8922DD6995009915CF /* LineView.swift */,
 				13D900D422E0396800AA6C74 /* Songs */,
 				1349095B22DEEAA700A3908C /* MusicConstants.swift */,
+				13D900D722E0613D00AA6C74 /* PageViewController.swift */,
 				1349095D22DF0C5700A3908C /* UIColor+extension.swift */,
 				1357DB6122D46249008B163D /* Note.swift */,
 				13D900C622E00AA100AA6C74 /* AudioHelper.swift */,
@@ -97,6 +101,7 @@
 				138262EF22D44E8C006E5B73 /* LaunchScreen.storyboard */,
 				138262F222D44E8C006E5B73 /* Info.plist */,
 				138262EA22D44E8B006E5B73 /* Anore_Project.xcdatamodeld */,
+				13D900D922E0622800AA6C74 /* Young.ttf */,
 				13D900CA22E0221400AA6C74 /* Sounds */,
 			);
 			path = "Anore Project";
@@ -247,6 +252,7 @@
 				138262EC22D44E8B006E5B73 /* Anore_Project.xcdatamodeld in Sources */,
 				1357DB6422D46290008B163D /* NoteView.swift in Sources */,
 				1349095C22DEEAA700A3908C /* MusicConstants.swift in Sources */,
+				13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */,
 				13D900C722E00AA100AA6C74 /* AudioHelper.swift in Sources */,
 				13F04D8A22DD6995009915CF /* LineView.swift in Sources */,
 				13D900D122E038D300AA6C74 /* Song.swift in Sources */,

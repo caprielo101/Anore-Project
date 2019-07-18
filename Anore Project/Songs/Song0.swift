@@ -33,7 +33,7 @@ class Song0: Song {
     }
     
     private func createCharts() {
-        notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 0, octave: 3), pitch: "C", distance: noteLength, isHit: false), duration: crochet))
+        notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 0, octave: 3), pitch: "C", distance: 0, isHit: false), duration: crochet))
         notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 1, octave: 3), pitch: "CS", distance: 0, isHit: false), duration: crochet))
         notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 2, octave: 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
         notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 3, octave: 3), pitch: "DS", distance: 0, isHit: false), duration: crochet))

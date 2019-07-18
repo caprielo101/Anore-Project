@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var noteNameWithSharpsLabel: UILabel!
     
     //base view for gameplay (container view)
-    @IBOutlet weak var BaseView: UIView!
+    @IBOutlet weak var baseView: UIView!
     //need to make note array (note view array) variables
     var notes: [NoteView] = []
     
@@ -68,11 +68,11 @@ class ViewController: UIViewController {
 
         view.backgroundColor = .backgroundColor
         
-        BaseView.backgroundColor = .clear
         crochet = 60.0/bpm //in seconds
-        
-        width = BaseView.frame.width
-        height = BaseView.frame.height
+        baseView.backgroundColor = .clear
+
+        width = baseView.frame.width
+        height = baseView.frame.height
         
 //        audioHelper.configure()
         configure()
@@ -133,7 +133,7 @@ class ViewController: UIViewController {
             note.widthAnchor.constraint(equalToConstant: CGFloat(note.duration*noteLength)).isActive = true
             note.heightAnchor.constraint(equalToConstant: self.height/CGFloat((noteNumber-1))*0.8).isActive = true
             note.leadingAnchor.constraint(equalTo: previousLeading, constant: CGFloat(previousDistance)).isActive = true
-            note.centerYAnchor.constraint(equalTo: BaseView.bottomAnchor, constant: -(CGFloat(getCentsInterval(voiceFrequency: Double(note.note?.frequency ?? 0), minFrequency, maxFrequency))*height)).isActive = true
+            note.centerYAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -(CGFloat(getCentsInterval(voiceFrequency: Double(note.note?.frequency ?? 0), minFrequency, maxFrequency))*height)).isActive = true
             note.translatesAutoresizingMaskIntoConstraints = false
             
         }
@@ -148,14 +148,14 @@ class ViewController: UIViewController {
             lineView.alpha = 0.3
             lineView.backgroundColor = .black
             lineView.startPoint = CGPoint(x: xVal, y: yVall)
-            lineView.endPoint = CGPoint(x: BaseView.frame.width, y: yVall)
+            lineView.endPoint = CGPoint(x: baseView.frame.width, y: yVall)
             lineView.translatesAutoresizingMaskIntoConstraints = false
-            BaseView.addSubview(lineView)
+            baseView.addSubview(lineView)
             
             NSLayoutConstraint.activate([
                 lineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
                 lineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-                lineView.topAnchor.constraint(equalTo: BaseView.topAnchor, constant: CGFloat(i)*yVall),
+                lineView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: CGFloat(i)*yVall),
                 //                lineView.bottomAnchor.constraint(equalTo: BaseView.bottomAnchor, constant: -(yVall)),
                 lineView.heightAnchor.constraint(equalToConstant: 1)
                 ])
@@ -167,17 +167,17 @@ class ViewController: UIViewController {
     fileprivate func drawVerticalLines() {
         verticalLine.alpha = 1
         verticalLine.backgroundColor = .black
-        verticalLine.startPoint = CGPoint(x: indicate.center.x, y: BaseView.frame.origin.y)
-        verticalLine.endPoint = CGPoint(x: indicate.center.x, y: BaseView.frame.origin.y + BaseView.frame.height)
+        verticalLine.startPoint = CGPoint(x: indicate.center.x, y: baseView.frame.origin.y)
+        verticalLine.endPoint = CGPoint(x: indicate.center.x, y: baseView.frame.origin.y + baseView.frame.height)
         verticalLine.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(verticalLine)
         
         NSLayoutConstraint.activate([
-            verticalLine.topAnchor.constraint(equalTo: BaseView.topAnchor, constant: -25),
-            verticalLine.bottomAnchor.constraint(equalTo: BaseView.bottomAnchor, constant: 25),
+            verticalLine.topAnchor.constraint(equalTo: baseView.topAnchor, constant: -25),
+            verticalLine.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: 25),
             verticalLine.widthAnchor.constraint(equalToConstant: 1),
             //            verticalLine.leadingAnchor.constraint(equalTo: BaseView.leadingAnchor, constant: width/8)
-            verticalLine.centerXAnchor.constraint(equalTo: BaseView.leadingAnchor, constant: width/8)
+            verticalLine.centerXAnchor.constraint(equalTo: baseView.leadingAnchor, constant: width/8)
             ])
     }
     
@@ -226,11 +226,11 @@ class ViewController: UIViewController {
             //            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
             //            print("\(noteNameWithSharpsLabel.text!) f=\(tracker.frequency) A=\(tracker.amplitude)")
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
-                self.indicate.center.y = self.height + self.BaseView.frame.origin.y - self.getCentsInterval(voiceFrequency: self.tracker.frequency, self.minFrequency, self.maxFrequency) * self.height
+                self.indicate.center.y = self.height + self.baseView.frame.origin.y - self.getCentsInterval(voiceFrequency: self.tracker.frequency, self.minFrequency, self.maxFrequency) * self.height
             }, completion: nil)
         } else {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
-                self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height*2 //-  (self.indicate.frame.height/2)
+                self.indicate.center.y = self.baseView.frame.origin.y + self.height + self.indicate.frame.height*2 //-  (self.indicate.frame.height/2)
             }, completion: nil)
         }
         //        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
@@ -326,7 +326,6 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //        let nextVC = UIStoryboard.instatiateViewController
-        
     }
 }
 
