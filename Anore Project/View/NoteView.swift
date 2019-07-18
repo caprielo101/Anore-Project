@@ -60,6 +60,26 @@ class NoteView: UIView {
             return UIColor.clear
         }
     }
+    
+    func animateNotes() {
+        
+        let left = CABasicAnimation(keyPath: "position")
+        left.duration = 0.01
+        left.repeatCount = Float.infinity
+//        left.autoreverses = true
+        
+        let fromPoint = CGPoint(x: center.x, y: center.y)
+        let fromValue = NSValue(cgPoint: fromPoint)
+        
+        let toPoint = CGPoint(x: center.x - 1, y: center.y)
+        let toValue = NSValue(cgPoint: toPoint)
+        
+        left.fromValue = fromValue
+        left.toValue = toValue
+        
+        layer.add(left, forKey: "position")
+    }
+    
 //    func startTimer() {
 //        timer = Timer.scheduledTimer(timeInterval: TimeInterval(duration/1000), target: self, selector: #selector(stopTimer), userInfo: nil, repeats: true)
 //    }

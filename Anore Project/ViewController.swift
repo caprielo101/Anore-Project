@@ -47,8 +47,8 @@ class ViewController: UIViewController {
     var scoringDelayTimer =  Timer()
     var updateUITimer = Timer()
 
-    var song = Song0(songName: "Twinkle-twinkle Little Star", bpm: 60)
-    
+    var song = Song0(songName: "twinkle-twinkle little star", bpm: 60)
+    var animator: UIViewPropertyAnimator!
     //song configuration
     let bpm: Float = 60.0 //in beat per seconds
     var crochet: Float = 0.0 //in seconds
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .backgroundColor
         
         crochet = 60.0/bpm //in seconds
@@ -96,8 +96,6 @@ class ViewController: UIViewController {
 
         width = baseView.frame.width
         height = baseView.frame.height
-        
-        
         
 //        audioHelper.configure()
         configure()
@@ -173,8 +171,8 @@ class ViewController: UIViewController {
             let lineView = LineView()
 //            lineView.alpha = 0.3
             lineView.backgroundColor = .textColor
-            lineView.startPoint = CGPoint(x: xVal, y: yVall)
-            lineView.endPoint = CGPoint(x: baseView.frame.width, y: yVall)
+//            lineView.startPoint = CGPoint(x: xVal, y: yVall)
+//            lineView.endPoint = CGPoint(x: baseView.frame.width, y: yVall)
             lineView.translatesAutoresizingMaskIntoConstraints = false
             baseView.addSubview(lineView)
             
@@ -191,10 +189,10 @@ class ViewController: UIViewController {
     }
     
     fileprivate func drawVerticalLines() {
-        verticalLine.alpha = 1
+//        verticalLine.alpha = 1
         verticalLine.backgroundColor = .textColor
-        verticalLine.startPoint = CGPoint(x: indicate.center.x, y: baseView.frame.origin.y)
-        verticalLine.endPoint = CGPoint(x: indicate.center.x, y: baseView.frame.origin.y + baseView.frame.height)
+//        verticalLine.startPoint = CGPoint(x: indicate.center.x, y: baseView.frame.origin.y)
+//        verticalLine.endPoint = CGPoint(x: indicate.center.x, y: baseView.frame.origin.y + baseView.frame.height)
         verticalLine.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(verticalLine)
         
@@ -251,11 +249,11 @@ class ViewController: UIViewController {
             //            noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
             //            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
             //            print("\(noteNameWithSharpsLabel.text!) f=\(tracker.frequency) A=\(tracker.amplitude)")
-            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
                 self.indicate.center.y = self.height + self.baseView.frame.origin.y - self.getCentsInterval(voiceFrequency: self.tracker.frequency, self.minFrequency, self.maxFrequency) * self.height
             }, completion: nil)
         } else {
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
                 self.indicate.center.y = self.baseView.frame.origin.y + self.height + self.indicate.frame.height*2 //-  (self.indicate.frame.height/2)
             }, completion: nil)
         }
@@ -287,20 +285,46 @@ class ViewController: UIViewController {
     
     fileprivate func animateNoteChart() {
         //animating notes from right to left /100 speed/note length
-        UIView.animate(withDuration: 0.01, animations: {
+//        UIView.animate(withDuration: 0.01, animations: {
+//            for note in self.notes {
+//                note.center.x -= 1
+//            }
+//        })
+//        for note in notes {
+//            note.animateNotes()
+//        }
+//        for note in notes {
+//            let startPoint = CGPoint(x: note.center.x, y: note.center.y)
+//            let endPoint = CGPoint(x: note.center.x - 1, y: note.center.y)
+//            let duration = 0.01
+//
+//            let animation = constructAnimation(startPoint: startPoint, endPoint: endPoint, duration: duration)
+//            note.layer.add(animation, forKey: "pos")
+//            note.layer.position = endPoint
+//        }
+        
+        animator = UIViewPropertyAnimator(duration: 0.01, curve: .linear) {
             for note in self.notes {
                 note.center.x -= 1
             }
-        })
+        }
+        animator.startAnimation()
+    }
+    
+    func constructAnimation(startPoint: CGPoint, endPoint: CGPoint, duration: Double) -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.fromValue = startPoint
+        animation.toValue = endPoint
+        animation.duration = 0.01
+        return animation
     }
     
     fileprivate func checkNoteIfHit() {
         for note in notes {
-            if indicate.center.y > note.center.y - (indicate.frame.height/2) && indicate.center.y < note.center.y + (indicate.frame.height/2) && indicate.frame.intersects(note.frame){ //
+            if indicate.center.y > note.center.y - (height/CGFloat(noteNumber-1)/5) && indicate.center.y < note.center.y + (height/CGFloat(noteNumber-1)/5) && indicate.frame.intersects(note.frame){ //
                 isHittingNote = true
                 if isHittingNote {
                     //timer berapa detik kalo lebih dari duration bikin noteisHit jadi true
-                    indicate.backgroundColor = .lightGray
                     //start timer
                     scoringDelayTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(note.duration/2), repeats: false, block: { (Timer) in
                         note.note.isHit = true
@@ -310,11 +334,9 @@ class ViewController: UIViewController {
                     //stop timer
                     scoringDelayTimer.invalidate()
                     //changing color still error!!!!
-                    indicate.backgroundColor = .black
                 }
             } else {
                 isHittingNote = false
-                indicate.backgroundColor = .black
             }
         }
 
@@ -332,13 +354,6 @@ class ViewController: UIViewController {
             print("True \(score), False \(notes.count-score), \(notes.count)")
             print("End of Game")
             updateUITimer.invalidate()
-//            do {
-//                try AudioKit.stop()
-//                audioHelper.stopAudio()
-//
-//            } catch {
-//                AKLog("Error")
-//            }
             //End of Game present next VC and calculate points
             //put function here to calculate points
             //            for (index,note) in notes.enumerated() {
@@ -352,6 +367,18 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //        let nextVC = UIStoryboard.instatiateViewController
+    }
+    
+    @IBAction func pause(_ sender: UIButton) {
+//        for note in notes {
+//            note.frame = note.layer.presentation()?.frame ?? CGRect(size: .zero)
+//            note.layer.removeAllAnimations()
+//        }
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        let popUpVc = storyboard.instantiateViewController(withIdentifier: "pause")
+        popUpVc.modalPresentationStyle = .overCurrentContext
+        popUpVc.modalTransitionStyle = .crossDissolve
+        present(popUpVc, animated: true, completion: nil)
     }
 }
 
