@@ -32,6 +32,9 @@ class ViewController: UIViewController {
     //score for the level (hit notes)
     var score = 0
     
+    //AudioKit Helper Initialisation
+    let audioHelper = AudioHelper()
+    
     //AudioKit declaration
     var mic: AKMicrophone!
     var tracker: AKFrequencyTracker!
@@ -67,16 +70,19 @@ class ViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .backgroundColor
+        
         BaseView.backgroundColor = .clear
         crochet = 60.0/bpm //in seconds
         
         width = BaseView.frame.width
         height = BaseView.frame.height
         
+//        audioHelper.configure()
         configure()
         drawVerticalLines()
         configureNotes()
@@ -89,10 +95,14 @@ class ViewController: UIViewController {
         
         RoundingNotes()
         
+        //setting up audiokit and audioSessions
         do {
             try AudioKit.stop()
             AudioKit.output = silence
             try AudioKit.start()
+            
+            audioHelper.configureAudioSession()
+            audioHelper.playAudio(fileName: "Ninabobo", type: "wav")
         } catch {
             AKLog("error")
         }
@@ -157,7 +167,7 @@ class ViewController: UIViewController {
             view.addSubview(note)
             
             //            let previousLeading = index == 0 ? view.trailingAnchor : notes[index-1].trailingAnchor
-            let previousLeading = index == 0 ? verticalLine.leadingAnchor : notes[index-1].trailingAnchor
+            let previousLeading = index == 0 ? verticalLine.centerXAnchor : notes[index-1].trailingAnchor
             //            let previousDistance = index == 0 ? 0 : notes[index-1].note.distance
             let previousDistance = index == 0 ? distanceBeforeStart : notes[index-1].note.distance
             note.widthAnchor.constraint(equalToConstant: CGFloat(note.duration*noteLength)).isActive = true
@@ -215,19 +225,57 @@ class ViewController: UIViewController {
     func configure() {
         mic = AKMicrophone()
         tracker = AKFrequencyTracker(mic)
-        silence = AKBooster(tracker, gain: 1)
+        silence = AKBooster(tracker, gain: 0)
         AKSettings.audioInputEnabled = true
     }
     
     //configure UI
     func configureUI() {
-        indicate.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        indicate.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
         indicate.center = CGPoint(x: width/8, y: 0)
-        indicate.image = UIImage(named: "indicator")
+//        indicate.image = UIImage(named: "indicator")
         indicate.layer.cornerRadius = indicate.frame.height/2
-        indicate.backgroundColor = .clear //black
+        indicate.backgroundColor = .black
         view.addSubview(indicate)
     }
+    
+//    @objc func updateUI() {
+//        if tracker.amplitude > 0.1 {
+//            frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
+//
+//            var frequency = Float(tracker.frequency)
+//            while (frequency > Float(MusicConstants.noteFrequencies[MusicConstants.noteFrequencies.count-1])) {
+//                frequency = frequency / 2.0
+//            }
+//            while (frequency < Float(MusicConstants.noteFrequencies[0])) {
+//                frequency = frequency * 2.0
+//            }
+//
+//            var minDistance: Float = 10000.0
+//            var index = 0
+//
+//            for i in 0..<MusicConstants.noteFrequencies.count {
+//                let distance = fabsf(Float(MusicConstants.noteFrequencies[i]) - frequency)
+//                if (distance < minDistance){
+//                    index = i
+//                    minDistance = distance
+//                }
+//            }
+//            let octave = Int(log2f(Float(tracker.frequency) / frequency))
+//            //            noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
+//            //            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
+//            //            print("\(noteNameWithSharpsLabel.text!) f=\(tracker.frequency) A=\(tracker.amplitude)")
+//            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+//                self.indicate.center.y = self.height + self.BaseView.frame.origin.y - self.getCentsInterval(voiceFrequency: self.tracker.frequency, self.minFrequency, self.maxFrequency) * self.height
+//            }, completion: nil)
+//        } else {
+//            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+//                self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height //-  (self.indicate.frame.height/2)
+//            }, completion: nil)
+//        }
+//        //        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
+//        noteAlgorithm()
+//    }
     
     @objc func updateUI() {
         if tracker.amplitude > 0.1 {
@@ -255,16 +303,24 @@ class ViewController: UIViewController {
             //            noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
             //            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
             //            print("\(noteNameWithSharpsLabel.text!) f=\(tracker.frequency) A=\(tracker.amplitude)")
-            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
                 self.indicate.center.y = self.height + self.BaseView.frame.origin.y - self.getCentsInterval(voiceFrequency: self.tracker.frequency, self.minFrequency, self.maxFrequency) * self.height
             }, completion: nil)
         } else {
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.4, delay: 0, options: .curveLinear, animations: {
                 self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height //-  (self.indicate.frame.height/2)
             }, completion: nil)
         }
         //        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
         noteAlgorithm()
+    }
+    
+    func createTrails() {
+        let trailView = UIView(frame: CGRect(width: 2, height: 2))
+        view.addSubview(trailView)
+        trailView.center = indicate.center
+        trailView.layer.cornerRadius = trailView.frame.width/2
+        trailView.backgroundColor = .black
     }
     
     func getCentsInterval(voiceFrequency: Double, _ minFrequency: Float, _ maxFrequency: Float) -> CGFloat {
@@ -292,10 +348,11 @@ class ViewController: UIViewController {
     
     fileprivate func checkNoteIfHit() {
         for note in notes {
-            if note.frame.intersects(indicate.frame) {
+            if indicate.center.y > note.center.y - (indicate.frame.height/2) && indicate.center.y < note.center.y + (indicate.frame.height/2) && indicate.frame.intersects(note.frame){ //
                 isHittingNote = true
                 if isHittingNote {
                     //timer berapa detik kalo lebih dari duration bikin noteisHit jadi true
+                    indicate.backgroundColor = .lightGray
                     //start timer
                     scoringDelayTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(note.duration/2), repeats: false, block: { (Timer) in
                         note.note.isHit = true
@@ -304,11 +361,32 @@ class ViewController: UIViewController {
                 } else {
                     //stop timer
                     scoringDelayTimer.invalidate()
+                    indicate.backgroundColor = .black
                 }
             } else {
                 isHittingNote = false
+                indicate.backgroundColor = .black
+
             }
+
         }
+//            if note.frame.intersects(indicate.frame) {
+//                isHittingNote = true
+//                if isHittingNote {
+//                    //timer berapa detik kalo lebih dari duration bikin noteisHit jadi true
+//                    //start timer
+//                    scoringDelayTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(note.duration/2), repeats: false, block: { (Timer) in
+//                        note.note.isHit = true
+//                    })
+//                    print(note.note.pitch, note.note.isHit)
+//                } else {
+//                    //stop timer
+//                    scoringDelayTimer.invalidate()
+//                }
+//            } else {
+//                isHittingNote = false
+//            }
+//        }
     }
     
     fileprivate func songEnding() {
@@ -316,12 +394,20 @@ class ViewController: UIViewController {
             for note in self.notes {
                 if note.note.isHit {
                     score += 1
-                    print(score)
                 }
+                print(note.note.pitch, note.note.isHit)
                 note.removeFromSuperview()
             }
+            print("True \(score), False \(notes.count-score), \(notes.count)")
             print("End of Game")
             updateUITimer.invalidate()
+            do {
+                try AudioKit.stop()
+                audioHelper.stopAudio()
+                
+            } catch {
+                AKLog("Error")
+            }
             //End of Game present next VC and calculate points
             //put function here to calculate points
             //            for (index,note) in notes.enumerated() {
