@@ -19,6 +19,9 @@ class ViewController: UIViewController {
     
     //base view for gameplay (container view)
     @IBOutlet weak var baseView: UIView!
+    @IBOutlet weak var pauseButton: UIButton!
+    var songNameLabel = UILabel(frame: .zero)
+    
     //need to make note array (note view array) variables
     var notes: [NoteView] = []
     
@@ -44,16 +47,19 @@ class ViewController: UIViewController {
     var scoringDelayTimer =  Timer()
     var updateUITimer = Timer()
 
-    var song = Song0(songName: "Nina Bobo", bpm: 60)
+    var song = Song0(songName: "Twinkle-twinkle Little Star", bpm: 60)
     
     //song configuration
     let bpm: Float = 60.0 //in beat per seconds
     var crochet: Float = 0.0 //in seconds
     var noteLength: Float = 100.0 //note length in points
-    var maxFrequency: Float = 493.889050 //b4
-    var minFrequency: Float = 98.0 //g2
+//    var maxFrequency: Float = 493.889050 //b4
+//    var minFrequency: Float = 98.0 //g2
+    var maxFrequency: Float = MusicConstants.noteFrequencies[0]*pow(2, 4)
+    var minFrequency: Float = MusicConstants.noteFrequencies[0]*pow(2, 3)
     //how much note is in the frequency range
-    let noteNumber = 29
+    let noteNumber = 13
+//    let noteNumber = 29
     
     //base view dimension
     var width: CGFloat = 0
@@ -74,12 +80,29 @@ class ViewController: UIViewController {
         width = baseView.frame.width
         height = baseView.frame.height
         
+        
+        
 //        audioHelper.configure()
         configure()
         drawVerticalLines()
         configureNotes()
         configureUI()
         drawHorizontalLines()
+        
+        songNameLabel.text = song.songName
+        view.addSubview(songNameLabel)
+        songNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        songNameLabel.font = UIFont(name: "Young", size: 22)
+        songNameLabel.textColor = .textColor
+        songNameLabel.textAlignment = .center
+        songNameLabel.numberOfLines = 0
+        NSLayoutConstraint.activate([
+//            songNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            songNameLabel.centerYAnchor.constraint(equalTo: pauseButton.centerYAnchor, constant: 0),
+            songNameLabel.heightAnchor.constraint(equalToConstant: 50),
+            songNameLabel.trailingAnchor.constraint(equalTo: pauseButton.leadingAnchor, constant: -20),
+            songNameLabel.leadingAnchor.constraint(equalTo: verticalLine.trailingAnchor, constant: 20)
+            ])
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -145,8 +168,8 @@ class ViewController: UIViewController {
         
         for i in 0..<noteNumber {
             let lineView = LineView()
-            lineView.alpha = 0.3
-            lineView.backgroundColor = .black
+//            lineView.alpha = 0.3
+            lineView.backgroundColor = .textColor
             lineView.startPoint = CGPoint(x: xVal, y: yVall)
             lineView.endPoint = CGPoint(x: baseView.frame.width, y: yVall)
             lineView.translatesAutoresizingMaskIntoConstraints = false
@@ -166,15 +189,15 @@ class ViewController: UIViewController {
     
     fileprivate func drawVerticalLines() {
         verticalLine.alpha = 1
-        verticalLine.backgroundColor = .black
+        verticalLine.backgroundColor = .textColor
         verticalLine.startPoint = CGPoint(x: indicate.center.x, y: baseView.frame.origin.y)
         verticalLine.endPoint = CGPoint(x: indicate.center.x, y: baseView.frame.origin.y + baseView.frame.height)
         verticalLine.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(verticalLine)
         
         NSLayoutConstraint.activate([
-            verticalLine.topAnchor.constraint(equalTo: baseView.topAnchor, constant: -25),
-            verticalLine.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: 25),
+            verticalLine.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            verticalLine.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             verticalLine.widthAnchor.constraint(equalToConstant: 1),
             //            verticalLine.leadingAnchor.constraint(equalTo: BaseView.leadingAnchor, constant: width/8)
             verticalLine.centerXAnchor.constraint(equalTo: baseView.leadingAnchor, constant: width/8)

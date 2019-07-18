@@ -23,6 +23,7 @@
 		13D900D122E038D300AA6C74 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900D022E038D300AA6C74 /* Song.swift */; };
 		13D900D322E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13D900D222E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav */; };
 		13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900D722E0613D00AA6C74 /* PageViewController.swift */; };
+		13D900DA22E0656700AA6C74 /* Young.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13D900D922E0622800AA6C74 /* Young.ttf */; };
 		13F04D8A22DD6995009915CF /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F04D8922DD6995009915CF /* LineView.swift */; };
 		20FDB8E1EDD2F64514CA4431 /* Pods_Anore_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E0603D32441E7061BEDE44 /* Pods_Anore_Project.framework */; };
 /* End PBXBuildFile section */
@@ -210,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13D900C922E01EB400AA6C74 /* Ninabobo.wav in Resources */,
+				13D900DA22E0656700AA6C74 /* Young.ttf in Resources */,
 				13D900D322E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav in Resources */,
 				138262F122D44E8C006E5B73 /* LaunchScreen.storyboard in Resources */,
 				138262EE22D44E8C006E5B73 /* Assets.xcassets in Resources */,

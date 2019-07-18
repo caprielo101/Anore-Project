@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="glk-0t-8KS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -45,9 +45,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSU-s0-Ric" userLabel="Base View">
-                                <rect key="frame" x="0.0" y="94" width="414" height="718"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="668"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INo-tX-tsT">
+                                <rect key="frame" x="324" y="64" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7zN-ea-rWm"/>
+                                    <constraint firstAttribute="width" constant="50" id="U4N-KM-CNi"/>
+                                </constraints>
+                                <state key="normal" image="pauseButton"/>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDR-l7-P8i">
                                 <rect key="frame" x="26" y="44" width="331" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -79,10 +87,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="INo-tX-tsT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="7aQ-sT-n74"/>
                             <constraint firstItem="wSU-s0-Ric" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LxP-wy-vjB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wSU-s0-Ric" secondAttribute="trailing" id="WMq-Fq-Qn3"/>
-                            <constraint firstItem="wSU-s0-Ric" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="nOv-Tm-FG9"/>
+                            <constraint firstItem="wSU-s0-Ric" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="nOv-Tm-FG9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wSU-s0-Ric" secondAttribute="bottom" constant="50" id="pOs-gB-h07"/>
+                            <constraint firstAttribute="trailing" secondItem="INo-tX-tsT" secondAttribute="trailing" constant="40" id="vAT-yP-IaH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
@@ -100,17 +110,18 @@
                         <outlet property="frequencyLabel" destination="gDR-l7-P8i" id="dj1-aP-8Wm"/>
                         <outlet property="noteNameWithFlatsLabel" destination="wbc-sP-vN7" id="mii-l8-vnO"/>
                         <outlet property="noteNameWithSharpsLabel" destination="NEN-bM-URc" id="iPC-vU-59r"/>
+                        <outlet property="pauseButton" destination="INo-tX-tsT" id="jFJ-DW-qHP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2064" y="-913"/>
+            <point key="canvasLocation" x="-2065.217391304348" y="-913.39285714285711"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="mR8-hI-hmu">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bat-Y5-PSn" sceneMemberID="firstResponder"/>
-                <viewController id="mdC-ZD-GjH" customClass="ViewController" customModule="testCollectionView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mdC-ZD-GjH" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cYi-ik-HK0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,7 +130,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-665" y="-727"/>
+            <point key="canvasLocation" x="2200" y="-324"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Emg-XH-Zts">
@@ -130,46 +141,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-dk-1AY">
-                                <rect key="frame" x="20" y="558" width="374" height="64"/>
+                                <rect key="frame" x="20" y="513.5" width="374" height="64"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="64"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="help your children exercise their vocal muscle" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZK0-bw-C4P">
-                                <rect key="frame" x="20" y="632" width="374" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="cfY-jg-oP8"/>
-                                </constraints>
-                                <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anore logo" translatesAutoresizingMaskIntoConstraints="NO" id="Pva-g0-F2A">
-                                <rect key="frame" x="20" y="278" width="374" height="250"/>
+                                <rect key="frame" x="20" y="233.5" width="374" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="DJ6-dX-YVs"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="help your children exercise  their vocal muscle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1p-qY-SGp">
+                                <rect key="frame" x="20" y="587.5" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Y5A-wA-9Fl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
+                                <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99607843139999996" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="1" green="0.99607843139999996" blue="0.83137254900000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ZK0-bw-C4P" firstAttribute="top" secondItem="mEs-dk-1AY" secondAttribute="bottom" constant="10" id="E9V-GX-tNn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Pva-g0-F2A" secondAttribute="trailing" id="PKO-Tw-kIS"/>
-                            <constraint firstItem="pWY-l6-Qe1" firstAttribute="trailing" secondItem="ZK0-bw-C4P" secondAttribute="trailing" constant="20" id="TeL-ob-P9b"/>
                             <constraint firstItem="mEs-dk-1AY" firstAttribute="top" secondItem="Pva-g0-F2A" secondAttribute="bottom" constant="30" id="Zf6-Ft-rbn"/>
+                            <constraint firstItem="pWY-l6-Qe1" firstAttribute="trailing" secondItem="H1p-qY-SGp" secondAttribute="trailing" constant="20" id="cZX-W1-P6W"/>
+                            <constraint firstItem="H1p-qY-SGp" firstAttribute="leading" secondItem="pWY-l6-Qe1" secondAttribute="leading" constant="20" id="fr1-FJ-cRR"/>
                             <constraint firstItem="mEs-dk-1AY" firstAttribute="leading" secondItem="pWY-l6-Qe1" secondAttribute="leading" constant="20" id="hcX-M3-BXI"/>
                             <constraint firstItem="pWY-l6-Qe1" firstAttribute="trailing" secondItem="mEs-dk-1AY" secondAttribute="trailing" constant="20" id="il9-dc-1st"/>
-                            <constraint firstItem="Pva-g0-F2A" firstAttribute="centerY" secondItem="0bV-xi-Xlq" secondAttribute="centerY" multiplier="0.9" id="qSW-OO-X2q"/>
+                            <constraint firstItem="Pva-g0-F2A" firstAttribute="centerY" secondItem="0bV-xi-Xlq" secondAttribute="centerY" multiplier="0.8" id="qSW-OO-X2q"/>
+                            <constraint firstItem="H1p-qY-SGp" firstAttribute="top" secondItem="mEs-dk-1AY" secondAttribute="bottom" constant="10" id="vuS-Zt-g0n"/>
                             <constraint firstItem="Pva-g0-F2A" firstAttribute="leading" secondItem="0bV-xi-Xlq" secondAttribute="leadingMargin" id="wMH-gJ-Wxv"/>
-                            <constraint firstItem="ZK0-bw-C4P" firstAttribute="leading" secondItem="pWY-l6-Qe1" secondAttribute="leading" constant="20" id="yOU-to-rC7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pWY-l6-Qe1"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYK-DZ-aFZ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="-1099"/>
+            <point key="canvasLocation" x="120" y="-1171"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SeF-5o-H8T">
@@ -193,13 +204,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warm up your children’s vocal  muscle before they start singing!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Io7-ys-DVC" userLabel="label">
-                                <rect key="frame" x="60" y="732.5" width="314" height="40"/>
+                                <rect key="frame" x="60" y="735.5" width="314" height="34"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warm up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVa-pL-qRY">
-                                <rect key="frame" x="31" y="84" width="383" height="56"/>
+                                <rect key="frame" x="31" y="88" width="383" height="48"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -261,13 +272,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="let your children sing along to our  songs and have some fun!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Eg-jd-6dF" userLabel="label">
-                                <rect key="frame" x="60" y="732.5" width="314" height="40"/>
+                                <rect key="frame" x="60" y="735.5" width="314" height="34"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sing along" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kF-1D-mwz">
-                                <rect key="frame" x="31" y="84" width="383" height="56"/>
+                                <rect key="frame" x="31" y="88" width="383" height="48"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -321,13 +332,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="check your children's singing  progress" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZZ-Q9-cV0" userLabel="label">
-                                <rect key="frame" x="60" y="732.5" width="314" height="40"/>
+                                <rect key="frame" x="60" y="735.5" width="314" height="34"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="progress" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCW-UT-iVn">
-                                <rect key="frame" x="31" y="84" width="383" height="56"/>
+                                <rect key="frame" x="31" y="88" width="383" height="48"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -362,7 +373,7 @@
         <!--View Controller-->
         <scene sceneID="sJI-cY-owz">
             <objects>
-                <viewController storyboardIdentifier="onBoarding5" id="yvf-oD-yb5" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onBoarding0000" id="yvf-oD-yb5" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IPv-xw-66c">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,13 +392,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="are you ready? LET'S PLAY!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdw-4g-79F" userLabel="label">
-                                <rect key="frame" x="60" y="742.5" width="314" height="20"/>
+                                <rect key="frame" x="60" y="744" width="314" height="17"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="progress" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlT-pB-YfR">
-                                <rect key="frame" x="31" y="84" width="383" height="56"/>
+                                <rect key="frame" x="31" y="88" width="383" height="48"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -417,7 +428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmM-jU-VLW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2935" y="-1036"/>
+            <point key="canvasLocation" x="3230" y="-206"/>
         </scene>
         <!--Congratulations View Controller-->
         <scene sceneID="UBh-XE-Obd">
@@ -484,11 +495,72 @@
             </objects>
             <point key="canvasLocation" x="574" y="-157"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="u82-ef-QBD">
+            <objects>
+                <viewController storyboardIdentifier="onBoarding5" id="o1D-sL-lk0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ke0-dj-USk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="are-2h-ZLU">
+                                <rect key="frame" x="20" y="513.5" width="374" height="64"/>
+                                <fontDescription key="fontDescription" name="Young" family="Young" pointSize="64"/>
+                                <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anore logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ekh-lz-8lT">
+                                <rect key="frame" x="20" y="233.5" width="374" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="BnW-ww-EX7"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="are you ready? let's play!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QV0-JH-pft">
+                                <rect key="frame" x="20" y="587.5" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6Lm-lP-Pl9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
+                                <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bq5-z2-Dy0">
+                                <rect key="frame" x="169.5" y="679.5" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="Qbk-b3-K0A"/>
+                                    <constraint firstAttribute="height" constant="75" id="sba-v8-89a"/>
+                                </constraints>
+                                <state key="normal" image="homeButton"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.99607843139999996" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="0.99607843139999996" blue="0.83137254900000002" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="are-2h-ZLU" firstAttribute="top" secondItem="Ekh-lz-8lT" secondAttribute="bottom" constant="30" id="1Tt-Vu-nU5"/>
+                            <constraint firstItem="dck-Rz-jJu" firstAttribute="trailing" secondItem="QV0-JH-pft" secondAttribute="trailing" constant="20" id="BQv-Mv-poz"/>
+                            <constraint firstItem="QV0-JH-pft" firstAttribute="top" secondItem="are-2h-ZLU" secondAttribute="bottom" constant="10" id="Q3J-Cf-qb1"/>
+                            <constraint firstItem="Bq5-z2-Dy0" firstAttribute="centerX" secondItem="ke0-dj-USk" secondAttribute="centerX" id="SXn-Nd-Xww"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ekh-lz-8lT" secondAttribute="trailing" id="Spf-Fw-3l5"/>
+                            <constraint firstItem="Ekh-lz-8lT" firstAttribute="centerY" secondItem="ke0-dj-USk" secondAttribute="centerY" multiplier="0.8" id="V1U-Ks-LdS"/>
+                            <constraint firstItem="QV0-JH-pft" firstAttribute="leading" secondItem="dck-Rz-jJu" secondAttribute="leading" constant="20" id="eBQ-iy-Mru"/>
+                            <constraint firstItem="Bq5-z2-Dy0" firstAttribute="centerY" secondItem="ke0-dj-USk" secondAttribute="centerY" multiplier="1.6" id="gzE-sa-uxL"/>
+                            <constraint firstItem="Ekh-lz-8lT" firstAttribute="leading" secondItem="ke0-dj-USk" secondAttribute="leadingMargin" id="hDw-68-CdQ"/>
+                            <constraint firstItem="dck-Rz-jJu" firstAttribute="trailing" secondItem="are-2h-ZLU" secondAttribute="trailing" constant="20" id="oTS-wf-ORX"/>
+                            <constraint firstItem="are-2h-ZLU" firstAttribute="leading" secondItem="dck-Rz-jJu" secondAttribute="leading" constant="20" id="sxT-YI-cvr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dck-Rz-jJu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gOj-wa-Izf" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2870" y="-1055"/>
+        </scene>
     </scenes>
     <resources>
         <image name="anore logo" width="1600" height="1600"/>
         <image name="homeButton" width="720" height="720"/>
         <image name="mascot" width="1600" height="1600"/>
+        <image name="pauseButton" width="720" height="720"/>
         <image name="retryButton" width="720" height="720"/>
         <image name="text balloon" width="1348" height="332"/>
     </resources>

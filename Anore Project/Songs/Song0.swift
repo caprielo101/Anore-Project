@@ -10,7 +10,7 @@ import Foundation
 
 class Song0: Song {
     //song configuration
-    private var songName = ""
+    var songName = ""
     var bpm: Float = 0 //in beat per seconds
     var crochet: Float = 0.0 //in seconds
     let noteLength: Float = 100.0 //note length in points
