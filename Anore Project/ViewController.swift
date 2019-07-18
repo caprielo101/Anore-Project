@@ -43,11 +43,8 @@ class ViewController: UIViewController {
     //timer blm dipakai
     var scoringDelayTimer =  Timer()
     var updateUITimer = Timer()
-    
-    //note frequencies
-    //    let noteFrequencies = [16.35, 17.32, 18.35, 19.45, 20.6, 21.83, 23.12, 24.5, 25.96, 27.5, 29.14, 30.87]
-    //    let noteNamesWithSharps = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
-    //    let noteNamesWithFlats = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
+
+    var song = Song0(songName: "Nina Bobo", bpm: 60)
     
     //song configuration
     let bpm: Float = 60.0 //in beat per seconds
@@ -55,12 +52,7 @@ class ViewController: UIViewController {
     var noteLength: Float = 100.0 //note length in points
     var maxFrequency: Float = 493.889050 //b4
     var minFrequency: Float = 98.0 //g2
-    //
-    //    var maxFrequency: Float = 493.889050*2
-    //    var minFrequency: Float = 98.0*2
-    //
-    //    var minFrequency: Float = 16.35*2*2*2
-    //    var maxFrequency: Float = 27.5*2*2*2
+    //how much note is in the frequency range
     let noteNumber = 29
     
     //base view dimension
@@ -127,42 +119,10 @@ class ViewController: UIViewController {
     
     fileprivate func configureNotes() {
         let distanceBeforeStart = 4 * noteLength
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 220, pitch: "A", distance: noteLength, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 4, frequency: 440, pitch: "A", distance: noteLength/2, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2, 4), pitch: "C", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 4), pitch: "D", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 4), pitch: "F", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 4), pitch: "G", distance: noteLength/2, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 2, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 2, frequency: 24.5*pow(2, 2), pitch: "G", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 2, frequency: 24.5*pow(2, 2), pitch: "G", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 4, frequency: 24.5*pow(2, 4), pitch: "G", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2,3), pitch: "C", distance: noteLength/2, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 16.35*pow(2,3), pitch: "C", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: noteLength/2, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 18.35*pow(2, 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: noteLength/2, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 20.6*pow(2, 3), pitch: "E", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: noteLength/2, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 21.83*pow(2, 3), pitch: "F", distance: 0, isHit: false), duration: crochet))
-        //        notes.append(NoteView(note: Note(octave: 3, frequency: 24.5*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet*2))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[0]*pow(2, 3), pitch: "C", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[1]*pow(2, 3), pitch: "CS", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[2]*pow(2, 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[3]*pow(2, 3), pitch: "DS", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[4]*pow(2, 3), pitch: "E", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[5]*pow(2, 3), pitch: "F", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[6]*pow(2, 3), pitch: "FS", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[7]*pow(2, 3), pitch: "G", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[8]*pow(2, 3), pitch: "GS", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[9]*pow(2, 3), pitch: "A", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[10]*pow(2, 3), pitch: "AS", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: MusicConstants.noteFrequencies[11]*pow(2, 3), pitch: "B", distance: 0, isHit: false), duration: crochet))
         
-        for (index, note) in notes.enumerated() {
+        notes = song.notes
+        
+        for (index, note) in notes.enumerated() { //notes.enumerated()
             
             view.addSubview(note)
             
@@ -239,48 +199,10 @@ class ViewController: UIViewController {
         view.addSubview(indicate)
     }
     
-//    @objc func updateUI() {
-//        if tracker.amplitude > 0.1 {
-//            frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
-//
-//            var frequency = Float(tracker.frequency)
-//            while (frequency > Float(MusicConstants.noteFrequencies[MusicConstants.noteFrequencies.count-1])) {
-//                frequency = frequency / 2.0
-//            }
-//            while (frequency < Float(MusicConstants.noteFrequencies[0])) {
-//                frequency = frequency * 2.0
-//            }
-//
-//            var minDistance: Float = 10000.0
-//            var index = 0
-//
-//            for i in 0..<MusicConstants.noteFrequencies.count {
-//                let distance = fabsf(Float(MusicConstants.noteFrequencies[i]) - frequency)
-//                if (distance < minDistance){
-//                    index = i
-//                    minDistance = distance
-//                }
-//            }
-//            let octave = Int(log2f(Float(tracker.frequency) / frequency))
-//            //            noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
-//            //            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
-//            //            print("\(noteNameWithSharpsLabel.text!) f=\(tracker.frequency) A=\(tracker.amplitude)")
-//            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
-//                self.indicate.center.y = self.height + self.BaseView.frame.origin.y - self.getCentsInterval(voiceFrequency: self.tracker.frequency, self.minFrequency, self.maxFrequency) * self.height
-//            }, completion: nil)
-//        } else {
-//            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
-//                self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height //-  (self.indicate.frame.height/2)
-//            }, completion: nil)
-//        }
-//        //        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
-//        noteAlgorithm()
-//    }
-    
     @objc func updateUI() {
         if tracker.amplitude > 0.1 {
             frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
-            
+
             var frequency = Float(tracker.frequency)
             while (frequency > Float(MusicConstants.noteFrequencies[MusicConstants.noteFrequencies.count-1])) {
                 frequency = frequency / 2.0
@@ -288,10 +210,10 @@ class ViewController: UIViewController {
             while (frequency < Float(MusicConstants.noteFrequencies[0])) {
                 frequency = frequency * 2.0
             }
-            
+
             var minDistance: Float = 10000.0
             var index = 0
-            
+
             for i in 0..<MusicConstants.noteFrequencies.count {
                 let distance = fabsf(Float(MusicConstants.noteFrequencies[i]) - frequency)
                 if (distance < minDistance){
@@ -303,25 +225,25 @@ class ViewController: UIViewController {
             //            noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
             //            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
             //            print("\(noteNameWithSharpsLabel.text!) f=\(tracker.frequency) A=\(tracker.amplitude)")
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
                 self.indicate.center.y = self.height + self.BaseView.frame.origin.y - self.getCentsInterval(voiceFrequency: self.tracker.frequency, self.minFrequency, self.maxFrequency) * self.height
             }, completion: nil)
         } else {
-            UIView.animate(withDuration: 0.4, delay: 0, options: .curveLinear, animations: {
-                self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height //-  (self.indicate.frame.height/2)
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+                self.indicate.center.y = self.BaseView.frame.origin.y + self.height + self.indicate.frame.height*2 //-  (self.indicate.frame.height/2)
             }, completion: nil)
         }
         //        amplitudeLabel.text = String(format: "%0.2f", tracker.amplitude)
         noteAlgorithm()
     }
-    
-    func createTrails() {
-        let trailView = UIView(frame: CGRect(width: 2, height: 2))
-        view.addSubview(trailView)
-        trailView.center = indicate.center
-        trailView.layer.cornerRadius = trailView.frame.width/2
-        trailView.backgroundColor = .black
-    }
+//
+//    func createTrails() {
+//        let trailView = UIView(frame: CGRect(width: 2, height: 2))
+//        view.addSubview(trailView)
+//        trailView.center = indicate.center
+//        trailView.layer.cornerRadius = trailView.frame.width/2
+//        trailView.backgroundColor = .black
+//    }
     
     func getCentsInterval(voiceFrequency: Double, _ minFrequency: Float, _ maxFrequency: Float) -> CGFloat {
         let f1 = CGFloat(log2(voiceFrequency/minFrequency) * 1200)
@@ -361,36 +283,19 @@ class ViewController: UIViewController {
                 } else {
                     //stop timer
                     scoringDelayTimer.invalidate()
+                    //changing color still error!!!!
                     indicate.backgroundColor = .black
                 }
             } else {
                 isHittingNote = false
                 indicate.backgroundColor = .black
-
             }
-
         }
-//            if note.frame.intersects(indicate.frame) {
-//                isHittingNote = true
-//                if isHittingNote {
-//                    //timer berapa detik kalo lebih dari duration bikin noteisHit jadi true
-//                    //start timer
-//                    scoringDelayTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(note.duration/2), repeats: false, block: { (Timer) in
-//                        note.note.isHit = true
-//                    })
-//                    print(note.note.pitch, note.note.isHit)
-//                } else {
-//                    //stop timer
-//                    scoringDelayTimer.invalidate()
-//                }
-//            } else {
-//                isHittingNote = false
-//            }
-//        }
+
     }
     
     fileprivate func songEnding() {
-        if notes.last!.center.x < -100 {
+        if song.notes.last!.center.x < -100 {
             for note in self.notes {
                 if note.note.isHit {
                     score += 1
@@ -401,13 +306,13 @@ class ViewController: UIViewController {
             print("True \(score), False \(notes.count-score), \(notes.count)")
             print("End of Game")
             updateUITimer.invalidate()
-            do {
-                try AudioKit.stop()
-                audioHelper.stopAudio()
-                
-            } catch {
-                AKLog("Error")
-            }
+//            do {
+//                try AudioKit.stop()
+//                audioHelper.stopAudio()
+//
+//            } catch {
+//                AKLog("Error")
+//            }
             //End of Game present next VC and calculate points
             //put function here to calculate points
             //            for (index,note) in notes.enumerated() {
@@ -421,6 +326,7 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //        let nextVC = UIStoryboard.instatiateViewController
+        
     }
 }
 
