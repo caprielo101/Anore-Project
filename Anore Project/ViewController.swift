@@ -128,8 +128,18 @@ class ViewController: UIViewController {
             switch song.songName {
             case "nina bobo":
                 audioHelper.playAudio(fileName: "Ninabobo", type: "wav")
-            default:
+            case "twinkle-twinkle little star":
                 audioHelper.playAudio(fileName: "twinkle", type: "wav")
+            case "balonku":
+                audioHelper.playAudio(fileName: "Balonku", type: "wav")
+            case "ascending":
+                audioHelper.playAudio(fileName: "AscendingNotes", type: "wav")
+            case "descending":
+                audioHelper.playAudio(fileName: "DescendingNotes", type: "wav")
+            case "interval":
+                audioHelper.playAudio(fileName: "IntervalNotes", type: "wav")
+            default:
+                audioHelper.playAudio(fileName: "", type: "wav")
             }
         } catch {
             AKLog("error")
@@ -154,7 +164,13 @@ class ViewController: UIViewController {
     }
     
     fileprivate func configureNotes() {
-        let distanceBeforeStart = 4 * noteLength
+        var distanceBeforeStart: Float = 0.0
+        switch song.songName {
+        case "balonku":
+            distanceBeforeStart = 3 * noteLength
+        default:
+            distanceBeforeStart = 4 * noteLength
+        }
         
         notes = song.notes
         
@@ -236,7 +252,8 @@ class ViewController: UIViewController {
     }
     
     @objc func updateUI() {
-        if tracker.amplitude > 0.1 && tracker.frequency > Double(minFrequency) && tracker.frequency < Double(maxFrequency) {
+        let thresholdFrequency: Double = 20.0
+        if tracker.amplitude > 0.1 && tracker.frequency > Double(minFrequency) - thresholdFrequency && tracker.frequency < Double(maxFrequency) + thresholdFrequency {
             frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
 
             var frequency = Float(tracker.frequency)

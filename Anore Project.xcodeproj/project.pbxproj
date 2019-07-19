@@ -25,6 +25,15 @@
 		13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900D722E0613D00AA6C74 /* PageViewController.swift */; };
 		13D900DA22E0656700AA6C74 /* Young.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13D900D922E0622800AA6C74 /* Young.ttf */; };
 		13E4E61F22E1B25000B63F95 /* SongTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E61E22E1B25000B63F95 /* SongTwo.swift */; };
+		13E4E62322E1BD0D00B63F95 /* WarmUp1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E62222E1BD0D00B63F95 /* WarmUp1.swift */; };
+		13E4E62522E1BD1E00B63F95 /* WarmUp2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E62422E1BD1E00B63F95 /* WarmUp2.swift */; };
+		13E4E62722E1BD2B00B63F95 /* Song2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E62622E1BD2B00B63F95 /* Song2.swift */; };
+		13E4E62922E1BD6300B63F95 /* SongThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E62822E1BD6300B63F95 /* SongThree.swift */; };
+		13E4E62B22E1BF2000B63F95 /* AscendingNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E62A22E1BF2000B63F95 /* AscendingNotes.swift */; };
+		13E4E62D22E1C08200B63F95 /* IntervalNotes.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13E4E62C22E1C08200B63F95 /* IntervalNotes.wav */; };
+		13E4E62F22E1C09900B63F95 /* WarmUp3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E62E22E1C09800B63F95 /* WarmUp3.swift */; };
+		13E4E63122E1C16D00B63F95 /* DescendingNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E63022E1C16D00B63F95 /* DescendingNotes.swift */; };
+		13E4E63322E1C7A600B63F95 /* IntervalNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E63222E1C7A600B63F95 /* IntervalNotes.swift */; };
 		13EE142422E0B9DA00709CDE /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142322E0B9DA00709CDE /* PauseViewController.swift */; };
 		13EE142622E1575700709CDE /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142522E1575700709CDE /* ScoreViewController.swift */; };
 		13EE142822E159D600709CDE /* Song3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142722E159D600709CDE /* Song3.swift */; };
@@ -63,6 +72,15 @@
 		13D900D722E0613D00AA6C74 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		13D900D922E0622800AA6C74 /* Young.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Young.ttf; sourceTree = "<group>"; };
 		13E4E61E22E1B25000B63F95 /* SongTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTwo.swift; sourceTree = "<group>"; };
+		13E4E62222E1BD0D00B63F95 /* WarmUp1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarmUp1.swift; sourceTree = "<group>"; };
+		13E4E62422E1BD1E00B63F95 /* WarmUp2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarmUp2.swift; sourceTree = "<group>"; };
+		13E4E62622E1BD2B00B63F95 /* Song2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song2.swift; sourceTree = "<group>"; };
+		13E4E62822E1BD6300B63F95 /* SongThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongThree.swift; sourceTree = "<group>"; };
+		13E4E62A22E1BF2000B63F95 /* AscendingNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscendingNotes.swift; sourceTree = "<group>"; };
+		13E4E62C22E1C08200B63F95 /* IntervalNotes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = IntervalNotes.wav; sourceTree = "<group>"; };
+		13E4E62E22E1C09800B63F95 /* WarmUp3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarmUp3.swift; sourceTree = "<group>"; };
+		13E4E63022E1C16D00B63F95 /* DescendingNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescendingNotes.swift; sourceTree = "<group>"; };
+		13E4E63222E1C7A600B63F95 /* IntervalNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalNotes.swift; sourceTree = "<group>"; };
 		13EE142322E0B9DA00709CDE /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		13EE142522E1575700709CDE /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		13EE142722E159D600709CDE /* Song3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song3.swift; sourceTree = "<group>"; };
@@ -140,6 +158,7 @@
 		13D900CA22E0221400AA6C74 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				13E4E62C22E1C08200B63F95 /* IntervalNotes.wav */,
 				13EE143522E1868100709CDE /* Balonku.wav */,
 				13EE143122E1867500709CDE /* DescendingNotes.wav */,
 				13EE142F22E1866B00709CDE /* AscendingNotes.wav */,
@@ -165,10 +184,18 @@
 				13EE143B22E1996000709CDE /* AllSongs.swift */,
 				13EE143D22E19B4100709CDE /* SongOne.swift */,
 				13E4E61E22E1B25000B63F95 /* SongTwo.swift */,
+				13E4E62822E1BD6300B63F95 /* SongThree.swift */,
+				13E4E62A22E1BF2000B63F95 /* AscendingNotes.swift */,
+				13E4E63022E1C16D00B63F95 /* DescendingNotes.swift */,
+				13E4E63222E1C7A600B63F95 /* IntervalNotes.swift */,
 				13D900CC22E02EEB00AA6C74 /* Song0.swift */,
 				13EE142D22E1852200709CDE /* Song1.swift */,
+				13E4E62622E1BD2B00B63F95 /* Song2.swift */,
 				13EE142722E159D600709CDE /* Song3.swift */,
 				13EE143922E191F700709CDE /* Songs.swift */,
+				13E4E62222E1BD0D00B63F95 /* WarmUp1.swift */,
+				13E4E62422E1BD1E00B63F95 /* WarmUp2.swift */,
+				13E4E62E22E1C09800B63F95 /* WarmUp3.swift */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -261,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13D900C922E01EB400AA6C74 /* Ninabobo.wav in Resources */,
+				13E4E62D22E1C08200B63F95 /* IntervalNotes.wav in Resources */,
 				13D900DA22E0656700AA6C74 /* Young.ttf in Resources */,
 				13D900D322E0395C00AA6C74 /* twinkle.wav in Resources */,
 				138262F122D44E8C006E5B73 /* LaunchScreen.storyboard in Resources */,
@@ -309,22 +337,30 @@
 				1357DB6422D46290008B163D /* NoteView.swift in Sources */,
 				13E4E61F22E1B25000B63F95 /* SongTwo.swift in Sources */,
 				13EE142E22E1852200709CDE /* Song1.swift in Sources */,
+				13E4E62322E1BD0D00B63F95 /* WarmUp1.swift in Sources */,
+				13E4E62F22E1C09900B63F95 /* WarmUp3.swift in Sources */,
 				13EE143C22E1996000709CDE /* AllSongs.swift in Sources */,
 				1349095C22DEEAA700A3908C /* MusicConstants.swift in Sources */,
 				13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */,
 				13D900C722E00AA100AA6C74 /* AudioHelper.swift in Sources */,
 				13F04D8A22DD6995009915CF /* LineView.swift in Sources */,
 				13EE143E22E19B4100709CDE /* SongOne.swift in Sources */,
+				13E4E62522E1BD1E00B63F95 /* WarmUp2.swift in Sources */,
 				13D900D122E038D300AA6C74 /* Song.swift in Sources */,
+				13E4E63322E1C7A600B63F95 /* IntervalNotes.swift in Sources */,
 				13EE142A22E165BA00709CDE /* MenuViewController.swift in Sources */,
+				13E4E62922E1BD6300B63F95 /* SongThree.swift in Sources */,
+				13E4E62B22E1BF2000B63F95 /* AscendingNotes.swift in Sources */,
 				13EE142622E1575700709CDE /* ScoreViewController.swift in Sources */,
 				13EE142822E159D600709CDE /* Song3.swift in Sources */,
 				13D900CD22E02EEB00AA6C74 /* Song0.swift in Sources */,
 				138262E622D44E8B006E5B73 /* ViewController.swift in Sources */,
+				13E4E62722E1BD2B00B63F95 /* Song2.swift in Sources */,
 				13EE142422E0B9DA00709CDE /* PauseViewController.swift in Sources */,
 				13EE143822E1881B00709CDE /* SongSelection.swift in Sources */,
 				13EE142C22E184D100709CDE /* SongSelectionCell.swift in Sources */,
 				138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */,
+				13E4E63122E1C16D00B63F95 /* DescendingNotes.swift in Sources */,
 				1357DB6222D46249008B163D /* Note.swift in Sources */,
 				1349095E22DF0C5700A3908C /* UIColor+extension.swift in Sources */,
 			);

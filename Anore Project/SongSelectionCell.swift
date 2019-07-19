@@ -34,7 +34,6 @@ class SongSelectionCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         //        imageView.contentMode = .scaleAspectFill
         imageView.contentMode = .scaleAspectFit
-        
         return imageView
     }()
     
@@ -49,7 +48,8 @@ class SongSelectionCell: UICollectionViewCell {
     let songNameText: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.font = UIFont(name: "Young", size: 40)
+        label.font = UIFont(name: "Young", size: 26)
+        label.textColor = .textColor
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
@@ -73,34 +73,25 @@ class SongSelectionCell: UICollectionViewCell {
         
         addSubview(topImageContainerView)
         topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
-        
         topImageContainerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         topImageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         topImageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true //tadinya 0.5
         
         topImageContainerView.addSubview(coverImageView)
-        //        coverImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
-        //        coverImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true
-        coverImageView.centerYAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: -50).isActive = true
+        coverImageView.centerYAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: -80).isActive = true
         coverImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor, constant: 0).isActive = true
         //Multiplier untuk gedein image
-        coverImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.7).isActive = true
-        
-        
+        coverImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.6).isActive = true
+   
         addSubview(songNameText)
-        playButton.addTarget(self, action: #selector(tappedButton(_:)), for: .touchUpInside)
-        songNameText.topAnchor.constraint(equalTo: coverImageView.bottomAnchor, constant: 20).isActive = true
-        //descriptionTextView.topAnchor.constraint(equalTo: topAnchor , constant: 200).isActive = true
-        //        songNameText.leftAnchor.constraint(equalTo: leftAnchor, constant: 24).isActive = true
-        //        songNameText.rightAnchor.constraint(equalTo: rightAnchor, constant: -24).isActive = true
+        songNameText.topAnchor.constraint(equalTo: coverImageView.bottomAnchor, constant: 50).isActive = true
         songNameText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true
         songNameText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0).isActive = true
-        //        songNameText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
-        //        playButton.addTarget(self, action: #selector(thumbsUpButtonPressed), for: .touchUpInside)
-        addSubview(playButton)
         
-        playButton.topAnchor.constraint(equalTo: songNameText.bottomAnchor, constant: 30).isActive = true
+        addSubview(playButton)
+        playButton.addTarget(self, action: #selector(tappedButton(_:)), for: .touchUpInside)
+        playButton.topAnchor.constraint(equalTo: songNameText.bottomAnchor, constant: 40).isActive = true
         playButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
         playButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         playButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
