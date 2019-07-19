@@ -43,18 +43,21 @@ class ScoreViewController: UIViewController {
     }
     
     @IBAction func home(_ sender: Any) {
-        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let nextVc = MenuViewController(collectionViewLayout: layout)
+        present(nextVc, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ViewController {
             //pass the data of the song
             print("Go To gameplay")
-            //delegation dong
-        } else if let destination = segue.destination as? PageViewController {
+            //delegation dong BIKIN DONG
+        } else if let destination = segue.destination as? MenuViewController {
             //pass the data to home view controller
-            //ke home aj
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //kirim data score buat dijadiin lingkaran
+            
         }
     }
     /*

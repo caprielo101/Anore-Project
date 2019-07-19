@@ -21,7 +21,7 @@
 		13D900C922E01EB400AA6C74 /* Ninabobo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13D900C822E01EB400AA6C74 /* Ninabobo.wav */; };
 		13D900CD22E02EEB00AA6C74 /* Song0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900CC22E02EEB00AA6C74 /* Song0.swift */; };
 		13D900D122E038D300AA6C74 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900D022E038D300AA6C74 /* Song.swift */; };
-		13D900D322E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13D900D222E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav */; };
+		13D900D322E0395C00AA6C74 /* twinkle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13D900D222E0395C00AA6C74 /* twinkle.wav */; };
 		13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900D722E0613D00AA6C74 /* PageViewController.swift */; };
 		13D900DA22E0656700AA6C74 /* Young.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13D900D922E0622800AA6C74 /* Young.ttf */; };
 		13E4E61F22E1B25000B63F95 /* SongTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E61E22E1B25000B63F95 /* SongTwo.swift */; };
@@ -59,7 +59,7 @@
 		13D900C822E01EB400AA6C74 /* Ninabobo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ninabobo.wav; sourceTree = "<group>"; };
 		13D900CC22E02EEB00AA6C74 /* Song0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song0.swift; sourceTree = "<group>"; };
 		13D900D022E038D300AA6C74 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		13D900D222E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = twinkleTwinkleLittleStar.wav; sourceTree = "<group>"; };
+		13D900D222E0395C00AA6C74 /* twinkle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = twinkle.wav; sourceTree = "<group>"; };
 		13D900D722E0613D00AA6C74 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		13D900D922E0622800AA6C74 /* Young.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Young.ttf; sourceTree = "<group>"; };
 		13E4E61E22E1B25000B63F95 /* SongTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTwo.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 				13EE143122E1867500709CDE /* DescendingNotes.wav */,
 				13EE142F22E1866B00709CDE /* AscendingNotes.wav */,
 				13D900C822E01EB400AA6C74 /* Ninabobo.wav */,
-				13D900D222E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav */,
+				13D900D222E0395C00AA6C74 /* twinkle.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 			files = (
 				13D900C922E01EB400AA6C74 /* Ninabobo.wav in Resources */,
 				13D900DA22E0656700AA6C74 /* Young.ttf in Resources */,
-				13D900D322E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav in Resources */,
+				13D900D322E0395C00AA6C74 /* twinkle.wav in Resources */,
 				138262F122D44E8C006E5B73 /* LaunchScreen.storyboard in Resources */,
 				13EE143222E1867500709CDE /* DescendingNotes.wav in Resources */,
 				13EE143022E1866C00709CDE /* AscendingNotes.wav in Resources */,

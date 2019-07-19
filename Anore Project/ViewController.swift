@@ -124,8 +124,13 @@ class ViewController: UIViewController {
             try AudioKit.start()
             
             audioHelper.configureAudioSession()
-            audioHelper.playAudio(fileName: "Ninabobo", type: "wav")
-            
+//            audioHelper.playAudio(fileName: "Ninabobo", type: "wav")
+            switch song.songName {
+            case "nina bobo":
+                audioHelper.playAudio(fileName: "Ninabobo", type: "wav")
+            default:
+                audioHelper.playAudio(fileName: "twinkle", type: "wav")
+            }
         } catch {
             AKLog("error")
         }
