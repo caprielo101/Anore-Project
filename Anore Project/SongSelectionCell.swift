@@ -8,7 +8,26 @@
 
 import UIKit
 
+protocol SongSelectionCellDelegate {
+    func didTapButton(song: AllSongs)
+}
+
 class SongSelectionCell: UICollectionViewCell {
+    
+    var songItem: AllSongs!
+    var delegate: SongSelectionCellDelegate?
+    
+    var songSelection: SongSelection? {
+        didSet {
+            guard let unwrapping = songSelection else { return }
+            
+            coverImageView.image = UIImage(named: unwrapping.imageName)
+    
+            songNameText.text = unwrapping.songText
+            songNameText.textAlignment = .center
+            songNameText.backgroundColor = .clear
+        }
+    }
     
     let coverImageView: UIImageView = {
         var imageView = UIImageView()
@@ -24,7 +43,6 @@ class SongSelectionCell: UICollectionViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "resumeButton"), for: .normal)
         button.setTitle("", for: .normal)
-        //        button.addTarget(self, action: #selector(goToVC), for: .touchUpInside)
         return button
     }()
     
@@ -44,6 +62,10 @@ class SongSelectionCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func tappedButton(_ sender: UIButton) {
+        delegate?.didTapButton(song: songSelection!.song)
     }
     
     private func setupLayout() {
@@ -67,6 +89,7 @@ class SongSelectionCell: UICollectionViewCell {
         
         
         addSubview(songNameText)
+        playButton.addTarget(self, action: #selector(tappedButton(_:)), for: .touchUpInside)
         songNameText.topAnchor.constraint(equalTo: coverImageView.bottomAnchor, constant: 20).isActive = true
         //descriptionTextView.topAnchor.constraint(equalTo: topAnchor , constant: 200).isActive = true
         //        songNameText.leftAnchor.constraint(equalTo: leftAnchor, constant: 24).isActive = true

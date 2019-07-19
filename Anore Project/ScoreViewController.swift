@@ -50,8 +50,11 @@ class ScoreViewController: UIViewController {
         if let destination = segue.destination as? ViewController {
             //pass the data of the song
             print("Go To gameplay")
+            //delegation dong
         } else if let destination = segue.destination as? PageViewController {
             //pass the data to home view controller
+            //ke home aj
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
         }
     }
     /*

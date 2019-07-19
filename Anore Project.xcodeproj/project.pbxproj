@@ -24,6 +24,7 @@
 		13D900D322E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13D900D222E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav */; };
 		13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900D722E0613D00AA6C74 /* PageViewController.swift */; };
 		13D900DA22E0656700AA6C74 /* Young.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13D900D922E0622800AA6C74 /* Young.ttf */; };
+		13E4E61F22E1B25000B63F95 /* SongTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E4E61E22E1B25000B63F95 /* SongTwo.swift */; };
 		13EE142422E0B9DA00709CDE /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142322E0B9DA00709CDE /* PauseViewController.swift */; };
 		13EE142622E1575700709CDE /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142522E1575700709CDE /* ScoreViewController.swift */; };
 		13EE142822E159D600709CDE /* Song3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142722E159D600709CDE /* Song3.swift */; };
@@ -32,8 +33,11 @@
 		13EE142E22E1852200709CDE /* Song1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142D22E1852200709CDE /* Song1.swift */; };
 		13EE143022E1866C00709CDE /* AscendingNotes.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13EE142F22E1866B00709CDE /* AscendingNotes.wav */; };
 		13EE143222E1867500709CDE /* DescendingNotes.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13EE143122E1867500709CDE /* DescendingNotes.wav */; };
-		13EE143422E1867B00709CDE /* IntervalNote.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13EE143322E1867B00709CDE /* IntervalNote.wav */; };
 		13EE143622E1868100709CDE /* Balonku.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13EE143522E1868100709CDE /* Balonku.wav */; };
+		13EE143822E1881B00709CDE /* SongSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE143722E1881B00709CDE /* SongSelection.swift */; };
+		13EE143A22E191F700709CDE /* Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE143922E191F700709CDE /* Songs.swift */; };
+		13EE143C22E1996000709CDE /* AllSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE143B22E1996000709CDE /* AllSongs.swift */; };
+		13EE143E22E19B4100709CDE /* SongOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE143D22E19B4100709CDE /* SongOne.swift */; };
 		13F04D8A22DD6995009915CF /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F04D8922DD6995009915CF /* LineView.swift */; };
 		20FDB8E1EDD2F64514CA4431 /* Pods_Anore_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E0603D32441E7061BEDE44 /* Pods_Anore_Project.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +62,7 @@
 		13D900D222E0395C00AA6C74 /* twinkleTwinkleLittleStar.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = twinkleTwinkleLittleStar.wav; sourceTree = "<group>"; };
 		13D900D722E0613D00AA6C74 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		13D900D922E0622800AA6C74 /* Young.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Young.ttf; sourceTree = "<group>"; };
+		13E4E61E22E1B25000B63F95 /* SongTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTwo.swift; sourceTree = "<group>"; };
 		13EE142322E0B9DA00709CDE /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		13EE142522E1575700709CDE /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		13EE142722E159D600709CDE /* Song3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song3.swift; sourceTree = "<group>"; };
@@ -66,8 +71,11 @@
 		13EE142D22E1852200709CDE /* Song1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song1.swift; sourceTree = "<group>"; };
 		13EE142F22E1866B00709CDE /* AscendingNotes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AscendingNotes.wav; sourceTree = "<group>"; };
 		13EE143122E1867500709CDE /* DescendingNotes.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = DescendingNotes.wav; sourceTree = "<group>"; };
-		13EE143322E1867B00709CDE /* IntervalNote.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = IntervalNote.wav; sourceTree = "<group>"; };
 		13EE143522E1868100709CDE /* Balonku.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Balonku.wav; sourceTree = "<group>"; };
+		13EE143722E1881B00709CDE /* SongSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelection.swift; sourceTree = "<group>"; };
+		13EE143922E191F700709CDE /* Songs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Songs.swift; sourceTree = "<group>"; };
+		13EE143B22E1996000709CDE /* AllSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSongs.swift; sourceTree = "<group>"; };
+		13EE143D22E19B4100709CDE /* SongOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongOne.swift; sourceTree = "<group>"; };
 		13F04D8922DD6995009915CF /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		43E0603D32441E7061BEDE44 /* Pods_Anore_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anore_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDB57F9CAF7793F441FE7A8 /* Pods-Anore Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anore Project.debug.xcconfig"; path = "Target Support Files/Pods-Anore Project/Pods-Anore Project.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,9 +119,10 @@
 				13D900D422E0396800AA6C74 /* Songs */,
 				13EE142222E0B61000709CDE /* Utilities */,
 				138262E322D44E8B006E5B73 /* AppDelegate.swift */,
-				138262E522D44E8B006E5B73 /* ViewController.swift */,
 				13D900D722E0613D00AA6C74 /* PageViewController.swift */,
+				138262E522D44E8B006E5B73 /* ViewController.swift */,
 				13EE142922E165BA00709CDE /* MenuViewController.swift */,
+				13EE143722E1881B00709CDE /* SongSelection.swift */,
 				13EE142B22E184D100709CDE /* SongSelectionCell.swift */,
 				13EE142322E0B9DA00709CDE /* PauseViewController.swift */,
 				138262E722D44E8B006E5B73 /* Main.storyboard */,
@@ -132,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				13EE143522E1868100709CDE /* Balonku.wav */,
-				13EE143322E1867B00709CDE /* IntervalNote.wav */,
 				13EE143122E1867500709CDE /* DescendingNotes.wav */,
 				13EE142F22E1866B00709CDE /* AscendingNotes.wav */,
 				13D900C822E01EB400AA6C74 /* Ninabobo.wav */,
@@ -154,9 +162,13 @@
 			isa = PBXGroup;
 			children = (
 				13D900D022E038D300AA6C74 /* Song.swift */,
+				13EE143B22E1996000709CDE /* AllSongs.swift */,
+				13EE143D22E19B4100709CDE /* SongOne.swift */,
+				13E4E61E22E1B25000B63F95 /* SongTwo.swift */,
 				13D900CC22E02EEB00AA6C74 /* Song0.swift */,
 				13EE142D22E1852200709CDE /* Song1.swift */,
 				13EE142722E159D600709CDE /* Song3.swift */,
+				13EE143922E191F700709CDE /* Songs.swift */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -255,7 +267,6 @@
 				13EE143222E1867500709CDE /* DescendingNotes.wav in Resources */,
 				13EE143022E1866C00709CDE /* AscendingNotes.wav in Resources */,
 				138262EE22D44E8C006E5B73 /* Assets.xcassets in Resources */,
-				13EE143422E1867B00709CDE /* IntervalNote.wav in Resources */,
 				138262E922D44E8B006E5B73 /* Main.storyboard in Resources */,
 				13EE143622E1868100709CDE /* Balonku.wav in Resources */,
 			);
@@ -293,13 +304,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13EE143A22E191F700709CDE /* Songs.swift in Sources */,
 				138262EC22D44E8B006E5B73 /* Anore_Project.xcdatamodeld in Sources */,
 				1357DB6422D46290008B163D /* NoteView.swift in Sources */,
+				13E4E61F22E1B25000B63F95 /* SongTwo.swift in Sources */,
 				13EE142E22E1852200709CDE /* Song1.swift in Sources */,
+				13EE143C22E1996000709CDE /* AllSongs.swift in Sources */,
 				1349095C22DEEAA700A3908C /* MusicConstants.swift in Sources */,
 				13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */,
 				13D900C722E00AA100AA6C74 /* AudioHelper.swift in Sources */,
 				13F04D8A22DD6995009915CF /* LineView.swift in Sources */,
+				13EE143E22E19B4100709CDE /* SongOne.swift in Sources */,
 				13D900D122E038D300AA6C74 /* Song.swift in Sources */,
 				13EE142A22E165BA00709CDE /* MenuViewController.swift in Sources */,
 				13EE142622E1575700709CDE /* ScoreViewController.swift in Sources */,
@@ -307,6 +322,7 @@
 				13D900CD22E02EEB00AA6C74 /* Song0.swift in Sources */,
 				138262E622D44E8B006E5B73 /* ViewController.swift in Sources */,
 				13EE142422E0B9DA00709CDE /* PauseViewController.swift in Sources */,
+				13EE143822E1881B00709CDE /* SongSelection.swift in Sources */,
 				13EE142C22E184D100709CDE /* SongSelectionCell.swift in Sources */,
 				138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */,
 				1357DB6222D46249008B163D /* Note.swift in Sources */,

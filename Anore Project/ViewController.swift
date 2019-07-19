@@ -47,8 +47,10 @@ class ViewController: UIViewController {
     var scoringDelayTimer =  Timer()
     var updateUITimer = Timer()
 
-    var song = Song3()//Song3(songName: "ninabobo", bpm: 60)
-    
+//    var song = Song3()//Song3(songName: "ninabobo", bpm: 60)
+//    var song: Song!
+    var song: AllSongs!
+//    var song = SongOne(name: "Anjay", maxFreq: 400, minFreq: 200, noteNumber: 10)
     var animator: UIViewPropertyAnimator!
     //song configuration
     let bpm: Float = 60.0 //in beat per seconds
@@ -93,8 +95,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .backgroundColor
-        maxFrequency = song.maxFrequency
-        minFrequency = song.minFrequency
+        maxFrequency = song.maxFreq
+        minFrequency = song.minFreq
         noteNumber = song.noteNumber
         crochet = song.crochet//60.0/bpm //in seconds
         baseView.backgroundColor = .clear
@@ -221,7 +223,7 @@ class ViewController: UIViewController {
     //configure UI
     func configureUI() {
         indicate.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-        indicate.center = CGPoint(x: width/8, y: view.frame.height/2)
+        indicate.center = CGPoint(x: width/8, y: 0)
 //        indicate.image = UIImage(named: "indicator")
         indicate.layer.cornerRadius = indicate.frame.height/2
         indicate.backgroundColor = .black

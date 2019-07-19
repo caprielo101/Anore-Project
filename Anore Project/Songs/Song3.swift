@@ -41,7 +41,7 @@ class Song3: Song {
         
         // sol do sol mi
         
-        // sol . . re mi
+        //
         notes.append(NoteView(note: Note(octave: 4, frequency: freq(index: 4, octave: 4), pitch: "E", distance: 0, isHit: false), duration: crochet))
         notes.append(NoteView(note: Note(octave: 4, frequency: freq(index: 4, octave: 4), pitch: "E", distance: 0, isHit: false), duration: crochet*0.5))
         notes.append(NoteView(note: Note(octave: 4, frequency: freq(index: 2, octave: 4), pitch: "D", distance: 0, isHit: false), duration: crochet*0.5))

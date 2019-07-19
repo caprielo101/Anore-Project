@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow()
         window?.makeKeyAndVisible()
-        
+
         //        let randomViewController = UIViewController()
         //        randomViewController.view.backgroundColor = .purple
         let layout = UICollectionViewFlowLayout()

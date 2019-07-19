@@ -9,7 +9,7 @@
 import Foundation
 
 class Song {
-
+    
     func freq(index: Int, octave: Float) -> Float {
         return MusicConstants.noteFrequencies[index] * pow(2, octave)
     }
