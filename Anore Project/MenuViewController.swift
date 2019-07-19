@@ -12,9 +12,9 @@ private let reuseIdentifier = "Cell"
 
 class MenuViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var songs: [Song] = [
-        Song0(), Song3()
-    ]
+    var songs: [Song] {
+        return [Song0(), Song3()]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +47,14 @@ extension MenuViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return songs.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! SongSelectionCell
+        
+        cell.coverImageView = ""
+        cell.songNameText = ""
         
         return cell
     }
