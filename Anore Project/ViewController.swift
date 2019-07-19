@@ -47,7 +47,8 @@ class ViewController: UIViewController {
     var scoringDelayTimer =  Timer()
     var updateUITimer = Timer()
 
-    var song = Song0(songName: "twinkle-twinkle little star", bpm: 60)
+    var song = Song3()//Song3(songName: "ninabobo", bpm: 60)
+    
     var animator: UIViewPropertyAnimator!
     //song configuration
     let bpm: Float = 60.0 //in beat per seconds
@@ -55,12 +56,14 @@ class ViewController: UIViewController {
     var noteLength: Float = 100.0 //note length in points
 //    var maxFrequency: Float = 493.889050 //b4
 //    var minFrequency: Float = 98.0 //g2
-    var maxFrequency: Float = MusicConstants.noteFrequencies[0]*pow(2, 4)
-    var minFrequency: Float = MusicConstants.noteFrequencies[0]*pow(2, 3)
+//    var maxFrequency: Float = MusicConstants.noteFrequencies[0]*pow(2, 4)
+//    var minFrequency: Float = MusicConstants.noteFrequencies[0]*pow(2, 3)
     //how much note is in the frequency range
-    let noteNumber = 13
+//    let noteNumber = 13
 //    let noteNumber = 29
-    
+    var maxFrequency: Float = 0.0
+    var minFrequency: Float = 0.0
+    var noteNumber = 0
     //base view dimension
     var width: CGFloat = 0
     var height: CGFloat = 0
@@ -90,8 +93,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .backgroundColor
-        
-        crochet = 60.0/bpm //in seconds
+        maxFrequency = song.maxFrequency
+        minFrequency = song.minFrequency
+        noteNumber = song.noteNumber
+        crochet = song.crochet//60.0/bpm //in seconds
         baseView.backgroundColor = .clear
 
         width = baseView.frame.width
@@ -113,12 +118,12 @@ class ViewController: UIViewController {
         
         //setting up audiokit and audioSessions
         do {
-            try AudioKit.stop()
             AudioKit.output = silence
             try AudioKit.start()
             
             audioHelper.configureAudioSession()
             audioHelper.playAudio(fileName: "Ninabobo", type: "wav")
+            
         } catch {
             AKLog("error")
         }
@@ -216,7 +221,7 @@ class ViewController: UIViewController {
     //configure UI
     func configureUI() {
         indicate.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-        indicate.center = CGPoint(x: width/8, y: 0)
+        indicate.center = CGPoint(x: width/8, y: view.frame.height/2)
 //        indicate.image = UIImage(named: "indicator")
         indicate.layer.cornerRadius = indicate.frame.height/2
         indicate.backgroundColor = .black
@@ -224,7 +229,7 @@ class ViewController: UIViewController {
     }
     
     @objc func updateUI() {
-        if tracker.amplitude > 0.1 {
+        if tracker.amplitude > 0.1 && tracker.frequency > Double(minFrequency) && tracker.frequency < Double(maxFrequency) {
             frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
 
             var frequency = Float(tracker.frequency)
@@ -249,7 +254,7 @@ class ViewController: UIViewController {
             //            noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
             //            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
             //            print("\(noteNameWithSharpsLabel.text!) f=\(tracker.frequency) A=\(tracker.amplitude)")
-            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
                 self.indicate.center.y = self.height + self.baseView.frame.origin.y - self.getCentsInterval(voiceFrequency: self.tracker.frequency, self.minFrequency, self.maxFrequency) * self.height
             }, completion: nil)
         } else {
@@ -309,6 +314,13 @@ class ViewController: UIViewController {
             }
         }
         animator.startAnimation()
+        
+        for note in notes {
+            if note.frame.origin.x * 1.2 < verticalLine.center.x - verticalLine.frame.width/2 {
+                note.backgroundColor = .lightGray
+                note.alpha = 0.5
+            }
+        }
     }
     
     func constructAnimation(startPoint: CGPoint, endPoint: CGPoint, duration: Double) -> CABasicAnimation {
@@ -353,7 +365,13 @@ class ViewController: UIViewController {
             }
             print("True \(score), False \(notes.count-score), \(notes.count)")
             print("End of Game")
+            do {
+                try AudioKit.stop()
+            } catch {
+                print("Error")
+            }
             updateUITimer.invalidate()
+            audioHelper.stopAudio()
             //End of Game present next VC and calculate points
             //put function here to calculate points
             //            for (index,note) in notes.enumerated() {
@@ -362,11 +380,23 @@ class ViewController: UIViewController {
             //                }
             //            }
             //put function here to present next VC beforehand prepare data for segue
+//            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+//            let nextVc = storyboard.instantiateViewController(withIdentifier: "score")
+//            present(nextVc, animated: true, completion: nil)
+            performSegue(withIdentifier: "score", sender: self)
         }
     }
-    
+//    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        let nextVC = UIStoryboard.instatiateViewController
+        let dest = segue.destination as! ScoreViewController
+        dest.totalNotes = notes.count
+        dest.hitNotes = score
+        dest.missNotes = notes.count - score
+//        if let destination = segue.destination as? ScoreViewController {
+//            destination.totalNotes = notes.count
+//            destination.hitNotes = score
+//            destination.missNotes = notes.count - score
+//        }
     }
     
     @IBAction func pause(_ sender: UIButton) {

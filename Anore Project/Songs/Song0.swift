@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Ngaco
 class Song0: Song {
     //song configuration
     var songName = ""
@@ -24,10 +25,12 @@ class Song0: Song {
     //how much note is in the frequency range //still need manual
     let noteNumber = 29
     
-    init(songName: String, bpm: Float) {
+    override init() {
         super.init()
-        self.songName = songName
-        self.bpm = bpm
+//        self.songName = songName
+//        self.bpm = bpm
+        self.songName = "ngaco"
+        self.bpm = 60
         self.crochet = 60.0/bpm
         createCharts()
     }

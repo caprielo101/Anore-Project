@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mdC-ZD-GjH">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -40,7 +40,7 @@
         <!--Gameplay View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Gameplay View Controller" customClass="ViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gameplay" id="BYZ-38-t0r" userLabel="Gameplay View Controller" customClass="ViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,6 +115,7 @@
                         <outlet property="noteNameWithFlatsLabel" destination="wbc-sP-vN7" id="mii-l8-vnO"/>
                         <outlet property="noteNameWithSharpsLabel" destination="NEN-bM-URc" id="iPC-vU-59r"/>
                         <outlet property="pauseButton" destination="INo-tX-tsT" id="jFJ-DW-qHP"/>
+                        <segue destination="ojG-6j-xTK" kind="presentation" identifier="score" id="VIa-51-IIG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -201,12 +202,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCe-r3-MeU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1349.2753623188407" y="-913.39285714285711"/>
+            <point key="canvasLocation" x="-1446" y="-1812"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="mR8-hI-hmu">
             <objects>
-                <viewController id="mdC-ZD-GjH" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menu" id="mdC-ZD-GjH" customClass="MenuViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cYi-ik-HK0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,7 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bat-Y5-PSn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2200" y="-324"/>
+            <point key="canvasLocation" x="-2812" y="-913"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Emg-XH-Zts">
@@ -331,7 +332,7 @@
         <!--Page View Controller-->
         <scene sceneID="PFB-Ga-2TT">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="glk-0t-8KS" customClass="PageViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="onboarding" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="glk-0t-8KS" customClass="PageViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nuh-Fe-FrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-665" y="-1419"/>
@@ -516,10 +517,10 @@
             </objects>
             <point key="canvasLocation" x="3230" y="-206"/>
         </scene>
-        <!--Congratulations View Controller-->
+        <!--Score View Controller-->
         <scene sceneID="UBh-XE-Obd">
             <objects>
-                <viewController id="ojG-6j-xTK" customClass="CongratulationsViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="score" id="ojG-6j-xTK" customClass="ScoreViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fKs-iq-fYI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -528,14 +529,14 @@
                                 <rect key="frame" x="20" y="165" width="374" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk7-Vq-H5e">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hit berapa " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk7-Vq-H5e">
                                 <rect key="frame" x="158" y="424" width="98" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDY-SB-LER">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="miss berapa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDY-SB-LER">
                                 <rect key="frame" x="158" y="476" width="98" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
@@ -547,7 +548,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="retryButton"/>
                                 <connections>
-                                    <action selector="retryButton:" destination="ojG-6j-xTK" eventType="touchUpInside" id="NWv-CX-Pyy"/>
+                                    <action selector="retry:" destination="ojG-6j-xTK" eventType="touchUpInside" id="NWv-CX-Pyy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqa-96-ikP">
@@ -555,10 +556,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="homeButton"/>
                                 <connections>
-                                    <action selector="homeButton:" destination="ojG-6j-xTK" eventType="touchUpInside" id="ww4-9P-B8L"/>
+                                    <action selector="home:" destination="ojG-6j-xTK" eventType="touchUpInside" id="ww4-9P-B8L"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONGRATULATIONS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivB-P0-lyv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="congratulations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivB-P0-lyv">
                                 <rect key="frame" x="86" y="335" width="243" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="24"/>
@@ -575,11 +576,12 @@
                         <outlet property="missLabel" destination="MDY-SB-LER" id="PCM-AK-sff"/>
                         <outlet property="retryButton" destination="XYx-kf-T5d" id="CBc-k7-lGb"/>
                         <outlet property="starImage" destination="3ny-p2-H4m" id="iWj-Ih-Lwe"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="goToGame" id="KM4-lD-jgE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCa-vV-CZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="574" y="-157"/>
+            <point key="canvasLocation" x="-1304" y="-913"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="u82-ef-QBD">
@@ -651,4 +653,7 @@
         <image name="retryButton" width="720" height="720"/>
         <image name="text balloon" width="1348" height="332"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KM4-lD-jgE"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -25,6 +25,10 @@
 		13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900D722E0613D00AA6C74 /* PageViewController.swift */; };
 		13D900DA22E0656700AA6C74 /* Young.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13D900D922E0622800AA6C74 /* Young.ttf */; };
 		13EE142422E0B9DA00709CDE /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142322E0B9DA00709CDE /* PauseViewController.swift */; };
+		13EE142622E1575700709CDE /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142522E1575700709CDE /* ScoreViewController.swift */; };
+		13EE142822E159D600709CDE /* Song3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142722E159D600709CDE /* Song3.swift */; };
+		13EE142A22E165BA00709CDE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142922E165BA00709CDE /* MenuViewController.swift */; };
+		13EE142C22E184D100709CDE /* SongSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE142B22E184D100709CDE /* SongSelectionCell.swift */; };
 		13F04D8A22DD6995009915CF /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F04D8922DD6995009915CF /* LineView.swift */; };
 		20FDB8E1EDD2F64514CA4431 /* Pods_Anore_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E0603D32441E7061BEDE44 /* Pods_Anore_Project.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +54,10 @@
 		13D900D722E0613D00AA6C74 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		13D900D922E0622800AA6C74 /* Young.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Young.ttf; sourceTree = "<group>"; };
 		13EE142322E0B9DA00709CDE /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
+		13EE142522E1575700709CDE /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		13EE142722E159D600709CDE /* Song3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song3.swift; sourceTree = "<group>"; };
+		13EE142922E165BA00709CDE /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		13EE142B22E184D100709CDE /* SongSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelectionCell.swift; sourceTree = "<group>"; };
 		13F04D8922DD6995009915CF /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		43E0603D32441E7061BEDE44 /* Pods_Anore_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anore_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDB57F9CAF7793F441FE7A8 /* Pods-Anore Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anore Project.debug.xcconfig"; path = "Target Support Files/Pods-Anore Project/Pods-Anore Project.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,8 +103,11 @@
 				138262E322D44E8B006E5B73 /* AppDelegate.swift */,
 				138262E522D44E8B006E5B73 /* ViewController.swift */,
 				13D900D722E0613D00AA6C74 /* PageViewController.swift */,
+				13EE142922E165BA00709CDE /* MenuViewController.swift */,
+				13EE142B22E184D100709CDE /* SongSelectionCell.swift */,
 				13EE142322E0B9DA00709CDE /* PauseViewController.swift */,
 				138262E722D44E8B006E5B73 /* Main.storyboard */,
+				13EE142522E1575700709CDE /* ScoreViewController.swift */,
 				138262ED22D44E8C006E5B73 /* Assets.xcassets */,
 				138262EF22D44E8C006E5B73 /* LaunchScreen.storyboard */,
 				138262F222D44E8C006E5B73 /* Info.plist */,
@@ -130,6 +141,7 @@
 			children = (
 				13D900D022E038D300AA6C74 /* Song.swift */,
 				13D900CC22E02EEB00AA6C74 /* Song0.swift */,
+				13EE142722E159D600709CDE /* Song3.swift */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -269,9 +281,13 @@
 				13D900C722E00AA100AA6C74 /* AudioHelper.swift in Sources */,
 				13F04D8A22DD6995009915CF /* LineView.swift in Sources */,
 				13D900D122E038D300AA6C74 /* Song.swift in Sources */,
+				13EE142A22E165BA00709CDE /* MenuViewController.swift in Sources */,
+				13EE142622E1575700709CDE /* ScoreViewController.swift in Sources */,
+				13EE142822E159D600709CDE /* Song3.swift in Sources */,
 				13D900CD22E02EEB00AA6C74 /* Song0.swift in Sources */,
 				138262E622D44E8B006E5B73 /* ViewController.swift in Sources */,
 				13EE142422E0B9DA00709CDE /* PauseViewController.swift in Sources */,
+				13EE142C22E184D100709CDE /* SongSelectionCell.swift in Sources */,
 				138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */,
 				1357DB6222D46249008B163D /* Note.swift in Sources */,
 				1349095E22DF0C5700A3908C /* UIColor+extension.swift in Sources */,
