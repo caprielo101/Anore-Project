@@ -9,7 +9,7 @@
 import Foundation
 
 class AllSongs {
-    let bpm: Float
+    var bpm: Float
     let noteLength: Float
     
     var songName: String
@@ -19,6 +19,7 @@ class AllSongs {
     
     var notes: [NoteView]
     var noteNumber: Int
+    var bestScore: Float
     
     init(name: String, maxFreq: Float, minFreq: Float, noteNumber: Int) {
         self.songName = name
@@ -29,6 +30,7 @@ class AllSongs {
         self.bpm = 60.0
         self.noteLength = 100.0
         self.crochet = 60/self.bpm
+        self.bestScore = 0
     }
     
     func freq(index: Int, octave: Float) -> Float {

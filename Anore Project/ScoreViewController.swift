@@ -23,7 +23,7 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var missLabel: UILabel!
     @IBOutlet weak var retryButton: UIButton!
     @IBOutlet weak var homeButton: UIButton!
-    
+    @IBOutlet weak var congratsLabel: UILabel!
     var center: CGPoint = .zero
     
     var accuracy: CGFloat = 0.0
@@ -39,55 +39,74 @@ class ScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //hubungin ke core data
-        
+        //( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)( ͡° ͜ʖ ͡°)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
+        var best = song?.bestScore
+        let name = String(song!.songName)
+        best = Float(accuracy*100)
+        print("Before defaults: \(best!)", name)
+        UserDefaults.standard.set(best!, forKey: name)
+        print(UserDefaults.standard.float(forKey: name))
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         center = CGPoint(x: view.center.x, y: view.center.y/2)
         let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -0.5*CGFloat.pi, endAngle: 1.5*CGFloat.pi, clockwise: true)
         
         createTrackLayer(circularPath)
-        
         createShapeLayer(circularPath)
-        
         createLabel()
-        
         ShowLoadingOverlay()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        hitLabel.text = "hit: \(hitNotes)/\(totalNotes)"
-        missLabel.text = "miss: \(missNotes)/\(totalNotes)"
         
+        hitLabel.text = "you hit \(hitNotes) out of \(totalNotes)"
+        missLabel.text = "but you missed \(missNotes.asWord) notes"
+        congratsLabel.text = giveMessage(if: accuracy)
+
         debugPrint(hitNotes, missNotes, totalNotes, accuracy)
+    }
+    
+    func giveMessage(if accuracy: CGFloat) -> String {
+        let acc = Int(accuracy*100)
+        switch acc {
+        case 0...50:
+            return "don't give up! you can do it!"
+        case 51..<75:
+            return "you are doing a great job,\nkeep it up!"
+        case 75..<85:
+            return "you sing pretty well! nice job!"
+        case 85...99:
+            return "wow doing great eh? nice notes you got there."
+        case 100:
+            return "excellent! a perfect score! \nyou. are. awesome."
+        default:
+            return ""
+        }
     }
     
     func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: loadingTime/100, target: self, selector: #selector(progressAdding), userInfo: nil, repeats: true)
     }
-    
+    //( ͡° ͜ʖ ͡°)
     @objc func progressAdding() {
         if currentTime < loadingTime {
-//            currentTime += loadingTime/(CFTimeInterval(accuracy)*100)
-//            label.text = "\(Int(currentTime/loadingTime/(CFTimeInterval(accuracy)*100)))%"
-            currentTime += loadingTime/(CFTimeInterval(accuracy)*100)
-            label.text = "\(Int(currentTime/loadingTime*(CFTimeInterval(accuracy)*100)))%"
-            print(currentTime)
+            if accuracy == 0 {
+                label.text = "0%"
+                timer.invalidate()
+            } else {
+                currentTime += loadingTime/(CFTimeInterval(accuracy)*100)
+                label.text = "\(Int(currentTime/loadingTime*(CFTimeInterval(accuracy)*100)))%"
+            }
         } else {
             currentTime = loadingTime
             label.text = "\(Int(accuracy*100))%"
             print(currentTime)
+            timer.invalidate()
         }
-        
-//        if currentTime >= loadingTime - (loadingTime/100) {
-//            shapeLayer.strokeColor = UIColor.green.cgColor
-//            view.isUserInteractionEnabled = true
-//        } else {
-//            view.isUserInteractionEnabled = false
-//        }
     }
     
     func ShowLoadingOverlay() {
@@ -97,7 +116,6 @@ class ScoreViewController: UIViewController {
         loading.duration = CFTimeInterval(loadingTime)
         loading.fillMode = .forwards
         loading.isRemovedOnCompletion = false
-        
         shapeLayer.add(loading, forKey: "loading")
     }
     
@@ -129,7 +147,6 @@ class ScoreViewController: UIViewController {
         label.textAlignment = .center
         label.center = center
         label.adjustsFontSizeToFitWidth = true
-        //        label.minimumScaleFactor = 0.5
         view.addSubview(label)
     }
     

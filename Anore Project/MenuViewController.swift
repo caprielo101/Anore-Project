@@ -21,7 +21,7 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
     //
     var songSelection: [SongSelection]!
     
-    var indexPath: IndexPath?
+    //    var indexPath: IndexPath?
     
     @objc private func handlePrev() {
         let nextIndex = max(pageControl.currentPage - 1, 0)
@@ -54,13 +54,18 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        //         self.clearsSelectionOnViewWillAppear = false
         songSelection = [
             SongSelection(imageName: "warm up", songText: "ascending notes", song: AscendingNotes(name: "ascending", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
             SongSelection(imageName: "warm up", songText: "descending notes", song: DescendingNotes(name: "descending", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
             SongSelection(imageName: "warm up", songText: "interval notes", song: IntervalNotes(name: "interval", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
             SongSelection(imageName: "twinkle", songText: "twinkle-twinkle little star", song: SongOne(name: "twinkle-twinkle little star", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
             SongSelection(imageName: "nina bobo", songText: "nina bobo", song: SongTwo(name: "nina bobo", maxFreq: MusicConstants.noteFrequencies[7]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[7]*pow(2, 3), noteNumber: 13)),
+            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
+            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
+            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
+            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
+            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
             SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13))
         ]
         //setting up the label
@@ -69,6 +74,11 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.backgroundColor = .backgroundColor
         collectionView?.register(SongSelectionCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.isPagingEnabled = true
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     
@@ -97,7 +107,7 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         let chevronRight = UIButton(type: .system)
         view.addSubview(chevronRight)
-//        chevronRight.setImage(#imageLiteral(resourceName: "next"), for: .normal)
+        //        chevronRight.setImage(#imageLiteral(resourceName: "next"), for: .normal)
         chevronRight.translatesAutoresizingMaskIntoConstraints = false
         chevronRight.setBackgroundImage(UIImage(named: "next"), for: .normal)
         NSLayoutConstraint.activate([
@@ -111,7 +121,7 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         let chevronLeft = UIButton(type: .system)
         view.addSubview(chevronLeft)
-//        chevronLeft.setImage(#imageLiteral(resourceName: "prev"), for: .normal)
+        //        chevronLeft.setImage(#imageLiteral(resourceName: "prev"), for: .normal)
         chevronLeft.setBackgroundImage(UIImage(named: "prev"), for: .normal)
         chevronLeft.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -139,6 +149,7 @@ extension MenuViewController: SongSelectionCellDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextVc = storyboard.instantiateViewController(withIdentifier: "gameplay") as! ViewController
         nextVc.song = song
+        print(nextVc.song, song)
         present(nextVc, animated: true, completion: nil)
     }
 }
@@ -155,12 +166,18 @@ extension MenuViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! SongSelectionCell
+        cell.delegate = self
         
         let songChoice = songSelection[indexPath.item]
         cell.songSelection = songChoice
-        //        cell.playButton.addTarget(getInstance(), action: #selector(goToVc), for: .touchUpInside)
-        cell.delegate = self
+        //        cell.circleViewGreen.endAngle = CGFloat(songSelection[indexPath.item].song.bestScore) * 2/100 * .pi
+        let name = songChoice.song.songName
         
+        //        print(cell, cell.circleViewGreen.endAngle)
+        //        cell.circleViewGreen.endAngle = CGFloat(UserDefaults.standard.float(forKey: songSelection[indexPath.item].song.songName)) / 100 * 2 * CGFloat.pi
+        
+        cell.circleViewGreen.endAngle = CGFloat(UserDefaults.standard.float(forKey: name))/100*CGFloat.pi*2
+        print(name, UserDefaults.standard.float(forKey: name), cell.circleViewGreen.endAngle)
         return cell
     }
     

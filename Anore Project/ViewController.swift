@@ -10,7 +10,7 @@ import UIKit
 import AudioKit
 
 class ViewController: UIViewController {
-    
+    //( ͡° ͜ʖ ͡°)
     //debugging labels
     @IBOutlet weak var amplitudeLabel: UILabel!
     @IBOutlet weak var frequencyLabel: UILabel!
@@ -37,9 +37,6 @@ class ViewController: UIViewController {
     //score for the level (hit notes)
     var score = 0
     
-    //AudioKit Helper Initialisation
-//    let audioHelper = AudioHelper()
-    
     //AudioKit declaration
     var mic: AKMicrophone!
     var tracker: AKFrequencyTracker!
@@ -49,22 +46,13 @@ class ViewController: UIViewController {
     var scoringDelayTimer =  Timer()
     var updateUITimer = Timer()
 
-//    var song = Song3()//Song3(songName: "ninabobo", bpm: 60)
-//    var song: Song!
+    //song declaration
     var song: AllSongs!
-//    var song = SongOne(name: "Anjay", maxFreq: 400, minFreq: 200, noteNumber: 10)
-    var animator: UIViewPropertyAnimator!
+
     //song configuration
     let bpm: Float = 60.0 //in beat per seconds
     var crochet: Float = 0.0 //in seconds
     var noteLength: Float = 100.0 //note length in points
-//    var maxFrequency: Float = 493.889050 //b4
-//    var minFrequency: Float = 98.0 //g2
-//    var maxFrequency: Float = MusicConstants.noteFrequencies[0]*pow(2, 4)
-//    var minFrequency: Float = MusicConstants.noteFrequencies[0]*pow(2, 3)
-    //how much note is in the frequency range
-//    let noteNumber = 13
-//    let noteNumber = 29
     var maxFrequency: Float = 0.0
     var minFrequency: Float = 0.0
     var noteNumber = 0
@@ -80,6 +68,29 @@ class ViewController: UIViewController {
         return .bottom
     }
     
+    private func setupNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc func handleForeground() {
+        updateUITimer.invalidate()
+        AudioHelper.shared.stopAudio()
+        do {
+            try AudioKit.stop()
+        } catch {
+            AKLog("error")
+        }
+        _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false, block: { (Timer) in
+            self.configureNotesDidLoad()
+            self.configureNotesDidAppear()
+            self.setupAudioKitAudioSession()
+            self.startUpdateUITimer()
+            self.view.bringSubviewToFront(self.overlayView)
+            self.view.bringSubviewToFront(self.pauseView)
+            self.view.bringSubviewToFront(self.indicate)
+        })
+    }
+    
     fileprivate func configureLabel() {
         songNameLabel.text = song.songName
         view.addSubview(songNameLabel)
@@ -89,7 +100,6 @@ class ViewController: UIViewController {
         songNameLabel.textAlignment = .center
         songNameLabel.numberOfLines = 0
         NSLayoutConstraint.activate([
-            //            songNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
             songNameLabel.centerYAnchor.constraint(equalTo: pauseButton.centerYAnchor, constant: 0),
             songNameLabel.heightAnchor.constraint(equalToConstant: 50),
             songNameLabel.trailingAnchor.constraint(equalTo: pauseButton.leadingAnchor, constant: -20),
@@ -120,14 +130,15 @@ class ViewController: UIViewController {
                 AKLog("error")
             }
             _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false, block: { (Timer) in
-                self.configureNotesDidAppear()
                 self.configureNotesDidLoad()
+                self.configureNotesDidAppear()
                 self.setupAudioKitAudioSession()
                 self.startUpdateUITimer()
                 self.view.bringSubviewToFront(self.overlayView)
                 self.view.bringSubviewToFront(self.pauseView)
+                self.view.bringSubviewToFront(self.indicate)
             })
-            
+ 
             print(sender.tag)
         case 3:
             //open the are you sure tab
@@ -235,6 +246,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNotificationObservers()
+        
         view.backgroundColor = .backgroundColor
         maxFrequency = song.maxFreq
         minFrequency = song.minFreq
@@ -269,7 +282,6 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         configureNotesDidAppear()
-        
         //setting up audiokit and audioSessions
         setupAudioKitAudioSession()
         
@@ -308,7 +320,7 @@ class ViewController: UIViewController {
             note.clipsToBounds = true
             note.layer.masksToBounds = true
             note.layer.borderColor = UIColor.textColor.cgColor
-            note.layer.borderWidth = 0.5
+            note.layer.borderWidth = 1
             note.isHidden = false
             note.alpha = 1
             note.backgroundColor = NoteView.giveColor(note)()
@@ -371,10 +383,8 @@ class ViewController: UIViewController {
     }
     
     fileprivate func drawVerticalLines() {
-//        verticalLine.alpha = 1
+        
         verticalLine.backgroundColor = .textColor
-//        verticalLine.startPoint = CGPoint(x: indicate.center.x, y: baseView.frame.origin.y)
-//        verticalLine.endPoint = CGPoint(x: indicate.center.x, y: baseView.frame.origin.y + baseView.frame.height)
         verticalLine.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(verticalLine)
         
@@ -406,7 +416,7 @@ class ViewController: UIViewController {
     }
     
     @objc func updateUI() {
-        let thresholdFrequency: Double = 20.0
+        let thresholdFrequency: Double = 30.0
         if tracker.amplitude > 0.1 && tracker.frequency > Double(minFrequency) - thresholdFrequency && tracker.frequency < Double(maxFrequency) + thresholdFrequency {
             frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
 
@@ -486,13 +496,7 @@ class ViewController: UIViewController {
                 note.isHidden = true
             }
         }
-//
-//        animator = UIViewPropertyAnimator(duration: 0.01, curve: .linear) {
-//            for note in self.notes {
-//                note.center.x -= 1
-//            }
-//        }
-//        animator.startAnimation()
+
     }
     
     func constructAnimation(startPoint: CGPoint, endPoint: CGPoint, duration: Double) -> CABasicAnimation {
@@ -544,13 +548,6 @@ class ViewController: UIViewController {
             }
             updateUITimer.invalidate()
             AudioHelper.shared.stopAudio()
-            //End of Game present next VC and calculate points
-            //put function here to calculate points
-            //            for (index,note) in notes.enumerated() {
-            //                if notes[index].note.isHit {
-            //                    score += 1
-            //                }
-            //            }
             //put function here to present next VC beforehand prepare data for segue
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let nextVc = storyboard.instantiateViewController(withIdentifier: "score") as! ScoreViewController
@@ -560,17 +557,8 @@ class ViewController: UIViewController {
             nextVc.song = song
             nextVc.accuracy = CGFloat(score)/CGFloat(notes.count)
             present(nextVc, animated: true, completion: nil)
-//            performSegue(withIdentifier: "score", sender: self)
         }
     }
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let dest = segue.destination as! ScoreViewController
-//        dest.totalNotes = notes.count
-//        dest.hitNotes = score
-//        dest.missNotes = notes.count - score
-//        dest.song = song
-//    }
     
     @IBAction func pause(_ sender: UIButton) {
         updateUITimer.invalidate()
@@ -582,11 +570,6 @@ class ViewController: UIViewController {
             self.pauseView.center.y = self.view.center.y
             self.overlayView.alpha = 0.7
         }, completion: nil)
-//        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-//        let popUpVc = storyboard.instantiateViewController(withIdentifier: "pause")
-//        popUpVc.modalPresentationStyle = .overCurrentContext
-//        popUpVc.modalTransitionStyle = .crossDissolve
-//        present(popUpVc, animated: true, completion: nil)
     }
 }
 

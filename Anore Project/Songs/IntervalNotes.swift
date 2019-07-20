@@ -12,7 +12,7 @@ import UIKit
 //interval notes
 class IntervalNotes: AllSongs {
 
-    var bestScore: Float = 0.0
+//    var bestScore: Float = 0.0
     
     override init(name: String, maxFreq: Float, minFreq: Float, noteNumber: Int) {
         super.init(name: name, maxFreq: maxFreq, minFreq: minFreq, noteNumber: noteNumber)

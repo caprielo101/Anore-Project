@@ -18,6 +18,10 @@
 		138262EE22D44E8C006E5B73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 138262ED22D44E8C006E5B73 /* Assets.xcassets */; };
 		138262F122D44E8C006E5B73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138262EF22D44E8C006E5B73 /* LaunchScreen.storyboard */; };
 		138CEBBE22E344FD006C9296 /* balonku-60.wav in Resources */ = {isa = PBXBuildFile; fileRef = 138CEBBD22E344FD006C9296 /* balonku-60.wav */; };
+		138CEBC122E379B9006C9296 /* Int+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBC022E379B9006C9296 /* Int+extension.swift */; };
+		138CEBC322E3898D006C9296 /* SongFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBC222E3898D006C9296 /* SongFour.swift */; };
+		138CEBC522E38C6E006C9296 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBC422E38C6E006C9296 /* CircleView.swift */; };
+		138CEBC722E39F3A006C9296 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBC622E39F3A006C9296 /* CoreDataHelper.swift */; };
 		13D900C722E00AA100AA6C74 /* AudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900C622E00AA100AA6C74 /* AudioHelper.swift */; };
 		13D900C922E01EB400AA6C74 /* Ninabobo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13D900C822E01EB400AA6C74 /* Ninabobo.wav */; };
 		13D900CD22E02EEB00AA6C74 /* Song0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900CC22E02EEB00AA6C74 /* Song0.swift */; };
@@ -66,6 +70,10 @@
 		138262F022D44E8C006E5B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		138262F222D44E8C006E5B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		138CEBBD22E344FD006C9296 /* balonku-60.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "balonku-60.wav"; sourceTree = "<group>"; };
+		138CEBC022E379B9006C9296 /* Int+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+extension.swift"; sourceTree = "<group>"; };
+		138CEBC222E3898D006C9296 /* SongFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFour.swift; sourceTree = "<group>"; };
+		138CEBC422E38C6E006C9296 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		138CEBC622E39F3A006C9296 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		13D900C622E00AA100AA6C74 /* AudioHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHelper.swift; sourceTree = "<group>"; };
 		13D900C822E01EB400AA6C74 /* Ninabobo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ninabobo.wav; sourceTree = "<group>"; };
 		13D900CC22E02EEB00AA6C74 /* Song0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song0.swift; sourceTree = "<group>"; };
@@ -144,7 +152,6 @@
 				13EE142922E165BA00709CDE /* MenuViewController.swift */,
 				13EE143722E1881B00709CDE /* SongSelection.swift */,
 				13EE142B22E184D100709CDE /* SongSelectionCell.swift */,
-				13EE142322E0B9DA00709CDE /* PauseViewController.swift */,
 				138262E722D44E8B006E5B73 /* Main.storyboard */,
 				13EE142522E1575700709CDE /* ScoreViewController.swift */,
 				138262ED22D44E8C006E5B73 /* Assets.xcassets */,
@@ -153,8 +160,17 @@
 				138262EA22D44E8B006E5B73 /* Anore_Project.xcdatamodeld */,
 				13D900D922E0622800AA6C74 /* Young.ttf */,
 				13D900CA22E0221400AA6C74 /* Sounds */,
+				138CEBBF22E37557006C9296 /* Garbage */,
 			);
 			path = "Anore Project";
+			sourceTree = "<group>";
+		};
+		138CEBBF22E37557006C9296 /* Garbage */ = {
+			isa = PBXGroup;
+			children = (
+				13EE142322E0B9DA00709CDE /* PauseViewController.swift */,
+			);
+			path = Garbage;
 			sourceTree = "<group>";
 		};
 		13D900CA22E0221400AA6C74 /* Sounds */ = {
@@ -176,6 +192,7 @@
 			children = (
 				1357DB6322D46290008B163D /* NoteView.swift */,
 				13F04D8922DD6995009915CF /* LineView.swift */,
+				138CEBC422E38C6E006C9296 /* CircleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +205,7 @@
 				13EE143D22E19B4100709CDE /* SongOne.swift */,
 				13E4E61E22E1B25000B63F95 /* SongTwo.swift */,
 				13E4E62822E1BD6300B63F95 /* SongThree.swift */,
+				138CEBC222E3898D006C9296 /* SongFour.swift */,
 				13E4E62A22E1BF2000B63F95 /* AscendingNotes.swift */,
 				13E4E63022E1C16D00B63F95 /* DescendingNotes.swift */,
 				13E4E63222E1C7A600B63F95 /* IntervalNotes.swift */,
@@ -210,6 +228,8 @@
 				13D900C622E00AA100AA6C74 /* AudioHelper.swift */,
 				1357DB6122D46249008B163D /* Note.swift */,
 				1349095B22DEEAA700A3908C /* MusicConstants.swift */,
+				138CEBC022E379B9006C9296 /* Int+extension.swift */,
+				138CEBC622E39F3A006C9296 /* CoreDataHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -342,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13EE143A22E191F700709CDE /* Songs.swift in Sources */,
+				138CEBC122E379B9006C9296 /* Int+extension.swift in Sources */,
 				138262EC22D44E8B006E5B73 /* Anore_Project.xcdatamodeld in Sources */,
 				1357DB6422D46290008B163D /* NoteView.swift in Sources */,
 				13E4E61F22E1B25000B63F95 /* SongTwo.swift in Sources */,
@@ -350,6 +371,7 @@
 				13E4E62F22E1C09900B63F95 /* WarmUp3.swift in Sources */,
 				13EE143C22E1996000709CDE /* AllSongs.swift in Sources */,
 				1349095C22DEEAA700A3908C /* MusicConstants.swift in Sources */,
+				138CEBC722E39F3A006C9296 /* CoreDataHelper.swift in Sources */,
 				13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */,
 				13D900C722E00AA100AA6C74 /* AudioHelper.swift in Sources */,
 				13F04D8A22DD6995009915CF /* LineView.swift in Sources */,
@@ -363,10 +385,12 @@
 				13EE142622E1575700709CDE /* ScoreViewController.swift in Sources */,
 				13EE142822E159D600709CDE /* Song3.swift in Sources */,
 				13D900CD22E02EEB00AA6C74 /* Song0.swift in Sources */,
+				138CEBC322E3898D006C9296 /* SongFour.swift in Sources */,
 				138262E622D44E8B006E5B73 /* ViewController.swift in Sources */,
 				13E4E62722E1BD2B00B63F95 /* Song2.swift in Sources */,
 				13EE142422E0B9DA00709CDE /* PauseViewController.swift in Sources */,
 				13EE143822E1881B00709CDE /* SongSelection.swift in Sources */,
+				138CEBC522E38C6E006C9296 /* CircleView.swift in Sources */,
 				13EE142C22E184D100709CDE /* SongSelectionCell.swift in Sources */,
 				138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */,
 				13E4E63122E1C16D00B63F95 /* DescendingNotes.swift in Sources */,

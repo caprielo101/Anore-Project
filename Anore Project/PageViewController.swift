@@ -9,7 +9,7 @@
 
 import UIKit
 
-class PageViewController: UIPageViewController,UIPageViewControllerDelegate,UIPageViewControllerDataSource {
+class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     lazy var orderedViewControllers: [UIViewController] = {
         return [self.newVc(viewController: "onBoarding1") , self.newVc(viewController: "onBoarding2"), self.newVc(viewController: "onBoarding3"), self.newVc(viewController: "onBoarding4"), self.newVc(viewController: "onBoarding5")]
@@ -19,14 +19,16 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate,UIPa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = self
+        
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
+        
         self.delegate = self
+        self.dataSource = self
+
         configurePageControl()
         
-        // Do any additional setup after loading the view.
     }
     
     func configurePageControl() {
@@ -37,21 +39,25 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate,UIPa
         pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
         self.view.addSubview(pageControl)
-        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
         guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
             return nil
         }
+        
         let previousIndex = viewControllerIndex - 1
+        
         guard previousIndex >= 0 else {
             //return orderedViewControllers.last
             return nil
         }
+        
         guard orderedViewControllers.count > previousIndex else {
             return nil
         }
+        
         return orderedViewControllers[previousIndex]
     }
     
@@ -60,38 +66,37 @@ class PageViewController: UIPageViewController,UIPageViewControllerDelegate,UIPa
         guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
             return nil
         }
+        
         let nextIndex = viewControllerIndex + 1
+        
         guard orderedViewControllers.count != nextIndex else {
             //return orderedViewControllers.first
             return nil
         }
+        
         guard orderedViewControllers.count > nextIndex else {
             return nil
         }
+        
         return orderedViewControllers[nextIndex]
+        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
         let pageContentViewController = pageViewController.viewControllers![0]
+        
         self.pageControl.currentPage = orderedViewControllers.firstIndex(of: pageContentViewController)!
     }
     
     func newVc(viewController: String) -> UIViewController {
+        
         return UIStoryboard(name:"Main",bundle:nil).instantiateViewController(withIdentifier: viewController)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

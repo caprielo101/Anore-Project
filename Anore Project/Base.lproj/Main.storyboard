@@ -47,6 +47,25 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSU-s0-Ric" userLabel="Base View">
                                 <rect key="frame" x="0.0" y="144" width="414" height="668"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfA-Nl-P6c" customClass="CircleView" customModule="Anore_Project" customModuleProvider="target">
+                                        <rect key="frame" x="107" y="234" width="200" height="200"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="C6e-zm-R8B"/>
+                                            <constraint firstAttribute="height" constant="200" id="qsd-TJ-Ph2"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="JfA-Nl-P6c" firstAttribute="centerY" secondItem="wSU-s0-Ric" secondAttribute="centerY" id="9vo-3v-iHQ"/>
+                                    <constraint firstItem="JfA-Nl-P6c" firstAttribute="centerX" secondItem="wSU-s0-Ric" secondAttribute="centerX" id="qfg-Ct-DV2"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="JfA-Nl-P6c"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INo-tX-tsT">
                                 <rect key="frame" x="324" y="64" width="50" height="50"/>
@@ -138,10 +157,10 @@
                                 <rect key="frame" x="80" y="480" width="254" height="134"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xAE-mY-XJ3">
-                                        <rect key="frame" x="25" y="720" width="2176" height="720"/>
+                                        <rect key="frame" x="25" y="22" width="82" height="22"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypr-7O-Apu" userLabel="Playbutton">
-                                                <rect key="frame" x="0.0" y="0.0" width="720" height="720"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ypr-7O-Apu" secondAttribute="height" multiplier="1:1" id="F7u-Ma-TiB"/>
                                                 </constraints>
@@ -151,7 +170,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BP5-GV-c17" userLabel="Retrybutton">
-                                                <rect key="frame" x="728" y="0.0" width="720" height="720"/>
+                                                <rect key="frame" x="30" y="0.0" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="BP5-GV-c17" secondAttribute="height" multiplier="1:1" id="cZ2-Vz-DLT"/>
                                                 </constraints>
@@ -161,7 +180,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfH-Ar-CWD" userLabel="ExitButton">
-                                                <rect key="frame" x="1456" y="0.0" width="720" height="720"/>
+                                                <rect key="frame" x="60" y="0.0" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="hfH-Ar-CWD" secondAttribute="height" multiplier="1:1" id="zdY-Kc-fLC"/>
                                                 </constraints>
@@ -173,7 +192,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="paused" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZu-vY-iul">
-                                        <rect key="frame" x="20" y="395" width="2186" height="20"/>
+                                        <rect key="frame" x="20" y="0.5" width="92" height="23.5"/>
                                         <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
                                         <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -227,7 +246,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-dk-1AY">
-                                <rect key="frame" x="20" y="513.5" width="374" height="64"/>
+                                <rect key="frame" x="20" y="513.5" width="374" height="75"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="64"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -239,7 +258,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="help your children exercise  their vocal muscle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1p-qY-SGp">
-                                <rect key="frame" x="20" y="587.5" width="374" height="50"/>
+                                <rect key="frame" x="20" y="598.5" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Y5A-wA-9Fl"/>
                                 </constraints>
@@ -280,7 +299,7 @@
                                 <rect key="frame" x="31" y="152.5" width="352" height="591"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text balloon" translatesAutoresizingMaskIntoConstraints="NO" id="u6x-q0-yup">
-                                <rect key="frame" x="40" y="586.5" width="334" height="332"/>
+                                <rect key="frame" x="40" y="744.5" width="334" height="16"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="meu-Tb-tyL">
                                 <rect key="frame" x="244" y="712.5" width="150" height="150"/>
@@ -290,13 +309,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warm up your children’s vocal  muscle before they start singing!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Io7-ys-DVC" userLabel="label">
-                                <rect key="frame" x="60" y="735.5" width="314" height="34"/>
+                                <rect key="frame" x="60" y="732.5" width="314" height="40"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warm up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVa-pL-qRY">
-                                <rect key="frame" x="31" y="88" width="383" height="48"/>
+                                <rect key="frame" x="31" y="84" width="383" height="56"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -348,7 +367,7 @@
                                 <rect key="frame" x="31" y="152.5" width="352" height="591"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text balloon" translatesAutoresizingMaskIntoConstraints="NO" id="lLQ-NU-d6s">
-                                <rect key="frame" x="40" y="586.5" width="334" height="332"/>
+                                <rect key="frame" x="40" y="744.5" width="334" height="16"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="E0N-q1-Rlq">
                                 <rect key="frame" x="244" y="712.5" width="150" height="150"/>
@@ -358,13 +377,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="let your children sing along to our  songs and have some fun!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Eg-jd-6dF" userLabel="label">
-                                <rect key="frame" x="60" y="735.5" width="314" height="34"/>
+                                <rect key="frame" x="60" y="732.5" width="314" height="40"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sing along" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kF-1D-mwz">
-                                <rect key="frame" x="31" y="88" width="383" height="48"/>
+                                <rect key="frame" x="31" y="84" width="383" height="56"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -408,7 +427,7 @@
                                 <rect key="frame" x="31" y="152.5" width="352" height="591"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text balloon" translatesAutoresizingMaskIntoConstraints="NO" id="NDR-T1-zLe">
-                                <rect key="frame" x="40" y="586.5" width="334" height="332"/>
+                                <rect key="frame" x="40" y="744.5" width="334" height="16"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="CEq-nJ-WTo">
                                 <rect key="frame" x="244" y="712.5" width="150" height="150"/>
@@ -418,13 +437,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="check your children's singing  progress" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZZ-Q9-cV0" userLabel="label">
-                                <rect key="frame" x="60" y="735.5" width="314" height="34"/>
+                                <rect key="frame" x="60" y="732.5" width="314" height="40"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="progress" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCW-UT-iVn">
-                                <rect key="frame" x="31" y="88" width="383" height="48"/>
+                                <rect key="frame" x="31" y="84" width="383" height="56"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -468,7 +487,7 @@
                                 <rect key="frame" x="31" y="152.5" width="352" height="591"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text balloon" translatesAutoresizingMaskIntoConstraints="NO" id="Cm4-Ks-mee">
-                                <rect key="frame" x="40" y="586.5" width="334" height="332"/>
+                                <rect key="frame" x="40" y="744.5" width="334" height="16"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="KFq-wB-skN">
                                 <rect key="frame" x="244" y="712.5" width="150" height="150"/>
@@ -478,13 +497,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="are you ready? LET'S PLAY!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdw-4g-79F" userLabel="label">
-                                <rect key="frame" x="60" y="744" width="314" height="17"/>
+                                <rect key="frame" x="60" y="742.5" width="314" height="20"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="progress" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlT-pB-YfR">
-                                <rect key="frame" x="31" y="88" width="383" height="48"/>
+                                <rect key="frame" x="31" y="84" width="383" height="56"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -531,19 +550,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hit berapa " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk7-Vq-H5e">
-                                <rect key="frame" x="157.5" y="448" width="99.5" height="20"/>
+                                <rect key="frame" x="159" y="460.5" width="96" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="miss berapa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDY-SB-LER">
-                                <rect key="frame" x="150" y="488" width="114" height="20"/>
+                                <rect key="frame" x="152" y="504" width="110" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="congratulations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivB-P0-lyv">
-                                <rect key="frame" x="96" y="388" width="222" height="30"/>
+                                <rect key="frame" x="103.5" y="385.5" width="207.5" height="35"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="30"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -577,7 +596,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placeholder text placeholder text placeholder text " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-Td-FIM">
-                                <rect key="frame" x="51" y="769" width="253.5" height="34"/>
+                                <rect key="frame" x="51" y="769" width="253.5" height="40"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -595,7 +614,7 @@
                             <constraint firstItem="3ny-p2-H4m" firstAttribute="width" secondItem="fKs-iq-fYI" secondAttribute="width" multiplier="0.85" id="U3o-20-amY"/>
                             <constraint firstItem="vLE-Td-FIM" firstAttribute="leading" secondItem="3ny-p2-H4m" secondAttribute="leading" constant="20" id="WeJ-Ip-jBp"/>
                             <constraint firstItem="fk7-Vq-H5e" firstAttribute="centerX" secondItem="fKs-iq-fYI" secondAttribute="centerX" id="eGe-ec-W9N"/>
-                            <constraint firstItem="fk7-Vq-H5e" firstAttribute="top" secondItem="ivB-P0-lyv" secondAttribute="bottom" constant="30" id="gvf-go-Jfk"/>
+                            <constraint firstItem="fk7-Vq-H5e" firstAttribute="top" secondItem="ivB-P0-lyv" secondAttribute="bottom" constant="40" id="gvf-go-Jfk"/>
                             <constraint firstItem="CtH-69-HpS" firstAttribute="centerY" secondItem="fKs-iq-fYI" secondAttribute="centerY" multiplier="1.4" id="iMS-8t-MVN"/>
                             <constraint firstItem="vLE-Td-FIM" firstAttribute="top" secondItem="3ny-p2-H4m" secondAttribute="top" constant="20" id="u93-IN-CEW"/>
                             <constraint firstItem="CtH-69-HpS" firstAttribute="centerX" secondItem="fKs-iq-fYI" secondAttribute="centerX" id="vxM-G2-jdg"/>
@@ -604,6 +623,7 @@
                         <viewLayoutGuide key="safeArea" id="316-9E-JWk"/>
                     </view>
                     <connections>
+                        <outlet property="congratsLabel" destination="vLE-Td-FIM" id="Rii-9F-pzu"/>
                         <outlet property="hitLabel" destination="fk7-Vq-H5e" id="urt-zX-JtD"/>
                         <outlet property="homeButton" destination="oqa-96-ikP" id="Wsr-PW-CEt"/>
                         <outlet property="missLabel" destination="MDY-SB-LER" id="PCM-AK-sff"/>
@@ -625,7 +645,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="are-2h-ZLU">
-                                <rect key="frame" x="20" y="513.5" width="374" height="64"/>
+                                <rect key="frame" x="20" y="513.5" width="374" height="75"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="64"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -637,7 +657,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="are you ready? let's play!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QV0-JH-pft">
-                                <rect key="frame" x="20" y="587.5" width="374" height="50"/>
+                                <rect key="frame" x="20" y="598.5" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="6Lm-lP-Pl9"/>
                                 </constraints>
