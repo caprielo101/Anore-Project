@@ -61,11 +61,6 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
             SongSelection(imageName: "warm up", songText: "interval notes", song: IntervalNotes(name: "interval", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
             SongSelection(imageName: "twinkle", songText: "twinkle-twinkle little star", song: SongOne(name: "twinkle-twinkle little star", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
             SongSelection(imageName: "nina bobo", songText: "nina bobo", song: SongTwo(name: "nina bobo", maxFreq: MusicConstants.noteFrequencies[7]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[7]*pow(2, 3), noteNumber: 13)),
-            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
-            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
-            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
-            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
-            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13)),
             SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13))
         ]
         //setting up the label
