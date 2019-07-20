@@ -10,17 +10,31 @@ import UIKit
 
 class ScoreViewController: UIViewController {
     
+    let shapeLayer = CAShapeLayer()
+    let trackLayer = CAShapeLayer()
+    var label = UILabel()
+    
+    var currentTime: CFTimeInterval = 0
+    var timer = Timer()
+    var loadingTime:CFTimeInterval = 1.5
+    
     @IBOutlet weak var starImage: UIImageView!
     @IBOutlet weak var hitLabel: UILabel!
     @IBOutlet weak var missLabel: UILabel!
     @IBOutlet weak var retryButton: UIButton!
     @IBOutlet weak var homeButton: UIButton!
     
+    var center: CGPoint = .zero
+    
+    var accuracy: CGFloat = 0.0
+    
     var missNotes = 0
     var hitNotes = 0
     var totalNotes = 0
     
-    var song: Song?
+    var song: AllSongs?
+    
+    var delegate: SongSelectionCellDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +42,102 @@ class ScoreViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        center = CGPoint(x: view.center.x, y: view.center.y/2)
+        let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -0.5*CGFloat.pi, endAngle: 1.5*CGFloat.pi, clockwise: true)
+        
+        createTrackLayer(circularPath)
+        
+        createShapeLayer(circularPath)
+        
+        createLabel()
+        
+        ShowLoadingOverlay()
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         hitLabel.text = "hit: \(hitNotes)/\(totalNotes)"
         missLabel.text = "miss: \(missNotes)/\(totalNotes)"
+        
+        debugPrint(hitNotes, missNotes, totalNotes, accuracy)
+    }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: loadingTime/100, target: self, selector: #selector(progressAdding), userInfo: nil, repeats: true)
+    }
+    
+    @objc func progressAdding() {
+        if currentTime < loadingTime {
+//            currentTime += loadingTime/(CFTimeInterval(accuracy)*100)
+//            label.text = "\(Int(currentTime/loadingTime/(CFTimeInterval(accuracy)*100)))%"
+            currentTime += loadingTime/(CFTimeInterval(accuracy)*100)
+            label.text = "\(Int(currentTime/loadingTime*(CFTimeInterval(accuracy)*100)))%"
+            print(currentTime)
+        } else {
+            currentTime = loadingTime
+            label.text = "\(Int(accuracy*100))%"
+            print(currentTime)
+        }
+        
+//        if currentTime >= loadingTime - (loadingTime/100) {
+//            shapeLayer.strokeColor = UIColor.green.cgColor
+//            view.isUserInteractionEnabled = true
+//        } else {
+//            view.isUserInteractionEnabled = false
+//        }
+    }
+    
+    func ShowLoadingOverlay() {
+        startTimer()
+        let loading = CABasicAnimation(keyPath: "strokeEnd")
+        loading.toValue = accuracy
+        loading.duration = CFTimeInterval(loadingTime)
+        loading.fillMode = .forwards
+        loading.isRemovedOnCompletion = false
+        
+        shapeLayer.add(loading, forKey: "loading")
+    }
+    
+    fileprivate func createTrackLayer(_ circularPath: UIBezierPath) {
+        trackLayer.path = circularPath.cgPath
+        trackLayer.strokeColor = UIColor.init(white: 4.5/5, alpha: 1).cgColor
+        trackLayer.lineWidth = 20
+        trackLayer.fillColor = UIColor.clear.cgColor
+        trackLayer.lineCap = .round
+        view.layer.addSublayer(trackLayer)
+    }
+    
+    fileprivate func createShapeLayer(_ circularPath: UIBezierPath) {
+        shapeLayer.path = circularPath.cgPath
+        shapeLayer.strokeColor = UIColor.green.cgColor
+        shapeLayer.lineWidth = 20
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineCap = .square
+        shapeLayer.strokeEnd = 0
+        view.layer.addSublayer(shapeLayer)
+    }
+    
+    //Creating the label to animate then
+    func createLabel() {
+        label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        label.text = "0%"
+        label.font = UIFont.init(name: "Young", size: 40)
+        label.textColor = UIColor.textColor
+        label.textAlignment = .center
+        label.center = center
+        label.adjustsFontSizeToFitWidth = true
+        //        label.minimumScaleFactor = 0.5
+        view.addSubview(label)
     }
     
     @IBAction func retry(_ sender: Any) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let retryVc = storyboard.instantiateViewController(withIdentifier: "gameplay")
-//        present(retryVc, animated: true, completion: nil)
-        performSegue(withIdentifier: "goToGame", sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let retryVc = storyboard.instantiateViewController(withIdentifier: "gameplay") as! ViewController
+        retryVc.song = song
+        present(retryVc, animated: true, completion: nil)
     }
     
     @IBAction func home(_ sender: Any) {
@@ -48,26 +146,5 @@ class ScoreViewController: UIViewController {
         let nextVc = MenuViewController(collectionViewLayout: layout)
         present(nextVc, animated: true, completion: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? ViewController {
-            //pass the data of the song
-            print("Go To gameplay")
-            //delegation dong BIKIN DONG
-        } else if let destination = segue.destination as? MenuViewController {
-            //pass the data to home view controller
-            //kirim data score buat dijadiin lingkaran
-            
-        }
-    }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

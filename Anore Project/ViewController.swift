@@ -76,6 +76,10 @@ class ViewController: UIViewController {
         return true
     }
 
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
+        return .bottom
+    }
+    
     fileprivate func configureLabel() {
         songNameLabel.text = song.songName
         view.addSubview(songNameLabel)
@@ -94,19 +98,55 @@ class ViewController: UIViewController {
     }
     
     @objc func handlePause(_ sender: UIButton) {
+        overlayView.alpha = 0
+        overlayView.isHidden = true
+        pauseView.isHidden = true
         switch sender.tag {
         case 1:
-            overlayView.alpha = 0
-            overlayView.isHidden = true
-            pauseView.isHidden = true
             startUpdateUITimer()
             AudioHelper.shared.audioPlayer.play()
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+                self.pauseView.center.y += 150
+            }, completion: nil)
             print(sender.tag)
+            
         case 2:
             //do retry
+            updateUITimer.invalidate()
+            AudioHelper.shared.stopAudio()
+            do {
+                try AudioKit.stop()
+            } catch {
+                AKLog("error")
+            }
+            _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false, block: { (Timer) in
+                self.configureNotesDidAppear()
+                self.configureNotesDidLoad()
+                self.setupAudioKitAudioSession()
+                self.startUpdateUITimer()
+                self.view.bringSubviewToFront(self.overlayView)
+                self.view.bringSubviewToFront(self.pauseView)
+            })
+            
             print(sender.tag)
         case 3:
+            //open the are you sure tab
+            
             //go to home
+            updateUITimer.invalidate()
+            AudioHelper.shared.stopAudio()
+            do {
+                try AudioKit.stop()
+            } catch {
+                AKLog("error")
+            }
+            
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            let nextVc = MenuViewController(collectionViewLayout: layout)
+            nextVc.modalTransitionStyle = .crossDissolve
+            present(nextVc, animated: true, completion: nil)
+            
             print(sender.tag)
         default:
             return
@@ -163,18 +203,13 @@ class ViewController: UIViewController {
         pauseLabel.textAlignment = .center
         pauseLabel.textColor = .textColor
         
-        
-        var centerYAnchor: NSLayoutConstraint = pauseView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150)
-        var leadingAnchor: NSLayoutConstraint = pauseView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80)
-        var trailingAnchor: NSLayoutConstraint = pauseView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80)
-        var heightAnchor: NSLayoutConstraint = pauseView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15)
-        
-        centerYAnchor.isActive = true
-        leadingAnchor.isActive = true
-        trailingAnchor.isActive = true
-        heightAnchor.isActive = true
-        
         NSLayoutConstraint.activate([
+
+            pauseView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150),
+            pauseView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
+            pauseView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80),
+            pauseView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
+            
             pauseStackView.bottomAnchor.constraint(equalTo: pauseView.bottomAnchor, constant: -20),
             pauseStackView.leadingAnchor.constraint(equalTo: pauseView.leadingAnchor, constant: 25),
             pauseStackView.trailingAnchor.constraint(equalTo: pauseView.trailingAnchor, constant: -25),
@@ -212,7 +247,7 @@ class ViewController: UIViewController {
         
         configure()
         drawVerticalLines()
-        configureNotes()
+        configureNotesDidLoad()
         configureUI()
         drawHorizontalLines()
         configureLabel()
@@ -233,22 +268,26 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        RoundingNotes()
+        configureNotesDidAppear()
         
         //setting up audiokit and audioSessions
+        setupAudioKitAudioSession()
+        
+        startUpdateUITimer()
+    }
+    
+    fileprivate func setupAudioKitAudioSession() {
         do {
             AudioKit.output = silence
             try AudioKit.start()
-            
             AudioHelper.shared.configureAudioSession()
-//            audioHelper.playAudio(fileName: "Ninabobo", type: "wav")
             switch song.songName {
             case "nina bobo":
                 AudioHelper.shared.playAudio(fileName: "Ninabobo", type: "wav")
             case "twinkle-twinkle little star":
                 AudioHelper.shared.playAudio(fileName: "twinkle", type: "wav")
             case "balonku":
-                AudioHelper.shared.playAudio(fileName: "Balonku", type: "wav")
+                AudioHelper.shared.playAudio(fileName: "balonku-60", type: "wav")
             case "ascending":
                 AudioHelper.shared.playAudio(fileName: "AscendingNotes", type: "wav")
             case "descending":
@@ -261,24 +300,24 @@ class ViewController: UIViewController {
         } catch {
             AKLog("error")
         }
-        
-        startUpdateUITimer()
     }
     
-    
-    fileprivate func RoundingNotes() {
+    fileprivate func configureNotesDidAppear() {
         for note in notes {
             note.layer.cornerRadius = note.frame.height/4
             note.clipsToBounds = true
             note.layer.masksToBounds = true
             note.layer.borderColor = UIColor.textColor.cgColor
             note.layer.borderWidth = 0.5
+            note.isHidden = false
+            note.alpha = 1
+            note.backgroundColor = NoteView.giveColor(note)()
         }
         pauseView.layer.cornerRadius = pauseView.frame.height/4
         pauseView.layer.masksToBounds = true
     }
     
-    fileprivate func configureNotes() {
+    fileprivate func configureNotesDidLoad() {
         var distanceBeforeStart: Float = 0.0
         switch song.songName {
         case "balonku":
@@ -359,7 +398,7 @@ class ViewController: UIViewController {
     //configure UI
     func configureUI() {
         indicate.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-        indicate.center = CGPoint(x: width/8, y: height/2)
+        indicate.center = CGPoint(x: width/8, y: view.frame.height)
 //        indicate.image = UIImage(named: "indicator")
         indicate.layer.cornerRadius = indicate.frame.height/2
         indicate.backgroundColor = .black
@@ -429,37 +468,31 @@ class ViewController: UIViewController {
     
     fileprivate func animateNoteChart() {
         //animating notes from right to left /100 speed/note length
-//        UIView.animate(withDuration: 0.01, animations: {
-//            for note in self.notes {
-//                note.center.x -= 1
-//            }
-//        })
-//        for note in notes {
-//            note.animateNotes()
-//        }
-//        for note in notes {
-//            let startPoint = CGPoint(x: note.center.x, y: note.center.y)
-//            let endPoint = CGPoint(x: note.center.x - 1, y: note.center.y)
-//            let duration = 0.01
-//
-//            let animation = constructAnimation(startPoint: startPoint, endPoint: endPoint, duration: duration)
-//            note.layer.add(animation, forKey: "pos")
-//            note.layer.position = endPoint
-//        }
-        
-        animator = UIViewPropertyAnimator(duration: 0.01, curve: .linear) {
-            for note in self.notes {
-                note.center.x -= 1
-            }
-        }
-        animator.startAnimation()
-        
+
         for note in notes {
+            let startPoint = CGPoint(x: note.center.x, y: note.center.y)
+            let endPoint = CGPoint(x: note.center.x - 1, y: note.center.y)
+            let duration = 0.01
+
+            let animation = constructAnimation(startPoint: startPoint, endPoint: endPoint, duration: duration)
+            note.layer.add(animation, forKey: "pos")
+            note.layer.position = endPoint
+            
             if note.frame.origin.x * 1.2 < verticalLine.center.x - verticalLine.frame.width/2 {
                 note.backgroundColor = .lightGray
                 note.alpha = 0.5
             }
+            if note.frame.maxX <= verticalLine.center.x - 10 {
+                note.isHidden = true
+            }
         }
+//
+//        animator = UIViewPropertyAnimator(duration: 0.01, curve: .linear) {
+//            for note in self.notes {
+//                note.center.x -= 1
+//            }
+//        }
+//        animator.startAnimation()
     }
     
     func constructAnimation(startPoint: CGPoint, endPoint: CGPoint, duration: Double) -> CABasicAnimation {
@@ -519,24 +552,25 @@ class ViewController: UIViewController {
             //                }
             //            }
             //put function here to present next VC beforehand prepare data for segue
-//            let storyboard = UIStoryboard(name: "Main", bundle: .main)
-//            let nextVc = storyboard.instantiateViewController(withIdentifier: "score")
-//            present(nextVc, animated: true, completion: nil)
-            performSegue(withIdentifier: "score", sender: self)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextVc = storyboard.instantiateViewController(withIdentifier: "score") as! ScoreViewController
+            nextVc.totalNotes = notes.count
+            nextVc.hitNotes = score
+            nextVc.missNotes = notes.count - score
+            nextVc.song = song
+            nextVc.accuracy = CGFloat(score)/CGFloat(notes.count)
+            present(nextVc, animated: true, completion: nil)
+//            performSegue(withIdentifier: "score", sender: self)
         }
     }
 //    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dest = segue.destination as! ScoreViewController
-        dest.totalNotes = notes.count
-        dest.hitNotes = score
-        dest.missNotes = notes.count - score
-//        if let destination = segue.destination as? ScoreViewController {
-//            destination.totalNotes = notes.count
-//            destination.hitNotes = score
-//            destination.missNotes = notes.count - score
-//        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let dest = segue.destination as! ScoreViewController
+//        dest.totalNotes = notes.count
+//        dest.hitNotes = score
+//        dest.missNotes = notes.count - score
+//        dest.song = song
+//    }
     
     @IBAction func pause(_ sender: UIButton) {
         updateUITimer.invalidate()
@@ -545,7 +579,7 @@ class ViewController: UIViewController {
         pauseView.isHidden = false
 
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut, animations: {
-            self.pauseView.center.y -= 150
+            self.pauseView.center.y = self.view.center.y
             self.overlayView.alpha = 0.7
         }, completion: nil)
 //        let storyboard = UIStoryboard(name: "Main", bundle: .main)

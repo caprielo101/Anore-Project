@@ -9,6 +9,7 @@
 import UIKit
 
 class NoteView: UIView {
+        
     var note: Note!
     var duration: Float = 0  //miliseconds
 //    var tempProgress: Float = 0
@@ -59,25 +60,6 @@ class NoteView: UIView {
         default:
             return UIColor.clear
         }
-    }
-    
-    func animateNotes() {
-        
-        let left = CABasicAnimation(keyPath: "position")
-        left.duration = 0.01
-        left.repeatCount = Float.infinity
-//        left.autoreverses = true
-        
-        let fromPoint = CGPoint(x: center.x, y: center.y)
-        let fromValue = NSValue(cgPoint: fromPoint)
-        
-        let toPoint = CGPoint(x: center.x - 1, y: center.y)
-        let toValue = NSValue(cgPoint: toPoint)
-        
-        left.fromValue = fromValue
-        left.toValue = toValue
-        
-        layer.add(left, forKey: "position")
     }
     
 //    func startTimer() {
