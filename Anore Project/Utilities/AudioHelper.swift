@@ -10,6 +10,8 @@ import AVFoundation
 
 class AudioHelper {
     
+    static let shared = AudioHelper()
+    
     var audioPlayer = AVAudioPlayer()
     var audioSession = AVAudioSession()
     
@@ -18,8 +20,9 @@ class AudioHelper {
         
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+            audioPlayer.prepareToPlay()
         } catch {
-            print("Error")
+            print(error)
         }
         
         audioPlayer.play()
@@ -33,13 +36,24 @@ class AudioHelper {
             print("Error")
         }
     }
-    func stopAudio() {
-        audioPlayer.stop()
-        do {
-            try audioSession.setActive(false)
-        } catch {
-            print("Error")
+    
+    func pauseAudio() {
+        if audioPlayer.isPlaying {
+            audioPlayer.pause()
+        } else {
+            
         }
+    }
+    func stopAudio() {
+        if audioPlayer.isPlaying {
+            audioPlayer.stop()
+            do {
+                try audioSession.setActive(false)
+            } catch {
+                print("Error")
+            }
+        }
+
 
     }
     

@@ -52,13 +52,23 @@ class PauseViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         dismiss(animated: true, completion: nil)
+        AudioHelper.shared.audioPlayer.play()
         
     }
+    
     @IBAction func retry(_ sender: UIButton) {
-        
+        //reload the view
+        dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "gameplay")
+        //kirim data retrynya
+        present(nextVC, animated: true, completion: nil)
     }
+    
     @IBAction func home(_ sender: UIButton) {
+        //tampilkan are you sure
         
+        //if yes go home, if no hide the are you sure
     }
     
     

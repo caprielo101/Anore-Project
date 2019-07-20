@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     //base view for gameplay (container view)
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var pauseButton: UIButton!
+    
     var songNameLabel = UILabel(frame: .zero)
     
     //need to make note array (note view array) variables
@@ -29,14 +30,15 @@ class ViewController: UIViewController {
     //    private let indicate =  UIView()
     private let indicate = UIImageView()
     private let verticalLine = LineView()
-    
+    private let pauseView = UIView()
+    private let overlayView = UIView()
     //boolean value for checking if note is hit
     var isHittingNote = false
     //score for the level (hit notes)
     var score = 0
     
     //AudioKit Helper Initialisation
-    let audioHelper = AudioHelper()
+//    let audioHelper = AudioHelper()
     
     //AudioKit declaration
     var mic: AKMicrophone!
@@ -91,6 +93,110 @@ class ViewController: UIViewController {
             ])
     }
     
+    @objc func handlePause(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            overlayView.alpha = 0
+            overlayView.isHidden = true
+            pauseView.isHidden = true
+            startUpdateUITimer()
+            AudioHelper.shared.audioPlayer.play()
+            print(sender.tag)
+        case 2:
+            //do retry
+            print(sender.tag)
+        case 3:
+            //go to home
+            print(sender.tag)
+        default:
+            return
+        }
+    }
+    
+    fileprivate func configurePauseView() {
+
+        view.addSubview(overlayView)
+        view.addSubview(pauseView)
+        view.bringSubviewToFront(overlayView)
+        view.bringSubviewToFront(pauseView)
+        overlayView.isHidden = true
+        overlayView.backgroundColor = .black
+        overlayView.alpha = 0.0
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+        pauseView.isHidden = true
+        pauseView.backgroundColor = .init(r: 235, g: 235, b: 235)
+        pauseView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let resumeButton = UIButton(type: .custom)
+        resumeButton.translatesAutoresizingMaskIntoConstraints = false
+        resumeButton.setBackgroundImage(#imageLiteral(resourceName: "resumeButton"), for: .normal)
+        resumeButton.setTitle("", for: .normal)
+        resumeButton.tag = 1
+        resumeButton.addTarget(self, action: #selector(handlePause), for: .touchUpInside)
+        
+        let retryButton = UIButton(type: .custom)
+        retryButton.translatesAutoresizingMaskIntoConstraints = false
+        retryButton.setBackgroundImage(#imageLiteral(resourceName: "retryButton"), for: .normal)
+        retryButton.setTitle("", for: .normal)
+        retryButton.tag = 2
+        retryButton.addTarget(self, action: #selector(handlePause), for: .touchUpInside)
+        
+        let homeButton = UIButton(type: .custom)
+        homeButton.translatesAutoresizingMaskIntoConstraints = false
+        homeButton.setBackgroundImage(#imageLiteral(resourceName: "homeButton"), for: .normal)
+        homeButton.setTitle("", for: .normal)
+        homeButton.tag = 3
+        homeButton.addTarget(self, action: #selector(handlePause), for: .touchUpInside)
+
+        let pauseStackView = UIStackView(arrangedSubviews: [resumeButton, retryButton, homeButton])
+        pauseStackView.translatesAutoresizingMaskIntoConstraints = false
+        pauseStackView.distribution = .equalSpacing
+        
+        pauseView.addSubview(pauseStackView)
+        
+        let pauseLabel = UILabel()
+        pauseView.addSubview(pauseLabel)
+        pauseLabel.translatesAutoresizingMaskIntoConstraints = false
+        pauseLabel.text = "paused"
+        pauseLabel.font = UIFont(name: "Young", size: 22)
+        pauseLabel.numberOfLines = 0
+        pauseLabel.textAlignment = .center
+        pauseLabel.textColor = .textColor
+        
+        
+        var centerYAnchor: NSLayoutConstraint = pauseView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150)
+        var leadingAnchor: NSLayoutConstraint = pauseView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80)
+        var trailingAnchor: NSLayoutConstraint = pauseView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80)
+        var heightAnchor: NSLayoutConstraint = pauseView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15)
+        
+        centerYAnchor.isActive = true
+        leadingAnchor.isActive = true
+        trailingAnchor.isActive = true
+        heightAnchor.isActive = true
+        
+        NSLayoutConstraint.activate([
+            pauseStackView.bottomAnchor.constraint(equalTo: pauseView.bottomAnchor, constant: -20),
+            pauseStackView.leadingAnchor.constraint(equalTo: pauseView.leadingAnchor, constant: 25),
+            pauseStackView.trailingAnchor.constraint(equalTo: pauseView.trailingAnchor, constant: -25),
+            pauseStackView.heightAnchor.constraint(equalTo: pauseView.heightAnchor, multiplier: 0.4),
+            
+            resumeButton.widthAnchor.constraint(equalTo: resumeButton.heightAnchor, multiplier: 1),
+            retryButton.widthAnchor.constraint(equalTo: retryButton.heightAnchor, multiplier: 1),
+            homeButton.widthAnchor.constraint(equalTo: homeButton.heightAnchor, multiplier: 1),
+            
+            pauseLabel.topAnchor.constraint(equalTo: pauseView.topAnchor, constant: 20),
+            pauseLabel.leadingAnchor.constraint(equalTo: pauseView.leadingAnchor),
+            pauseLabel.trailingAnchor.constraint(equalTo: pauseView.trailingAnchor),
+            pauseLabel.heightAnchor.constraint(equalTo: pauseView.heightAnchor, multiplier: 0.2),
+            
+            overlayView.topAnchor.constraint(equalTo: view.topAnchor),
+            overlayView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            overlayView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            overlayView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,13 +210,24 @@ class ViewController: UIViewController {
         width = baseView.frame.width
         height = baseView.frame.height
         
-//        audioHelper.configure()
         configure()
         drawVerticalLines()
         configureNotes()
         configureUI()
         drawHorizontalLines()
         configureLabel()
+        
+        configurePauseView()
+
+        
+    }
+    
+    fileprivate func startUpdateUITimer() {
+        updateUITimer = Timer.scheduledTimer(timeInterval: 0.01,
+                                             target: self,
+                                             selector: #selector(updateUI),
+                                             userInfo: nil,
+                                             repeats: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,33 +240,29 @@ class ViewController: UIViewController {
             AudioKit.output = silence
             try AudioKit.start()
             
-            audioHelper.configureAudioSession()
+            AudioHelper.shared.configureAudioSession()
 //            audioHelper.playAudio(fileName: "Ninabobo", type: "wav")
             switch song.songName {
             case "nina bobo":
-                audioHelper.playAudio(fileName: "Ninabobo", type: "wav")
+                AudioHelper.shared.playAudio(fileName: "Ninabobo", type: "wav")
             case "twinkle-twinkle little star":
-                audioHelper.playAudio(fileName: "twinkle", type: "wav")
+                AudioHelper.shared.playAudio(fileName: "twinkle", type: "wav")
             case "balonku":
-                audioHelper.playAudio(fileName: "Balonku", type: "wav")
+                AudioHelper.shared.playAudio(fileName: "Balonku", type: "wav")
             case "ascending":
-                audioHelper.playAudio(fileName: "AscendingNotes", type: "wav")
+                AudioHelper.shared.playAudio(fileName: "AscendingNotes", type: "wav")
             case "descending":
-                audioHelper.playAudio(fileName: "DescendingNotes", type: "wav")
+                AudioHelper.shared.playAudio(fileName: "DescendingNotes", type: "wav")
             case "interval":
-                audioHelper.playAudio(fileName: "IntervalNotes", type: "wav")
+                AudioHelper.shared.playAudio(fileName: "IntervalNotes", type: "wav")
             default:
-                audioHelper.playAudio(fileName: "", type: "wav")
+                AudioHelper.shared.playAudio(fileName: "", type: "wav")
             }
         } catch {
             AKLog("error")
         }
         
-        updateUITimer = Timer.scheduledTimer(timeInterval: 0.01,
-                                             target: self,
-                                             selector: #selector(updateUI),
-                                             userInfo: nil,
-                                             repeats: true)
+        startUpdateUITimer()
     }
     
     
@@ -161,6 +274,8 @@ class ViewController: UIViewController {
             note.layer.borderColor = UIColor.textColor.cgColor
             note.layer.borderWidth = 0.5
         }
+        pauseView.layer.cornerRadius = pauseView.frame.height/4
+        pauseView.layer.masksToBounds = true
     }
     
     fileprivate func configureNotes() {
@@ -244,7 +359,7 @@ class ViewController: UIViewController {
     //configure UI
     func configureUI() {
         indicate.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-        indicate.center = CGPoint(x: width/8, y: 0)
+        indicate.center = CGPoint(x: width/8, y: height/2)
 //        indicate.image = UIImage(named: "indicator")
         indicate.layer.cornerRadius = indicate.frame.height/2
         indicate.backgroundColor = .black
@@ -355,9 +470,9 @@ class ViewController: UIViewController {
         return animation
     }
     
-    fileprivate func checkNoteIfHit() {
+    func checkNoteIfHit() {
         for note in notes {
-            if indicate.center.y > note.center.y - (height/CGFloat(noteNumber-1)/5) && indicate.center.y < note.center.y + (height/CGFloat(noteNumber-1)/5) && indicate.frame.intersects(note.frame){ //
+            if indicate.center.y > note.center.y - (height/CGFloat(noteNumber-1)/6) && indicate.center.y < note.center.y + (height/CGFloat(noteNumber-1)/6) && indicate.frame.intersects(note.frame){ //
                 isHittingNote = true
                 if isHittingNote {
                     //timer berapa detik kalo lebih dari duration bikin noteisHit jadi true
@@ -378,7 +493,7 @@ class ViewController: UIViewController {
 
     }
     
-    fileprivate func songEnding() {
+    func songEnding() {
         if song.notes.last!.center.x < -100 {
             for note in self.notes {
                 if note.note.isHit {
@@ -395,7 +510,7 @@ class ViewController: UIViewController {
                 print("Error")
             }
             updateUITimer.invalidate()
-            audioHelper.stopAudio()
+            AudioHelper.shared.stopAudio()
             //End of Game present next VC and calculate points
             //put function here to calculate points
             //            for (index,note) in notes.enumerated() {
@@ -424,15 +539,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pause(_ sender: UIButton) {
-//        for note in notes {
-//            note.frame = note.layer.presentation()?.frame ?? CGRect(size: .zero)
-//            note.layer.removeAllAnimations()
-//        }
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        let popUpVc = storyboard.instantiateViewController(withIdentifier: "pause")
-        popUpVc.modalPresentationStyle = .overCurrentContext
-        popUpVc.modalTransitionStyle = .crossDissolve
-        present(popUpVc, animated: true, completion: nil)
+        updateUITimer.invalidate()
+        AudioHelper.shared.pauseAudio()
+        overlayView.isHidden = false
+        pauseView.isHidden = false
+
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut, animations: {
+            self.pauseView.center.y -= 150
+            self.overlayView.alpha = 0.7
+        }, completion: nil)
+//        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+//        let popUpVc = storyboard.instantiateViewController(withIdentifier: "pause")
+//        popUpVc.modalPresentationStyle = .overCurrentContext
+//        popUpVc.modalTransitionStyle = .crossDissolve
+//        present(popUpVc, animated: true, completion: nil)
     }
 }
 

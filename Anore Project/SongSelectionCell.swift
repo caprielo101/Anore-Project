@@ -38,9 +38,17 @@ class SongSelectionCell: UICollectionViewCell {
     }()
     
     var playButton: UIButton = {
-        var button = UIButton(type: .custom)
+        let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "resumeButton"), for: .normal)
+        button.setTitle("", for: .normal)
+        return button
+    }()
+    
+    let histogramButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "progressButtonWhite"), for: .normal)
         button.setTitle("", for: .normal)
         return button
     }()
@@ -68,6 +76,10 @@ class SongSelectionCell: UICollectionViewCell {
         delegate?.didTapButton(song: songSelection!.song)
     }
     
+    @objc func handleHistogram() {
+        //present histogram
+        print("Handling tap on histogram")
+    }
     private func setupLayout() {
         let topImageContainerView = UIView()
         
@@ -79,9 +91,8 @@ class SongSelectionCell: UICollectionViewCell {
         topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true //tadinya 0.5
         
         topImageContainerView.addSubview(coverImageView)
-        coverImageView.centerYAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: -80).isActive = true
+        coverImageView.centerYAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: -100).isActive = true
         coverImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor, constant: 0).isActive = true
-        //Multiplier untuk gedein image
         coverImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.6).isActive = true
    
         addSubview(songNameText)
@@ -95,5 +106,12 @@ class SongSelectionCell: UICollectionViewCell {
         playButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
         playButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         playButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        
+        addSubview(histogramButton)
+        histogramButton.addTarget(self, action: #selector(handleHistogram), for: .touchUpInside)
+        histogramButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        histogramButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 40).isActive = true
+        histogramButton.heightAnchor.constraint(equalTo: playButton.heightAnchor, multiplier: 0.6).isActive = true
+        histogramButton.widthAnchor.constraint(equalTo: playButton.widthAnchor, multiplier: 0.6).isActive = true
     }
 }

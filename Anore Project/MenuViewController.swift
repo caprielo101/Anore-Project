@@ -12,16 +12,44 @@ private let reuseIdentifier = "Cell"
 
 class MenuViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-//    var songs: [Song] {
-//        return [Song0(), Song1(), Song3()]
-//    }
-//    var songs: [AllSongs] {
-//        return [SongOne(name: "Ngaco", maxFreq: MusicConstants.noteFrequencies[0] * pow(2, 4), minFreq: MusicConstants.noteFrequencies[0] * pow(2, 3), noteNumber: 13)]
-//    }
-//
+    //    var songs: [Song] {
+    //        return [Song0(), Song1(), Song3()]
+    //    }
+    //    var songs: [AllSongs] {
+    //        return [SongOne(name: "Ngaco", maxFreq: MusicConstants.noteFrequencies[0] * pow(2, 4), minFreq: MusicConstants.noteFrequencies[0] * pow(2, 3), noteNumber: 13)]
+    //    }
+    //
     var songSelection: [SongSelection]!
     
     var indexPath: IndexPath?
+    
+    @objc private func handlePrev() {
+        let nextIndex = max(pageControl.currentPage - 1, 0)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    @objc private func handleNext() {
+        let nextIndex = min(pageControl.currentPage + 1, songSelection.count - 1)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    lazy var pageControl: UIPageControl = {
+        let pc = UIPageControl()
+        pc.currentPage = 0
+        pc.numberOfPages = songSelection.count
+        pc.currentPageIndicatorTintColor = .blue
+        pc.pageIndicatorTintColor = UIColor(red: 249/255, green: 207/255, blue: 224/255, alpha: 1)
+        return pc
+    }()
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let x = targetContentOffset.pointee.x
+        pageControl.currentPage = Int(x / view.frame.width)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +71,12 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.isPagingEnabled = true
         
     }
-
+    
     private func setupInterface() {
         let label = UILabel()
-        //constraint put here
         view.addSubview(label)
         label.textAlignment = .center
         label.text = "song selection"
-        //        label.center.x = self.view.center.x
         label.font = UIFont(name: "Young", size: 40)
         label.textColor = .textColor
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -69,38 +95,44 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
             line.heightAnchor.constraint(equalToConstant: 0.5)
             ])
         
-        let chevronRight = UIImageView()
+        let chevronRight = UIButton(type: .system)
         view.addSubview(chevronRight)
-        chevronRight.image = UIImage(named: "next")
+//        chevronRight.setImage(#imageLiteral(resourceName: "next"), for: .normal)
         chevronRight.translatesAutoresizingMaskIntoConstraints = false
+        chevronRight.setBackgroundImage(UIImage(named: "next"), for: .normal)
         NSLayoutConstraint.activate([
             chevronRight.centerXAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            chevronRight.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -70),
+            chevronRight.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
             chevronRight.widthAnchor.constraint(equalToConstant: 25),
-            chevronRight.heightAnchor.constraint(equalToConstant: 60)
+            chevronRight.heightAnchor.constraint(equalToConstant: 65)
             ])
+        chevronRight.tintColor = .init(r: 160, g: 160, b: 160)
+        chevronRight.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         
-        let chevronLeft = UIImageView()
+        let chevronLeft = UIButton(type: .system)
         view.addSubview(chevronLeft)
-        chevronLeft.image = UIImage(named: "prev")
+//        chevronLeft.setImage(#imageLiteral(resourceName: "prev"), for: .normal)
+        chevronLeft.setBackgroundImage(UIImage(named: "prev"), for: .normal)
         chevronLeft.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             chevronLeft.centerXAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            chevronLeft.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -70),
+            chevronLeft.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
             chevronLeft.widthAnchor.constraint(equalToConstant: 25),
             chevronLeft.heightAnchor.constraint(equalToConstant: 65)
             ])
+        chevronLeft.tintColor = .init(r: 160, g: 160, b: 160)
+        chevronLeft.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
     }
     
     // MARK: - Navigation
-
-    //In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//         let destination = segue.destination as! ViewController
-//        destination.song = songs[indexPath!.item]
-//    }
     
-
+    //In a storyboard-based application, you will often want to do a little preparation before navigation
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //         let destination = segue.destination as! ViewController
+    //        destination.song = songs[indexPath!.item]
+    //    }
+    
+    
 }
 extension MenuViewController: SongSelectionCellDelegate {
     func didTapButton(song: AllSongs) {
@@ -109,8 +141,8 @@ extension MenuViewController: SongSelectionCellDelegate {
         nextVc.song = song
         present(nextVc, animated: true, completion: nil)
     }
-    
 }
+
 extension MenuViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -123,10 +155,10 @@ extension MenuViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! SongSelectionCell
-
+        
         let songChoice = songSelection[indexPath.item]
         cell.songSelection = songChoice
-//        cell.playButton.addTarget(getInstance(), action: #selector(goToVc), for: .touchUpInside)
+        //        cell.playButton.addTarget(getInstance(), action: #selector(goToVc), for: .touchUpInside)
         cell.delegate = self
         
         return cell
@@ -134,22 +166,6 @@ extension MenuViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
-    }
-    
-    @objc func goToVc(sender: UIButton) {
-        let cell: SongSelectionCell = sender.superview as! SongSelectionCell
-        indexPath = self.collectionView.indexPath(for: cell)!
-        
-        if indexPath == nil {
-            assert(false)
-            return
-        }
-        print("go to \(indexPath!.item)")
-//        performSegue(withIdentifier: "Next", sender: self)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextVc = storyboard.instantiateViewController(withIdentifier: "gameplay")
-//        nextVc.delegate = self
-        present(nextVc, animated: true, completion: nil)
     }
     
 }
