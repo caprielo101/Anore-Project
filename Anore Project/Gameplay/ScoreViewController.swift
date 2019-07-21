@@ -114,7 +114,9 @@ class ScoreViewController: UIViewController {
     func giveMessage(if accuracy: CGFloat) -> String {
         let acc = Int(accuracy*100)
         switch acc {
-        case 0...50:
+        case 0:
+            return "oh no! you missed all the notes! don't worry you can try again."
+        case 1...50:
             return "don't give up! you can do it!"
         case 51..<75:
             return "you are doing a great job,\nkeep it up!"

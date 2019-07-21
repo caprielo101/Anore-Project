@@ -23,7 +23,6 @@ class SongSelectionCell: UICollectionViewCell {
             guard let unwrapping = songSelection else { return }
             
             coverImageView.image = UIImage(named: unwrapping.imageName)
-    
             songNameText.text = unwrapping.songText
             songNameText.textAlignment = .center
             songNameText.backgroundColor = .clear
@@ -40,7 +39,7 @@ class SongSelectionCell: UICollectionViewCell {
     }()
     
     var playButton: UIButton = {
-        let button = UIButton(type: .custom)
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "resumeButton"), for: .normal)
         button.setTitle("", for: .normal)
@@ -48,7 +47,7 @@ class SongSelectionCell: UICollectionViewCell {
     }()
     
     let histogramButton: UIButton = {
-        let button = UIButton(type: .custom)
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "progressButtonWhite"), for: .normal)
         button.setTitle("", for: .normal)

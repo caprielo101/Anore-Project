@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import AudioKit
 
 class AudioHelper {
     
@@ -30,8 +31,10 @@ class AudioHelper {
     
     func configureAudioSession() {
         do {
-            try audioSession.overrideOutputAudioPort(.speaker)
-            try audioSession.setActive(true)
+//            try audioSession.overrideOutputAudioPort(.speaker)
+//            try audioSession.setActive(true)
+            try AKSettings.session.overrideOutputAudioPort(.speaker)
+            try AKSettings.session.setActive(true)
         } catch {
             print("Error")
         }
@@ -48,7 +51,8 @@ class AudioHelper {
         if audioPlayer.isPlaying {
             audioPlayer.stop()
             do {
-                try audioSession.setActive(false)
+//                try audioSession.setActive(false)
+                try AKSettings.session.setActive(false)
             } catch {
                 print("Error")
             }

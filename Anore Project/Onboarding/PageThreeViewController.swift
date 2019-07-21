@@ -19,7 +19,7 @@ class PageThreeViewController: UIViewController {
         yourProgressImageView.layer.borderColor = UIColor.textColor.cgColor
         yourProgressImageView.layer.borderWidth = 5
         yourProgressImageView.contentMode = .scaleAspectFill
-        yourProgressImageView.image = #imageLiteral(resourceName: "progress-0")
+        yourProgressImageView.image = UIImage(named: "progress-1")
 //        yourProgressImages = createImageArray(total: 0, prefix: "progress")
     }
 

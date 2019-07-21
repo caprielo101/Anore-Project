@@ -280,11 +280,32 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        configureNotesDidAppear()
-        //setting up audiokit and audioSessions
-        setupAudioKitAudioSession()
+        switch AKSettings.session.recordPermission {
+        case .undetermined:
+            print("undetermid")
+            
+        case .denied:
+            print("Why do you deny me")
+            let alert = UIAlertController(title: "Microphone Access Required", message: "Please allow microphone access so Anore can track your singing voice.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (UIAlertAction) in
+                let layout = UICollectionViewFlowLayout()
+                layout.scrollDirection = .horizontal
+                let nextVc = MenuViewController(collectionViewLayout: layout)
+                self.present(nextVc, animated: true, completion: nil)
+            }))
+            present(alert, animated: true, completion: nil)
+            
+        case .granted:
+            configureNotesDidAppear()
+            //setting up audiokit and audioSessions
+            setupAudioKitAudioSession()
+            
+            startUpdateUITimer()
+            
+        default:
+            print("defaults")
+        }
         
-        startUpdateUITimer()
     }
     
     fileprivate func setupAudioKitAudioSession() {
@@ -306,7 +327,7 @@ class ViewController: UIViewController {
             case "interval":
                 AudioHelper.shared.playAudio(fileName: "IntervalNotes", type: "wav")
             case "ode to joy":
-                AudioHelper.shared.playAudio(fileName: "OdeToJoy", type: "wav")
+                AudioHelper.shared.playAudio(fileName: "odetojoy120", type: "wav")
             default:
                 AudioHelper.shared.playAudio(fileName: "", type: "wav")
             }
@@ -402,7 +423,8 @@ class ViewController: UIViewController {
     
     //configure AudioKit
     func configure() {
-        AKSettings.audioInputEnabled = true
+//        AKSettings.audioInputEnabled = true
+
         mic = AKMicrophone()
         tracker = AKFrequencyTracker(mic)
         silence = AKBooster(tracker, gain: 0)
@@ -541,10 +563,18 @@ class ViewController: UIViewController {
             for note in self.notes {
                 if note.note.isHit {
                     score += 1
+                    saveScore.hitNote += 1
                 }
                 print(note.note.pitch, note.note.isHit)
+               
+                saveScore.totalNotes += 1
+                UserDefaults.standard.set(saveScore.hitNote, forKey: "hitNotes")
+                UserDefaults.standard.set(saveScore.totalNotes, forKey: "totalNotes")
+                print(saveScore.hitC, saveScore.hitD, saveScore.hitE, saveScore.hitF, saveScore.hitG, saveScore.hitA, saveScore.hitB)
                 note.removeFromSuperview()
             }
+            
+            
             print("True \(score), False \(notes.count-score), \(notes.count)")
             print("End of Game")
             do {

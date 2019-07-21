@@ -16,15 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         window = UIWindow()
         window?.makeKeyAndVisible()
 
-        //        let randomViewController = UIViewController()
-        //        randomViewController.view.backgroundColor = .purple
-//        isLoggedIn = UserDefaults.standard.bool(forKey: Keys.loginState)
+        isLoggedIn = UserDefaults.standard.bool(forKey: Keys.loginState)
         if isLoggedIn {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .horizontal
@@ -34,9 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let pageController = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
             window?.rootViewController = pageController
         }
-
         
-     
         return true
     }
 

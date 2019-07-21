@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioKit
 
 private let reuseIdentifier = "Cell"
 
@@ -20,7 +21,8 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
         SongSelection(imageName: "twinkle", songText: "twinkle-twinkle little star", song: SongOne(name: "twinkle-twinkle little star", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 5), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), noteNumber: 13), bestScore: Score.song1),
         SongSelection(imageName: "nina bobo", songText: "nina bobo", song: SongTwo(name: "nina bobo", maxFreq: MusicConstants.noteFrequencies[7]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[7]*pow(2, 3), noteNumber: 13), bestScore: Score.song2),
         SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 5), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), noteNumber: 13), bestScore: Score.song3),
-        SongSelection(imageName: "warm up", songText: "ode to joy", song: SongFour(name: "ode to joy", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[7]*pow(2, 2), noteNumber: 18), bestScore: Score.song4)
+        SongSelection(imageName: "OdeToJoy", songText: "ode to joy", song: SongFive(name: "ode to joy", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 5), minFreq: MusicConstants.noteFrequencies[7]*pow(2, 3), noteNumber: 18), bestScore: Score.song4)
+        //SongSelection(imageName: "warm up", songText: "ode to joy", song: SongFour(name: "ode to joy", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[7]*pow(2, 2), noteNumber: 18), bestScore: Score.song4)
     ]
     
 //    var scores: [Float] =
@@ -68,16 +70,9 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
         //         self.clearsSelectionOnViewWillAppear = false
         
 //        songSelection.removeAll()
-        
-//        songSelection = [
-//            SongSelection(imageName: "warm up", songText: "ascending notes", song: AscendingNotes(name: "ascending", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13), bestScore: UserDefaults.standard.float(forKey: "warmup1")),
-//            SongSelection(imageName: "warm up", songText: "descending notes", song: DescendingNotes(name: "descending", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13), bestScore: UserDefaults.standard.float(forKey: "warmup2")),
-//            SongSelection(imageName: "warm up", songText: "interval notes", song: IntervalNotes(name: "interval", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13), bestScore: UserDefaults.standard.float(forKey: "warmup3")),
-//            SongSelection(imageName: "twinkle", songText: "twinkle-twinkle little star", song: SongOne(name: "twinkle-twinkle little star", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13), bestScore: UserDefaults.standard.float(forKey: "song1")),
-//            SongSelection(imageName: "nina bobo", songText: "nina bobo", song: SongTwo(name: "nina bobo", maxFreq: MusicConstants.noteFrequencies[7]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[7]*pow(2, 3), noteNumber: 13), bestScore: UserDefaults.standard.float(forKey: "song2")),
-//            SongSelection(imageName: "balonku", songText: "balonku", song: SongThree(name: "balonku", maxFreq: MusicConstants.noteFrequencies[0]*pow(2, 4), minFreq: MusicConstants.noteFrequencies[0]*pow(2, 3), noteNumber: 13), bestScore: UserDefaults.standard.float(forKey: "song3"))
-//        ]
+
         //setting up the label
+        askForPermission()
         setupInterface()
         // Register cell classes
         collectionView?.backgroundColor = .backgroundColor
@@ -91,6 +86,17 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
         super.viewDidAppear(animated)
         
         collectionView?.reloadData()
+    }
+    
+    private func askForPermission() {
+        AKSettings.session.requestRecordPermission { (granted) in
+            if granted {
+                print("permission granted")
+            } else if !granted {
+                print("permission denied")
+            }
+        }
+        
     }
     
     private func setupInterface() {
@@ -116,7 +122,7 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
             line.heightAnchor.constraint(equalToConstant: 0.5)
             ])
         
-        let chevronRight = UIButton(type: .system)
+        let chevronRight = UIButton()
         view.addSubview(chevronRight)
         //        chevronRight.setImage(#imageLiteral(resourceName: "next"), for: .normal)
         chevronRight.translatesAutoresizingMaskIntoConstraints = false
@@ -127,10 +133,10 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
             chevronRight.widthAnchor.constraint(equalToConstant: 25),
             chevronRight.heightAnchor.constraint(equalToConstant: 65)
             ])
-        chevronRight.tintColor = .init(r: 160, g: 160, b: 160)
+//        chevronRight.tintColor = .init(r: 160, g: 160, b: 160)
         chevronRight.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         
-        let chevronLeft = UIButton(type: .system)
+        let chevronLeft = UIButton()
         view.addSubview(chevronLeft)
         //        chevronLeft.setImage(#imageLiteral(resourceName: "prev"), for: .normal)
         chevronLeft.setBackgroundImage(UIImage(named: "prev"), for: .normal)
@@ -141,7 +147,7 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
             chevronLeft.widthAnchor.constraint(equalToConstant: 25),
             chevronLeft.heightAnchor.constraint(equalToConstant: 65)
             ])
-        chevronLeft.tintColor = .init(r: 160, g: 160, b: 160)
+//        chevronLeft.tintColor = .init(r: 160, g: 160, b: 160)
         chevronLeft.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
     }
     
@@ -156,9 +162,12 @@ extension MenuViewController: SongSelectionCellDelegate {
     }
     
     func didTapHistogram(alert: UIAlertController) {
-        alert.addAction(UIAlertAction(title: "Okay", style: .default))
-        
-        self.present(alert, animated: true, completion: nil)
+//        alert.addAction(UIAlertAction(title: "Okay", style: .default))
+//
+//        self.present(alert, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVc = storyboard.instantiateViewController(withIdentifier: "progress") as! YourProgressViewController
+        present(nextVc, animated: true, completion: nil)
     }
 }
 
@@ -175,7 +184,6 @@ extension MenuViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! SongSelectionCell
 //        cell.circleViewGreen.endAngle = 0
-//        cell.circleViewGreen.endAngle = 0
 //        let songChoice = songSelection[indexPath.item]
         cell.songSelection = songSelection[indexPath.item]
         cell.delegate = self
@@ -189,7 +197,7 @@ extension MenuViewController {
         
 //        cell.circleViewGreen.endAngle = CGFloat(scores[indexPath.item])
 //        print(name, UserDefaults.standard.float(forKey: name), cell.circleViewGreen.endAngle)
-        print(songSelection[indexPath.item].song.songName, cell.circleViewGreen.endAngle)
+//        print(songSelection[indexPath.item].song.songName, cell.circleViewGreen.endAngle)
         return cell
     }
     
