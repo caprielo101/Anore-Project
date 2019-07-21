@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+var isLoggedIn: Bool = false
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -22,12 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //        let randomViewController = UIViewController()
         //        randomViewController.view.backgroundColor = .purple
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let swipingController = MenuViewController(collectionViewLayout: layout)
-        //        let pageController = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        //        window?.rootViewController = pageController
-        window?.rootViewController = swipingController
+//        isLoggedIn = UserDefaults.standard.bool(forKey: Keys.loginState)
+        if isLoggedIn {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            let swipingController = MenuViewController(collectionViewLayout: layout)
+            window?.rootViewController = swipingController
+        } else {
+            let pageController = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+            window?.rootViewController = pageController
+        }
+
+        
+     
         return true
     }
 

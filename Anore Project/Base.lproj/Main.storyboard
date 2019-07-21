@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aHM-xP-UaZ">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,10 +24,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <skView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OPR-zA-4yE">
-                                <rect key="frame" x="33" y="129" width="347" height="612"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oTi-PY-fjG">
+                                <rect key="frame" x="87" y="294" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </skView>
+                                <color key="backgroundColor" red="0.69411764705882351" green="0.90980392156862744" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5sr-Bn-FhK"/>
@@ -35,7 +36,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uNV-hJ-Dda" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1752" y="112"/>
+            <point key="canvasLocation" x="2564" y="168"/>
         </scene>
         <!--Gameplay View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -138,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2065.217391304348" y="-913.39285714285711"/>
+            <point key="canvasLocation" x="-2077" y="-1171"/>
         </scene>
         <!--Pause View Controller-->
         <scene sceneID="erx-Wa-6lU">
@@ -157,10 +158,10 @@
                                 <rect key="frame" x="80" y="480" width="254" height="134"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xAE-mY-XJ3">
-                                        <rect key="frame" x="25" y="22" width="82" height="22"/>
+                                        <rect key="frame" x="25" y="720" width="2176" height="720"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypr-7O-Apu" userLabel="Playbutton">
-                                                <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="720" height="720"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ypr-7O-Apu" secondAttribute="height" multiplier="1:1" id="F7u-Ma-TiB"/>
                                                 </constraints>
@@ -170,7 +171,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BP5-GV-c17" userLabel="Retrybutton">
-                                                <rect key="frame" x="30" y="0.0" width="22" height="22"/>
+                                                <rect key="frame" x="728" y="0.0" width="720" height="720"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="BP5-GV-c17" secondAttribute="height" multiplier="1:1" id="cZ2-Vz-DLT"/>
                                                 </constraints>
@@ -180,7 +181,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfH-Ar-CWD" userLabel="ExitButton">
-                                                <rect key="frame" x="60" y="0.0" width="22" height="22"/>
+                                                <rect key="frame" x="1456" y="0.0" width="720" height="720"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="hfH-Ar-CWD" secondAttribute="height" multiplier="1:1" id="zdY-Kc-fLC"/>
                                                 </constraints>
@@ -192,7 +193,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="paused" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZu-vY-iul">
-                                        <rect key="frame" x="20" y="0.5" width="92" height="23.5"/>
+                                        <rect key="frame" x="20" y="395" width="2186" height="20"/>
                                         <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
                                         <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -220,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCe-r3-MeU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1446" y="-1812"/>
+            <point key="canvasLocation" x="3229" y="452"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="mR8-hI-hmu">
@@ -235,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bat-Y5-PSn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3007.2463768115945" y="-913.39285714285711"/>
+            <point key="canvasLocation" x="-2894" y="-1171"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Emg-XH-Zts">
@@ -246,7 +247,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-dk-1AY">
-                                <rect key="frame" x="20" y="513.5" width="374" height="75"/>
+                                <rect key="frame" x="20" y="513.5" width="374" height="64"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="64"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -258,7 +259,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="help your children exercise  their vocal muscle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1p-qY-SGp">
-                                <rect key="frame" x="20" y="598.5" width="374" height="50"/>
+                                <rect key="frame" x="20" y="587.5" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Y5A-wA-9Fl"/>
                                 </constraints>
@@ -287,19 +288,19 @@
             </objects>
             <point key="canvasLocation" x="120" y="-1171"/>
         </scene>
-        <!--View Controller-->
+        <!--Page One View Controller-->
         <scene sceneID="SeF-5o-H8T">
             <objects>
-                <viewController storyboardIdentifier="onBoarding2" id="bbu-7C-pzs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onBoarding2" id="bbu-7C-pzs" customClass="PageOneViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g9x-64-EcP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fGq-BY-Jyz">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warmup-1" translatesAutoresizingMaskIntoConstraints="NO" id="fGq-BY-Jyz">
                                 <rect key="frame" x="31" y="152.5" width="352" height="591"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text balloon" translatesAutoresizingMaskIntoConstraints="NO" id="u6x-q0-yup">
-                                <rect key="frame" x="40" y="744.5" width="334" height="16"/>
+                                <rect key="frame" x="40" y="586.5" width="334" height="332"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="meu-Tb-tyL">
                                 <rect key="frame" x="244" y="712.5" width="150" height="150"/>
@@ -309,13 +310,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warm up your children’s vocal  muscle before they start singing!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Io7-ys-DVC" userLabel="label">
-                                <rect key="frame" x="60" y="732.5" width="314" height="40"/>
+                                <rect key="frame" x="60" y="730.5" width="314" height="34"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warm up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVa-pL-qRY">
-                                <rect key="frame" x="31" y="84" width="383" height="56"/>
+                                <rect key="frame" x="31" y="88" width="383" height="48"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -337,11 +338,14 @@
                             <constraint firstItem="fGq-BY-Jyz" firstAttribute="width" secondItem="g9x-64-EcP" secondAttribute="width" multiplier="0.85" id="XO3-5z-yVb"/>
                             <constraint firstItem="DF4-up-d7d" firstAttribute="trailing" secondItem="meu-Tb-tyL" secondAttribute="trailing" constant="20" id="ZqX-fA-2AE"/>
                             <constraint firstItem="fVa-pL-qRY" firstAttribute="leading" secondItem="fGq-BY-Jyz" secondAttribute="leading" id="gSf-Uu-hh3"/>
-                            <constraint firstItem="Io7-ys-DVC" firstAttribute="centerY" secondItem="u6x-q0-yup" secondAttribute="centerY" id="gwy-B5-CHW"/>
+                            <constraint firstItem="Io7-ys-DVC" firstAttribute="centerY" secondItem="u6x-q0-yup" secondAttribute="centerY" constant="-5" id="gwy-B5-CHW"/>
                             <constraint firstItem="Io7-ys-DVC" firstAttribute="leading" secondItem="u6x-q0-yup" secondAttribute="leading" multiplier="1.5" id="kSA-G7-im1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DF4-up-d7d"/>
                     </view>
+                    <connections>
+                        <outlet property="warmUpImageView" destination="fGq-BY-Jyz" id="m4u-n3-tgx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJH-06-qXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -353,21 +357,21 @@
                 <pageViewController storyboardIdentifier="onboarding" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="glk-0t-8KS" customClass="PageViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nuh-Fe-FrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-665" y="-1419"/>
+            <point key="canvasLocation" x="-543" y="-1171"/>
         </scene>
-        <!--View Controller-->
+        <!--Page Two View Controller-->
         <scene sceneID="blz-03-br2">
             <objects>
-                <viewController storyboardIdentifier="onBoarding3" id="Vj2-iP-Q1q" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onBoarding3" id="Vj2-iP-Q1q" customClass="PageTwoViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Up-oy-cnJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bZ1-Bk-8jQ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sing-1" translatesAutoresizingMaskIntoConstraints="NO" id="bZ1-Bk-8jQ">
                                 <rect key="frame" x="31" y="152.5" width="352" height="591"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text balloon" translatesAutoresizingMaskIntoConstraints="NO" id="lLQ-NU-d6s">
-                                <rect key="frame" x="40" y="744.5" width="334" height="16"/>
+                                <rect key="frame" x="40" y="586.5" width="334" height="332"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="E0N-q1-Rlq">
                                 <rect key="frame" x="244" y="712.5" width="150" height="150"/>
@@ -377,13 +381,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="let your children sing along to our  songs and have some fun!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Eg-jd-6dF" userLabel="label">
-                                <rect key="frame" x="60" y="732.5" width="314" height="40"/>
+                                <rect key="frame" x="60" y="730.5" width="314" height="34"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sing along" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kF-1D-mwz">
-                                <rect key="frame" x="31" y="84" width="383" height="56"/>
+                                <rect key="frame" x="31" y="88" width="383" height="48"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -404,21 +408,24 @@
                             <constraint firstItem="9Eg-jd-6dF" firstAttribute="leading" secondItem="lLQ-NU-d6s" secondAttribute="leading" multiplier="1.5" id="eS9-kh-Lvt"/>
                             <constraint firstItem="7kF-1D-mwz" firstAttribute="leading" secondItem="bZ1-Bk-8jQ" secondAttribute="leading" id="eeT-jv-Dzn"/>
                             <constraint firstItem="IE8-WH-taT" firstAttribute="trailing" secondItem="7kF-1D-mwz" secondAttribute="trailing" id="fdg-5Q-VXy"/>
-                            <constraint firstItem="9Eg-jd-6dF" firstAttribute="centerY" secondItem="lLQ-NU-d6s" secondAttribute="centerY" id="fq8-Tk-a6c"/>
+                            <constraint firstItem="9Eg-jd-6dF" firstAttribute="centerY" secondItem="lLQ-NU-d6s" secondAttribute="centerY" constant="-5" id="fq8-Tk-a6c"/>
                             <constraint firstItem="bZ1-Bk-8jQ" firstAttribute="height" secondItem="5Up-oy-cnJ" secondAttribute="height" multiplier="0.66" id="nsT-h6-DNi"/>
                             <constraint firstItem="lLQ-NU-d6s" firstAttribute="centerY" secondItem="5Up-oy-cnJ" secondAttribute="centerY" multiplier="1.68" id="yzu-9X-Db7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IE8-WH-taT"/>
                     </view>
+                    <connections>
+                        <outlet property="singalongImageView" destination="bZ1-Bk-8jQ" id="Y03-0J-Uy2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="keJ-G5-IVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1483" y="-801"/>
+            <point key="canvasLocation" x="1443" y="-1171"/>
         </scene>
-        <!--View Controller-->
+        <!--Page Three View Controller-->
         <scene sceneID="vjM-ka-pWb">
             <objects>
-                <viewController storyboardIdentifier="onBoarding4" id="Gsj-wY-0qf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onBoarding4" id="Gsj-wY-0qf" customClass="PageThreeViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yfp-nQ-7k8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -427,7 +434,7 @@
                                 <rect key="frame" x="31" y="152.5" width="352" height="591"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text balloon" translatesAutoresizingMaskIntoConstraints="NO" id="NDR-T1-zLe">
-                                <rect key="frame" x="40" y="744.5" width="334" height="16"/>
+                                <rect key="frame" x="40" y="586.5" width="334" height="332"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="CEq-nJ-WTo">
                                 <rect key="frame" x="244" y="712.5" width="150" height="150"/>
@@ -437,13 +444,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="check your children's singing  progress" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZZ-Q9-cV0" userLabel="label">
-                                <rect key="frame" x="60" y="732.5" width="314" height="40"/>
+                                <rect key="frame" x="60" y="730.5" width="314" height="34"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="progress" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCW-UT-iVn">
-                                <rect key="frame" x="31" y="84" width="383" height="56"/>
+                                <rect key="frame" x="31" y="88" width="383" height="48"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -457,7 +464,7 @@
                             <constraint firstItem="69u-HB-hyh" firstAttribute="centerY" secondItem="Yfp-nQ-7k8" secondAttribute="centerY" id="8sm-05-2rD"/>
                             <constraint firstItem="69u-HB-hyh" firstAttribute="centerX" secondItem="Yfp-nQ-7k8" secondAttribute="centerX" id="Bl9-78-ASo"/>
                             <constraint firstAttribute="trailing" secondItem="NDR-T1-zLe" secondAttribute="trailing" constant="40" id="J37-n1-zre"/>
-                            <constraint firstItem="EZZ-Q9-cV0" firstAttribute="centerY" secondItem="NDR-T1-zLe" secondAttribute="centerY" id="PNT-k6-0va"/>
+                            <constraint firstItem="EZZ-Q9-cV0" firstAttribute="centerY" secondItem="NDR-T1-zLe" secondAttribute="centerY" constant="-5" id="PNT-k6-0va"/>
                             <constraint firstItem="83s-gL-VZO" firstAttribute="trailing" secondItem="eCW-UT-iVn" secondAttribute="trailing" id="bL2-qC-bL4"/>
                             <constraint firstItem="EZZ-Q9-cV0" firstAttribute="leading" secondItem="NDR-T1-zLe" secondAttribute="leading" multiplier="1.5" id="bPK-q3-08B"/>
                             <constraint firstItem="69u-HB-hyh" firstAttribute="width" secondItem="Yfp-nQ-7k8" secondAttribute="width" multiplier="0.85" id="dwE-Ws-BTO"/>
@@ -470,10 +477,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="83s-gL-VZO"/>
                     </view>
+                    <connections>
+                        <outlet property="yourProgressImageView" destination="69u-HB-hyh" id="IW5-5U-j7e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7f-I0-3TY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2090" y="-1004"/>
+            <point key="canvasLocation" x="2080" y="-1171"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="sJI-cY-owz">
@@ -487,7 +497,7 @@
                                 <rect key="frame" x="31" y="152.5" width="352" height="591"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text balloon" translatesAutoresizingMaskIntoConstraints="NO" id="Cm4-Ks-mee">
-                                <rect key="frame" x="40" y="744.5" width="334" height="16"/>
+                                <rect key="frame" x="40" y="586.5" width="334" height="332"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mascot" translatesAutoresizingMaskIntoConstraints="NO" id="KFq-wB-skN">
                                 <rect key="frame" x="244" y="712.5" width="150" height="150"/>
@@ -497,13 +507,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="are you ready? LET'S PLAY!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdw-4g-79F" userLabel="label">
-                                <rect key="frame" x="60" y="742.5" width="314" height="20"/>
+                                <rect key="frame" x="60" y="744" width="314" height="17"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="progress" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlT-pB-YfR">
-                                <rect key="frame" x="31" y="84" width="383" height="56"/>
+                                <rect key="frame" x="31" y="88" width="383" height="48"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="48"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -550,19 +560,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hit berapa " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk7-Vq-H5e">
-                                <rect key="frame" x="159" y="460.5" width="96" height="23.5"/>
+                                <rect key="frame" x="157.5" y="458" width="99.5" height="20"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="miss berapa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDY-SB-LER">
-                                <rect key="frame" x="152" y="504" width="110" height="23.5"/>
+                                <rect key="frame" x="150" y="498" width="114" height="20"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="congratulations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivB-P0-lyv">
-                                <rect key="frame" x="103.5" y="385.5" width="207.5" height="35"/>
+                                <rect key="frame" x="96" y="388" width="222" height="30"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="30"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -596,7 +606,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placeholder text placeholder text placeholder text " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-Td-FIM">
-                                <rect key="frame" x="51" y="769" width="253.5" height="40"/>
+                                <rect key="frame" x="51" y="769" width="253.5" height="34"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -634,18 +644,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCa-vV-CZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1304.3478260869567" y="-913.39285714285711"/>
+            <point key="canvasLocation" x="-1397" y="-1171"/>
         </scene>
-        <!--View Controller-->
+        <!--Your Progress View Controller-->
+        <scene sceneID="6Qu-hf-SAi">
+            <objects>
+                <viewController storyboardIdentifier="progress" id="aHM-xP-UaZ" userLabel="Your Progress View Controller" customClass="YourProgressViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CjO-ZI-XOv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ske-yL-HvR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d1J-Wy-v7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1397" y="-414"/>
+        </scene>
+        <!--Before Menu View Controller-->
         <scene sceneID="u82-ef-QBD">
             <objects>
-                <viewController storyboardIdentifier="onBoarding5" id="o1D-sL-lk0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onBoarding5" id="o1D-sL-lk0" customClass="BeforeMenuViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ke0-dj-USk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="anore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="are-2h-ZLU">
-                                <rect key="frame" x="20" y="513.5" width="374" height="75"/>
+                                <rect key="frame" x="20" y="513.5" width="374" height="64"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="64"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -657,7 +682,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="are you ready? let's play!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QV0-JH-pft">
-                                <rect key="frame" x="20" y="598.5" width="374" height="50"/>
+                                <rect key="frame" x="20" y="587.5" width="374" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="6Lm-lP-Pl9"/>
                                 </constraints>
@@ -672,6 +697,9 @@
                                     <constraint firstAttribute="height" constant="75" id="sba-v8-89a"/>
                                 </constraints>
                                 <state key="normal" image="homeButton"/>
+                                <connections>
+                                    <action selector="home:" destination="o1D-sL-lk0" eventType="touchUpInside" id="cdM-Zg-tt7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99607843139999996" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -694,7 +722,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOj-wa-Izf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2870" y="-1055"/>
+            <point key="canvasLocation" x="2725" y="-1171"/>
         </scene>
     </scenes>
     <resources>
@@ -705,6 +733,11 @@
         <image name="pauseButton" width="720" height="720"/>
         <image name="resumeButton" width="720" height="720"/>
         <image name="retryButton" width="720" height="720"/>
+        <image name="sing-1" width="828" height="1792"/>
         <image name="text balloon" width="1348" height="332"/>
+        <image name="warmup-1" width="828" height="1792"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KM4-lD-jgE"/>
+    </inferredMetricsTieBreakers>
 </document>

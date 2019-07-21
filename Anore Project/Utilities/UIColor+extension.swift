@@ -27,5 +27,6 @@ extension UIColor {
     static let color12 = UIColor(r: 186, g: 197, b: 252)
     static let textColor = UIColor(r: 142, g: 142, b: 147)
     static let backgroundColor = UIColor(r: 255, g: 254, b: 212)
+    static let greenColor = UIColor(r: 177, g: 232, b: 148)
     
 }

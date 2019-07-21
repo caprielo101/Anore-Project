@@ -22,6 +22,15 @@
 		138CEBC322E3898D006C9296 /* SongFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBC222E3898D006C9296 /* SongFour.swift */; };
 		138CEBC522E38C6E006C9296 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBC422E38C6E006C9296 /* CircleView.swift */; };
 		138CEBC722E39F3A006C9296 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBC622E39F3A006C9296 /* CoreDataHelper.swift */; };
+		138CEBC922E4541C006C9296 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBC822E4541C006C9296 /* Score.swift */; };
+		138CEBCB22E45AD0006C9296 /* OdeToJoy.wav in Resources */ = {isa = PBXBuildFile; fileRef = 138CEBCA22E45AD0006C9296 /* OdeToJoy.wav */; };
+		138CEBCD22E46282006C9296 /* BeforeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBCC22E46282006C9296 /* BeforeMenuViewController.swift */; };
+		138CEBCF22E4642F006C9296 /* PageOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBCE22E4642F006C9296 /* PageOneViewController.swift */; };
+		138CEBD422E464BE006C9296 /* PageTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBD322E464BE006C9296 /* PageTwoViewController.swift */; };
+		138CEBD622E464C7006C9296 /* PageThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBD522E464C7006C9296 /* PageThreeViewController.swift */; };
+		138CEBD822E4682E006C9296 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBD722E4682E006C9296 /* Keys.swift */; };
+		138CEBDA22E46FC0006C9296 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBD922E46FC0006C9296 /* UIViewController+extension.swift */; };
+		138CEBDC22E497AB006C9296 /* YourProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138CEBDB22E497AB006C9296 /* YourProgressViewController.swift */; };
 		13D900C722E00AA100AA6C74 /* AudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900C622E00AA100AA6C74 /* AudioHelper.swift */; };
 		13D900C922E01EB400AA6C74 /* Ninabobo.wav in Resources */ = {isa = PBXBuildFile; fileRef = 13D900C822E01EB400AA6C74 /* Ninabobo.wav */; };
 		13D900CD22E02EEB00AA6C74 /* Song0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D900CC22E02EEB00AA6C74 /* Song0.swift */; };
@@ -74,6 +83,15 @@
 		138CEBC222E3898D006C9296 /* SongFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFour.swift; sourceTree = "<group>"; };
 		138CEBC422E38C6E006C9296 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		138CEBC622E39F3A006C9296 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		138CEBC822E4541C006C9296 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		138CEBCA22E45AD0006C9296 /* OdeToJoy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = OdeToJoy.wav; sourceTree = "<group>"; };
+		138CEBCC22E46282006C9296 /* BeforeMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeMenuViewController.swift; sourceTree = "<group>"; };
+		138CEBCE22E4642F006C9296 /* PageOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOneViewController.swift; sourceTree = "<group>"; };
+		138CEBD322E464BE006C9296 /* PageTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTwoViewController.swift; sourceTree = "<group>"; };
+		138CEBD522E464C7006C9296 /* PageThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageThreeViewController.swift; sourceTree = "<group>"; };
+		138CEBD722E4682E006C9296 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		138CEBD922E46FC0006C9296 /* UIViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
+		138CEBDB22E497AB006C9296 /* YourProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourProgressViewController.swift; sourceTree = "<group>"; };
 		13D900C622E00AA100AA6C74 /* AudioHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHelper.swift; sourceTree = "<group>"; };
 		13D900C822E01EB400AA6C74 /* Ninabobo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ninabobo.wav; sourceTree = "<group>"; };
 		13D900CC22E02EEB00AA6C74 /* Song0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song0.swift; sourceTree = "<group>"; };
@@ -147,13 +165,11 @@
 				13D900D422E0396800AA6C74 /* Songs */,
 				13EE142222E0B61000709CDE /* Utilities */,
 				138262E322D44E8B006E5B73 /* AppDelegate.swift */,
-				13D900D722E0613D00AA6C74 /* PageViewController.swift */,
-				138262E522D44E8B006E5B73 /* ViewController.swift */,
-				13EE142922E165BA00709CDE /* MenuViewController.swift */,
-				13EE143722E1881B00709CDE /* SongSelection.swift */,
-				13EE142B22E184D100709CDE /* SongSelectionCell.swift */,
 				138262E722D44E8B006E5B73 /* Main.storyboard */,
-				13EE142522E1575700709CDE /* ScoreViewController.swift */,
+				138CEBDB22E497AB006C9296 /* YourProgressViewController.swift */,
+				138CEBD022E46457006C9296 /* Onboarding */,
+				138CEBD122E4646F006C9296 /* Gameplay */,
+				138CEBD222E4647E006C9296 /* Menu */,
 				138262ED22D44E8C006E5B73 /* Assets.xcassets */,
 				138262EF22D44E8C006E5B73 /* LaunchScreen.storyboard */,
 				138262F222D44E8C006E5B73 /* Info.plist */,
@@ -173,9 +189,41 @@
 			path = Garbage;
 			sourceTree = "<group>";
 		};
+		138CEBD022E46457006C9296 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				13D900D722E0613D00AA6C74 /* PageViewController.swift */,
+				138CEBCE22E4642F006C9296 /* PageOneViewController.swift */,
+				138CEBD322E464BE006C9296 /* PageTwoViewController.swift */,
+				138CEBD522E464C7006C9296 /* PageThreeViewController.swift */,
+				138CEBCC22E46282006C9296 /* BeforeMenuViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		138CEBD122E4646F006C9296 /* Gameplay */ = {
+			isa = PBXGroup;
+			children = (
+				13EE142522E1575700709CDE /* ScoreViewController.swift */,
+				138262E522D44E8B006E5B73 /* ViewController.swift */,
+			);
+			path = Gameplay;
+			sourceTree = "<group>";
+		};
+		138CEBD222E4647E006C9296 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				13EE142922E165BA00709CDE /* MenuViewController.swift */,
+				13EE143722E1881B00709CDE /* SongSelection.swift */,
+				13EE142B22E184D100709CDE /* SongSelectionCell.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		13D900CA22E0221400AA6C74 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				138CEBCA22E45AD0006C9296 /* OdeToJoy.wav */,
 				138CEBBD22E344FD006C9296 /* balonku-60.wav */,
 				13E4E62C22E1C08200B63F95 /* IntervalNotes.wav */,
 				13EE143522E1868100709CDE /* Balonku.wav */,
@@ -228,8 +276,11 @@
 				13D900C622E00AA100AA6C74 /* AudioHelper.swift */,
 				1357DB6122D46249008B163D /* Note.swift */,
 				1349095B22DEEAA700A3908C /* MusicConstants.swift */,
+				138CEBD722E4682E006C9296 /* Keys.swift */,
 				138CEBC022E379B9006C9296 /* Int+extension.swift */,
 				138CEBC622E39F3A006C9296 /* CoreDataHelper.swift */,
+				138CEBC822E4541C006C9296 /* Score.swift */,
+				138CEBD922E46FC0006C9296 /* UIViewController+extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -324,6 +375,7 @@
 				13EE143022E1866C00709CDE /* AscendingNotes.wav in Resources */,
 				138262EE22D44E8C006E5B73 /* Assets.xcassets in Resources */,
 				138CEBBE22E344FD006C9296 /* balonku-60.wav in Resources */,
+				138CEBCB22E45AD0006C9296 /* OdeToJoy.wav in Resources */,
 				138262E922D44E8B006E5B73 /* Main.storyboard in Resources */,
 				13EE143622E1868100709CDE /* Balonku.wav in Resources */,
 			);
@@ -363,28 +415,35 @@
 			files = (
 				13EE143A22E191F700709CDE /* Songs.swift in Sources */,
 				138CEBC122E379B9006C9296 /* Int+extension.swift in Sources */,
+				138CEBDA22E46FC0006C9296 /* UIViewController+extension.swift in Sources */,
 				138262EC22D44E8B006E5B73 /* Anore_Project.xcdatamodeld in Sources */,
 				1357DB6422D46290008B163D /* NoteView.swift in Sources */,
 				13E4E61F22E1B25000B63F95 /* SongTwo.swift in Sources */,
 				13EE142E22E1852200709CDE /* Song1.swift in Sources */,
 				13E4E62322E1BD0D00B63F95 /* WarmUp1.swift in Sources */,
 				13E4E62F22E1C09900B63F95 /* WarmUp3.swift in Sources */,
+				138CEBCF22E4642F006C9296 /* PageOneViewController.swift in Sources */,
 				13EE143C22E1996000709CDE /* AllSongs.swift in Sources */,
 				1349095C22DEEAA700A3908C /* MusicConstants.swift in Sources */,
 				138CEBC722E39F3A006C9296 /* CoreDataHelper.swift in Sources */,
+				138CEBDC22E497AB006C9296 /* YourProgressViewController.swift in Sources */,
 				13D900D822E0613D00AA6C74 /* PageViewController.swift in Sources */,
 				13D900C722E00AA100AA6C74 /* AudioHelper.swift in Sources */,
+				138CEBD822E4682E006C9296 /* Keys.swift in Sources */,
 				13F04D8A22DD6995009915CF /* LineView.swift in Sources */,
 				13EE143E22E19B4100709CDE /* SongOne.swift in Sources */,
 				13E4E62522E1BD1E00B63F95 /* WarmUp2.swift in Sources */,
 				13D900D122E038D300AA6C74 /* Song.swift in Sources */,
+				138CEBCD22E46282006C9296 /* BeforeMenuViewController.swift in Sources */,
 				13E4E63322E1C7A600B63F95 /* IntervalNotes.swift in Sources */,
+				138CEBD622E464C7006C9296 /* PageThreeViewController.swift in Sources */,
 				13EE142A22E165BA00709CDE /* MenuViewController.swift in Sources */,
 				13E4E62922E1BD6300B63F95 /* SongThree.swift in Sources */,
 				13E4E62B22E1BF2000B63F95 /* AscendingNotes.swift in Sources */,
 				13EE142622E1575700709CDE /* ScoreViewController.swift in Sources */,
 				13EE142822E159D600709CDE /* Song3.swift in Sources */,
 				13D900CD22E02EEB00AA6C74 /* Song0.swift in Sources */,
+				138CEBD422E464BE006C9296 /* PageTwoViewController.swift in Sources */,
 				138CEBC322E3898D006C9296 /* SongFour.swift in Sources */,
 				138262E622D44E8B006E5B73 /* ViewController.swift in Sources */,
 				13E4E62722E1BD2B00B63F95 /* Song2.swift in Sources */,
@@ -395,6 +454,7 @@
 				138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */,
 				13E4E63122E1C16D00B63F95 /* DescendingNotes.swift in Sources */,
 				1357DB6222D46249008B163D /* Note.swift in Sources */,
+				138CEBC922E4541C006C9296 /* Score.swift in Sources */,
 				1349095E22DF0C5700A3908C /* UIColor+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

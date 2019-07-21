@@ -16,6 +16,7 @@ class SongFour: AllSongs {
     override init(name: String, maxFreq: Float, minFreq: Float, noteNumber: Int) {
         super.init(name: name, maxFreq: maxFreq, minFreq: minFreq, noteNumber: noteNumber)
         self.bpm = 120
+        self.crochet = 60/self.bpm
         createCharts()
     }
     
@@ -77,7 +78,9 @@ class SongFour: AllSongs {
         notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 2, octave: 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
         //13
         notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 0, octave: 3), pitch: "C", distance: 0, isHit: false), duration: crochet))
-        notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 2, octave: 3), pitch: "D", distance: noteLength/2, isHit: false), duration: crochet*2))
+        notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 2, octave: 3), pitch: "D", distance: 0, isHit: false), duration: crochet))
+        //SOLLL
+        notes.append(NoteView(note: Note(octave: 2, frequency: freq(index: 7, octave: 2), pitch: "G", distance: 0, isHit: false), duration: crochet*2))
         //14
         notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 4, octave: 3), pitch: "E", distance: 0, isHit: false), duration: crochet))
         notes.append(NoteView(note: Note(octave: 3, frequency: freq(index: 4, octave: 3), pitch: "E", distance: 0, isHit: false), duration: crochet))

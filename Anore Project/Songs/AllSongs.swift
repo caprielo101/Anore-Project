@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AllSongs {
     var bpm: Float
@@ -19,7 +20,7 @@ class AllSongs {
     
     var notes: [NoteView]
     var noteNumber: Int
-    var bestScore: Float
+    var bestScore: CGFloat
     
     init(name: String, maxFreq: Float, minFreq: Float, noteNumber: Int) {
         self.songName = name
