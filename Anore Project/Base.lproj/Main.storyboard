@@ -646,6 +646,21 @@
             </objects>
             <point key="canvasLocation" x="-1397" y="-1171"/>
         </scene>
+        <!--Your Progress View Controller-->
+        <scene sceneID="6Qu-hf-SAi">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d1J-Wy-v7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="progress" id="aHM-xP-UaZ" userLabel="Your Progress View Controller" customClass="YourProgressViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CjO-ZI-XOv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ske-yL-HvR"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-2078" y="-485"/>
+        </scene>
         <!--Before Menu View Controller-->
         <scene sceneID="u82-ef-QBD">
             <objects>
