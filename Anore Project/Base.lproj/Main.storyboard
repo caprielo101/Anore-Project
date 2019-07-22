@@ -554,7 +554,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Balon Teks" translatesAutoresizingMaskIntoConstraints="NO" id="3ny-p2-H4m">
-                                <rect key="frame" x="31" y="749" width="352" height="160"/>
+                                <rect key="frame" x="31" y="726.5" width="352" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3ny-p2-H4m" secondAttribute="height" multiplier="11:5" id="qBi-G1-ylS"/>
                                 </constraints>
@@ -606,7 +606,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placeholder text placeholder text placeholder text " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-Td-FIM">
-                                <rect key="frame" x="51" y="769" width="253.5" height="34"/>
+                                <rect key="frame" x="51" y="746.5" width="253.5" height="34"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -615,7 +615,7 @@
                         <color key="backgroundColor" red="1" green="0.99607843139999996" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ivB-P0-lyv" firstAttribute="centerY" secondItem="fKs-iq-fYI" secondAttribute="centerY" multiplier="0.9" id="0Qv-zr-MOz"/>
-                            <constraint firstItem="3ny-p2-H4m" firstAttribute="centerY" secondItem="fKs-iq-fYI" secondAttribute="centerY" multiplier="1.85" id="0YW-To-Llm"/>
+                            <constraint firstItem="3ny-p2-H4m" firstAttribute="centerY" secondItem="fKs-iq-fYI" secondAttribute="centerY" multiplier="1.8" id="0YW-To-Llm"/>
                             <constraint firstItem="CtH-69-HpS" firstAttribute="width" secondItem="fKs-iq-fYI" secondAttribute="width" multiplier="0.5" id="0hG-DG-PgJ"/>
                             <constraint firstItem="ivB-P0-lyv" firstAttribute="centerX" secondItem="fKs-iq-fYI" secondAttribute="centerX" id="Cus-6y-7jV"/>
                             <constraint firstItem="3ny-p2-H4m" firstAttribute="centerX" secondItem="fKs-iq-fYI" secondAttribute="centerX" id="IoG-R3-AJo"/>
@@ -649,7 +649,6 @@
         <!--Your Progress View Controller-->
         <scene sceneID="6Qu-hf-SAi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d1J-Wy-v7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="progress" id="aHM-xP-UaZ" userLabel="Your Progress View Controller" customClass="YourProgressViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CjO-ZI-XOv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -658,6 +657,7 @@
                         <viewLayoutGuide key="safeArea" id="Ske-yL-HvR"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d1J-Wy-v7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2078" y="-485"/>
         </scene>
@@ -691,7 +691,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bq5-z2-Dy0">
-                                <rect key="frame" x="169.5" y="679.5" width="75" height="75"/>
+                                <rect key="frame" x="169.5" y="677.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="Qbk-b3-K0A"/>
                                     <constraint firstAttribute="height" constant="75" id="sba-v8-89a"/>
@@ -712,10 +712,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Ekh-lz-8lT" secondAttribute="trailing" id="Spf-Fw-3l5"/>
                             <constraint firstItem="Ekh-lz-8lT" firstAttribute="centerY" secondItem="ke0-dj-USk" secondAttribute="centerY" multiplier="0.8" id="V1U-Ks-LdS"/>
                             <constraint firstItem="QV0-JH-pft" firstAttribute="leading" secondItem="dck-Rz-jJu" secondAttribute="leading" constant="20" id="eBQ-iy-Mru"/>
-                            <constraint firstItem="Bq5-z2-Dy0" firstAttribute="centerY" secondItem="ke0-dj-USk" secondAttribute="centerY" multiplier="1.6" id="gzE-sa-uxL"/>
                             <constraint firstItem="Ekh-lz-8lT" firstAttribute="leading" secondItem="ke0-dj-USk" secondAttribute="leadingMargin" id="hDw-68-CdQ"/>
                             <constraint firstItem="dck-Rz-jJu" firstAttribute="trailing" secondItem="are-2h-ZLU" secondAttribute="trailing" constant="20" id="oTS-wf-ORX"/>
                             <constraint firstItem="are-2h-ZLU" firstAttribute="leading" secondItem="dck-Rz-jJu" secondAttribute="leading" constant="20" id="sxT-YI-cvr"/>
+                            <constraint firstItem="Bq5-z2-Dy0" firstAttribute="top" secondItem="QV0-JH-pft" secondAttribute="bottom" constant="40" id="wBa-99-tBl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dck-Rz-jJu"/>
                     </view>
