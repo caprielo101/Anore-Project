@@ -20,8 +20,29 @@ class NoteView: UIView {
         
         self.note = note
         self.duration = duration
-
+        
+        createCenterLabel(note)
+        
         backgroundColor = giveColor()
+    }
+
+    fileprivate func createCenterLabel(_ note: Note) {
+        let label = UILabel()
+        addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = note.pitch
+        label.textColor = .textColor //warnanya jelek
+//        label.font = UIFont(name: "Young", size: 24)
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.textAlignment = .center
+        //        label.adjustsFontSizeToFitWidth = true
+        
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            //            label.heightAnchor.constraint(equalTo: heightAnchor),
+            //            label.widthAnchor.constraint(equalTo: label.heightAnchor)
+            ])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,25 +56,25 @@ class NoteView: UIView {
         switch note.pitch {
         case "C":
             return UIColor.color1
-        case "CS":
+        case "C#","D♭":
             return UIColor.color2
         case "D":
             return UIColor.color3
-        case "DS":
+        case "D#","E♭":
             return UIColor.color4
         case "E":
             return UIColor.color5
         case "F":
             return UIColor.color6
-        case "FS":
+        case "F#","G♭":
             return UIColor.color7
         case "G":
             return UIColor.color8
-        case "GS":
+        case "G#","A♭":
             return UIColor.color9
         case "A":
             return UIColor.color10
-        case "AS":
+        case "A#","B♭":
             return UIColor.color11
         case "B":
             return UIColor.color12

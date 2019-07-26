@@ -188,6 +188,7 @@
 		138CEBBF22E37557006C9296 /* Garbage */ = {
 			isa = PBXGroup;
 			children = (
+				13D900D022E038D300AA6C74 /* Song.swift */,
 				138CEBC622E39F3A006C9296 /* CoreDataHelper.swift */,
 				13D900CC22E02EEB00AA6C74 /* Song0.swift */,
 				13EE142D22E1852200709CDE /* Song1.swift */,
@@ -262,7 +263,6 @@
 		13D900D422E0396800AA6C74 /* Songs */ = {
 			isa = PBXGroup;
 			children = (
-				13D900D022E038D300AA6C74 /* Song.swift */,
 				13EE143B22E1996000709CDE /* AllSongs.swift */,
 				13EE143D22E19B4100709CDE /* SongOne.swift */,
 				13E4E61E22E1B25000B63F95 /* SongTwo.swift */,
