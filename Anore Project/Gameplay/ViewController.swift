@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         updateUITimer.invalidate()
         AudioHelper.shared.stopAudio()
         do {
-            try AudioKit.stop()
+            try AKManager.stop()
         } catch {
             AKLog("error")
         }
@@ -125,7 +125,7 @@ class ViewController: UIViewController {
             updateUITimer.invalidate()
             AudioHelper.shared.stopAudio()
             do {
-                try AudioKit.stop()
+                try AKManager.stop()
             } catch {
                 AKLog("error")
             }
@@ -147,7 +147,7 @@ class ViewController: UIViewController {
             updateUITimer.invalidate()
             AudioHelper.shared.stopAudio()
             do {
-                try AudioKit.stop()
+                try AKManager.stop()
             } catch {
                 AKLog("error")
             }
@@ -310,8 +310,8 @@ class ViewController: UIViewController {
     
     fileprivate func setupAudioKitAudioSession() {
         do {
-            AudioKit.output = silence
-            try AudioKit.start()
+            AKManager.output = silence
+            try AKManager.start()
             AudioHelper.shared.configureAudioSession()
             switch song.songName {
             case "nina bobo":
@@ -578,7 +578,7 @@ class ViewController: UIViewController {
             print("True \(score), False \(notes.count-score), \(notes.count)")
             print("End of Game")
             do {
-                try AudioKit.stop()
+                try AKManager.stop()
             } catch {
                 print("Error")
             }

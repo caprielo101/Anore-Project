@@ -34,8 +34,6 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
 //    UserDefaults.standard.float(forKey: "warmup6")]
     //    var indexPath: IndexPath?
     
-//    private let refreshControl = UIRefreshControl()
-
     @objc private func handlePrev() {
         let nextIndex = max(pageControl.currentPage - 1, 0)
         let indexPath = IndexPath(item: nextIndex, section: 0)

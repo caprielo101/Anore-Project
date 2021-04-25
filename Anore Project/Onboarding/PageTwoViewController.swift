@@ -31,7 +31,6 @@ class PageTwoViewController: UIViewController {
         animate(imageView: singalongImageView, images: singalongImages, duration: 7)
     }
     
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         singalongImageView.stopAnimating()

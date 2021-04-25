@@ -14,9 +14,7 @@ class BeforeMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-    
     
     @IBAction func home(_ sender: UIButton) {
         isLoggedIn = true

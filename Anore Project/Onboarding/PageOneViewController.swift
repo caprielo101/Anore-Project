@@ -28,7 +28,6 @@ class PageOneViewController: UIViewController {
         super.viewWillAppear(animated)
         
         animate(imageView: warmUpImageView, images: warmUpImages, duration: 5)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -12,8 +12,6 @@ class NoteView: UIView {
         
     var note: Note!
     var duration: Float = 0  //miliseconds
-//    var tempProgress: Float = 0
-//    var timer: Timer!
     
     init(note: Note, duration: Float) {
         super.init(frame: CGRect.zero)
@@ -35,13 +33,10 @@ class NoteView: UIView {
 //        label.font = UIFont(name: "Young", size: 24)
         label.font = UIFont.systemFont(ofSize: 24)
         label.textAlignment = .center
-        //        label.adjustsFontSizeToFitWidth = true
         
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: centerYAnchor),
-            //            label.heightAnchor.constraint(equalTo: heightAnchor),
-            //            label.widthAnchor.constraint(equalTo: label.heightAnchor)
+            label.centerYAnchor.constraint(equalTo: centerYAnchor)
             ])
     }
     
@@ -56,25 +51,25 @@ class NoteView: UIView {
         switch note.pitch {
         case "C":
             return UIColor.color1
-        case "C#","D♭":
+        case "C♯","D♭":
             return UIColor.color2
         case "D":
             return UIColor.color3
-        case "D#","E♭":
+        case "D♯","E♭":
             return UIColor.color4
         case "E":
             return UIColor.color5
         case "F":
             return UIColor.color6
-        case "F#","G♭":
+        case "F♯","G♭":
             return UIColor.color7
         case "G":
             return UIColor.color8
-        case "G#","A♭":
+        case "G♯","A♭":
             return UIColor.color9
         case "A":
             return UIColor.color10
-        case "A#","B♭":
+        case "A♯","B♭":
             return UIColor.color11
         case "B":
             return UIColor.color12
@@ -82,16 +77,4 @@ class NoteView: UIView {
             return UIColor.clear
         }
     }
-    
-//    func startTimer() {
-//        timer = Timer.scheduledTimer(timeInterval: TimeInterval(duration/1000), target: self, selector: #selector(stopTimer), userInfo: nil, repeats: true)
-//    }
-//
-//    @objc func stopTimer() {
-//        if let timer = timer {
-//            if timer.timeInterval == Double(duration/1000) {
-//                timer.invalidate()
-//            }
-//        }
-//    }
 }

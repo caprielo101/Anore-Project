@@ -17,8 +17,6 @@ extension UIViewController {
             let image = UIImage(named: imageName)!
             imageArray.append(image)
         }
-        
-        
         return imageArray
     }
     
