@@ -138,11 +138,11 @@ class SongSelectionCell: UICollectionViewCell {
         playButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         playButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
         
-        addSubview(histogramButton)
-        histogramButton.addTarget(self, action: #selector(handleHistogram), for: .touchUpInside)
-        histogramButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-        histogramButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 40).isActive = true
-        histogramButton.heightAnchor.constraint(equalTo: playButton.heightAnchor, multiplier: 0.6).isActive = true
-        histogramButton.widthAnchor.constraint(equalTo: playButton.widthAnchor, multiplier: 0.6).isActive = true
+//        addSubview(histogramButton)
+//        histogramButton.addTarget(self, action: #selector(handleHistogram), for: .touchUpInside)
+//        histogramButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+//        histogramButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 40).isActive = true
+//        histogramButton.heightAnchor.constraint(equalTo: playButton.heightAnchor, multiplier: 0.6).isActive = true
+//        histogramButton.widthAnchor.constraint(equalTo: playButton.widthAnchor, multiplier: 0.6).isActive = true
     }
 }

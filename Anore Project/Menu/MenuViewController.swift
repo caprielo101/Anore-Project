@@ -155,6 +155,7 @@ extension MenuViewController: SongSelectionCellDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextVc = storyboard.instantiateViewController(withIdentifier: "gameplay") as! ViewController
         nextVc.song = song
+        nextVc.modalPresentationStyle = .fullScreen
         print(nextVc.song, song)
         present(nextVc, animated: true, completion: nil)
     }
@@ -165,6 +166,7 @@ extension MenuViewController: SongSelectionCellDelegate {
 //        self.present(alert, animated: true, completion: nil)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextVc = storyboard.instantiateViewController(withIdentifier: "progress") as! YourProgressViewController
+        nextVc.modalPresentationStyle = .fullScreen
         present(nextVc, animated: true, completion: nil)
     }
 }

@@ -156,6 +156,7 @@ class ViewController: UIViewController {
             layout.scrollDirection = .horizontal
             let nextVc = MenuViewController(collectionViewLayout: layout)
             nextVc.modalTransitionStyle = .crossDissolve
+            nextVc.modalPresentationStyle = .fullScreen
             present(nextVc, animated: true, completion: nil)
             
             print(sender.tag)
@@ -376,6 +377,8 @@ class ViewController: UIViewController {
             note.heightAnchor.constraint(equalToConstant: self.height/CGFloat((noteNumber-1))*0.8).isActive = true
             note.leadingAnchor.constraint(equalTo: previousLeading, constant: CGFloat(previousDistance)).isActive = true
             note.centerYAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -(CGFloat(getCentsInterval(voiceFrequency: Double(note.note?.frequency ?? 0), minFrequency, maxFrequency))*height)).isActive = true
+//            note.centerYAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -0).isActive = true
+
             note.translatesAutoresizingMaskIntoConstraints = false
             
         }
@@ -397,9 +400,11 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activate([
                 lineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
                 lineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-                lineView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: CGFloat(i)*yVall),
+//                lineView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: CGFloat(i)*yVall),
                 //                lineView.bottomAnchor.constraint(equalTo: BaseView.bottomAnchor, constant: -(yVall)),
-                lineView.heightAnchor.constraint(equalToConstant: 1)
+                lineView.heightAnchor.constraint(equalToConstant: 1),
+                lineView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -CGFloat(i)*yVall)
+                //this is kinda making the note fall in place with the horizontal line view
                 ])
             //            yVal += CGFloat(BaseView.frame.height/noteNumber)
             //            yVall += BaseView.frame.height/CGFloat(noteNumber-1)
@@ -592,6 +597,7 @@ class ViewController: UIViewController {
             nextVc.missNotes = notes.count - score
             nextVc.song = song
             nextVc.accuracy = CGFloat(score)/CGFloat(notes.count)
+            nextVc.modalPresentationStyle = .fullScreen
             present(nextVc, animated: true, completion: nil)
         }
     }

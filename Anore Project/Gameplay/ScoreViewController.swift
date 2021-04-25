@@ -106,6 +106,7 @@ class ScoreViewController: UIViewController {
             missLabel.text = "you didn't miss a note!"
         }
         
+        congratsLabel.textColor = .textColor
         congratsLabel.text = giveMessage(if: accuracy)
 
         debugPrint(hitNotes, missNotes, totalNotes, accuracy)
@@ -197,6 +198,7 @@ class ScoreViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let retryVc = storyboard.instantiateViewController(withIdentifier: "gameplay") as! ViewController
         retryVc.song = song
+        retryVc.modalPresentationStyle = .fullScreen
         present(retryVc, animated: true, completion: nil)
     }
     
@@ -204,6 +206,8 @@ class ScoreViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let nextVc = MenuViewController(collectionViewLayout: layout)
+        nextVc.modalPresentationStyle = .fullScreen
+        nextVc.modalTransitionStyle = .crossDissolve
         present(nextVc, animated: true, completion: nil)
     }
     

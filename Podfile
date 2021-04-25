@@ -6,5 +6,6 @@ target 'Anore Project' do
   use_frameworks!
 
   # Pods for Anore Project
-pod 'AudioKit'
+  pod 'AudioKit'
+
 end
