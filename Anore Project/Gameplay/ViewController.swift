@@ -376,7 +376,8 @@ class ViewController: UIViewController {
             note.widthAnchor.constraint(equalToConstant: CGFloat(note.duration*noteLength)).isActive = true
             note.heightAnchor.constraint(equalToConstant: self.height/CGFloat((noteNumber-1))*0.8).isActive = true
             note.leadingAnchor.constraint(equalTo: previousLeading, constant: CGFloat(previousDistance)).isActive = true
-            note.centerYAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -(CGFloat(getCentsInterval(voiceFrequency: Double(note.note?.frequency ?? 0), minFrequency, maxFrequency))*height)).isActive = true
+//            note.centerYAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -(CGFloat(getCentsInterval(voiceFrequency: Double(note.note?.frequency ?? 0), minFrequency, maxFrequency))*height)).isActive = true
+            note.centerYAnchor.constraint(equalTo: baseView.topAnchor, constant: CGFloat(getCentsInterval(voiceFrequency: Double(note.note?.frequency ?? 0), maxFrequency, minFrequency))*height).isActive = true
 //            note.centerYAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -0).isActive = true
 
             note.translatesAutoresizingMaskIntoConstraints = false
@@ -400,10 +401,10 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activate([
                 lineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
                 lineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-//                lineView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: CGFloat(i)*yVall),
-                //                lineView.bottomAnchor.constraint(equalTo: BaseView.bottomAnchor, constant: -(yVall)),
+                lineView.topAnchor.constraint(equalTo: baseView.topAnchor, constant: CGFloat(i)*yVall),
+//                                lineView.bottomAnchor.constraint(equalTo: BaseView.bottomAnchor, constant: -(yVall)),
                 lineView.heightAnchor.constraint(equalToConstant: 1),
-                lineView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -CGFloat(i)*yVall)
+//                lineView.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -CGFloat(i)*yVall)
                 //this is kinda making the note fall in place with the horizontal line view
                 ])
             //            yVal += CGFloat(BaseView.frame.height/noteNumber)
