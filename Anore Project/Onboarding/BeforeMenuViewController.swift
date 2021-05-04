@@ -23,6 +23,7 @@ class BeforeMenuViewController: UIViewController {
         layout.scrollDirection = .horizontal
         let nextVc = MenuViewController(collectionViewLayout: layout)
         nextVc.modalTransitionStyle = .crossDissolve
+        nextVc.modalPresentationStyle = .fullScreen
         present(nextVc, animated: true, completion: nil)
     }
     

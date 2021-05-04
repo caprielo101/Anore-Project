@@ -12,7 +12,7 @@ import UIKit
 class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newVc(viewController: "onBoarding1") , self.newVc(viewController: "onBoarding2"), self.newVc(viewController: "onBoarding3"), self.newVc(viewController: "onBoarding4"), self.newVc(viewController: "onBoarding5")]
+        return [self.newVc(viewController: "onBoarding1") , self.newVc(viewController: "onBoarding2"), self.newVc(viewController: "onBoarding3"),/*self.newVc(viewController: "onBoarding4"),*/ self.newVc(viewController: "onBoarding5")]
     }()
     
     var pageControl = UIPageControl()
