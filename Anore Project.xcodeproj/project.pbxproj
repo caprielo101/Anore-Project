@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,9 @@
 		1349095E22DF0C5700A3908C /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1349095D22DF0C5700A3908C /* UIColor+extension.swift */; };
 		1357DB6222D46249008B163D /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357DB6122D46249008B163D /* Note.swift */; };
 		1357DB6422D46290008B163D /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357DB6322D46290008B163D /* NoteView.swift */; };
+		137EC3472CF44DC900EF6B54 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 137EC3462CF44DC900EF6B54 /* AudioKit */; };
+		137EC34A2CF44E5700EF6B54 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 137EC3492CF44E5700EF6B54 /* SoundpipeAudioKit */; };
+		137EC34C2CF46C9200EF6B54 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 137EC34B2CF46C9200EF6B54 /* PrivacyInfo.xcprivacy */; };
 		138262E422D44E8B006E5B73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138262E322D44E8B006E5B73 /* AppDelegate.swift */; };
 		138262E622D44E8B006E5B73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138262E522D44E8B006E5B73 /* ViewController.swift */; };
 		138262E922D44E8B006E5B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138262E722D44E8B006E5B73 /* Main.storyboard */; };
@@ -72,6 +75,7 @@
 		1349095D22DF0C5700A3908C /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
 		1357DB6122D46249008B163D /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		1357DB6322D46290008B163D /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		137EC34B2CF46C9200EF6B54 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		138262E022D44E8B006E5B73 /* Anore Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anore Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		138262E322D44E8B006E5B73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		138262E522D44E8B006E5B73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +141,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				137EC3472CF44DC900EF6B54 /* AudioKit in Frameworks */,
 				20FDB8E1EDD2F64514CA4431 /* Pods_Anore_Project.framework in Frameworks */,
+				137EC34A2CF44E5700EF6B54 /* SoundpipeAudioKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +187,7 @@
 				13D900D922E0622800AA6C74 /* Young.ttf */,
 				13D900CA22E0221400AA6C74 /* Sounds */,
 				138CEBBF22E37557006C9296 /* Garbage */,
+				137EC34B2CF46C9200EF6B54 /* PrivacyInfo.xcprivacy */,
 			);
 			path = "Anore Project";
 			sourceTree = "<group>";
@@ -358,6 +365,10 @@
 				Base,
 			);
 			mainGroup = 138262D722D44E8B006E5B73;
+			packageReferences = (
+				137EC3452CF44DC900EF6B54 /* XCRemoteSwiftPackageReference "AudioKit" */,
+				137EC3482CF44E5700EF6B54 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
+			);
 			productRefGroup = 138262E122D44E8B006E5B73 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -380,6 +391,7 @@
 				13EE143222E1867500709CDE /* DescendingNotes.wav in Resources */,
 				13EE143022E1866C00709CDE /* AscendingNotes.wav in Resources */,
 				138262EE22D44E8C006E5B73 /* Assets.xcassets in Resources */,
+				137EC34C2CF46C9200EF6B54 /* PrivacyInfo.xcprivacy in Resources */,
 				138CEBBE22E344FD006C9296 /* balonku-60.wav in Resources */,
 				138CEBDE22E4B270006C9296 /* odetojoy120.wav in Resources */,
 				138CEBCB22E45AD0006C9296 /* OdeToJoy.wav in Resources */,
@@ -614,15 +626,16 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NZQAU3W3J4;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = "Anore Project/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.josiah.Anore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -637,15 +650,16 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NZQAU3W3J4;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = "Anore Project/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.josiah.Anore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -676,6 +690,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		137EC3452CF44DC900EF6B54 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.4;
+			};
+		};
+		137EC3482CF44E5700EF6B54 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/SoundpipeAudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		137EC3462CF44DC900EF6B54 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 137EC3452CF44DC900EF6B54 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+		137EC3492CF44E5700EF6B54 /* SoundpipeAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 137EC3482CF44E5700EF6B54 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
+			productName = SoundpipeAudioKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		138262EA22D44E8B006E5B73 /* Anore_Project.xcdatamodeld */ = {

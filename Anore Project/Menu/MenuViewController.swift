@@ -87,7 +87,8 @@ class MenuViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     private func askForPermission() {
-        AKSettings.session.requestRecordPermission { (granted) in
+        let engine = AudioEngine()
+        Settings.session.requestRecordPermission { (granted) in
             if granted {
                 print("permission granted")
             } else if !granted {

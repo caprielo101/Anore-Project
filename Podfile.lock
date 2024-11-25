@@ -1,21 +1,3 @@
-PODS:
-  - AudioKit (4.11.2):
-    - AudioKit/Core (= 4.11.2)
-    - AudioKit/UI (= 4.11.2)
-  - AudioKit/Core (4.11.2)
-  - AudioKit/UI (4.11.2):
-    - AudioKit/Core
+PODFILE CHECKSUM: b350ab2c0d41cff14dabec81edb7f7cf82587f55
 
-DEPENDENCIES:
-  - AudioKit
-
-SPEC REPOS:
-  trunk:
-    - AudioKit
-
-SPEC CHECKSUMS:
-  AudioKit: 57cc61d708f085763a031e5c3f87adae21dc4b59
-
-PODFILE CHECKSUM: db2661554c2731af2b44ba7809edf00780a67f6b
-
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.2
