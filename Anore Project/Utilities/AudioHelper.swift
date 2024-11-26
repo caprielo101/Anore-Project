@@ -33,8 +33,8 @@ class AudioHelper {
         do {
 //            try audioSession.overrideOutputAudioPort(.speaker)
 //            try audioSession.setActive(true)
-            try AKSettings.session.overrideOutputAudioPort(.speaker)
-            try AKSettings.session.setActive(true)
+            try Settings.session.overrideOutputAudioPort(.speaker)
+            try Settings.session.setActive(true)
         } catch {
             print("Error")
         }
@@ -52,7 +52,7 @@ class AudioHelper {
             audioPlayer.stop()
             do {
 //                try audioSession.setActive(false)
-                try AKSettings.session.setActive(false)
+                try Settings.session.setActive(false)
             } catch {
                 print("Error")
             }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,11 +41,11 @@
             <objects>
                 <viewController storyboardIdentifier="gameplay" id="BYZ-38-t0r" userLabel="Gameplay View Controller" customClass="ViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSU-s0-Ric" userLabel="Base View">
-                                <rect key="frame" x="0.0" y="100" width="414" height="658"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfA-Nl-P6c" customClass="CircleView" customModule="Anore_Project" customModuleProvider="target">
                                         <rect key="frame" x="107" y="234" width="200" height="200"/>
@@ -548,35 +548,35 @@
             <objects>
                 <viewController storyboardIdentifier="score" id="ojG-6j-xTK" customClass="ScoreViewController" customModule="Anore_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fKs-iq-fYI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Balon Teks" translatesAutoresizingMaskIntoConstraints="NO" id="3ny-p2-H4m">
-                                <rect key="frame" x="31" y="678" width="352" height="160"/>
+                                <rect key="frame" x="31" y="717.5" width="352" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3ny-p2-H4m" secondAttribute="height" multiplier="11:5" id="qBi-G1-ylS"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hit berapa " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk7-Vq-H5e">
-                                <rect key="frame" x="157.5" y="434" width="99.5" height="20"/>
+                                <rect key="frame" x="157.5" y="453.5" width="99.5" height="20"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="miss berapa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDY-SB-LER">
-                                <rect key="frame" x="150" y="474" width="114" height="20"/>
+                                <rect key="frame" x="150" y="493.5" width="114" height="20"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="20"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="congratulations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivB-P0-lyv">
-                                <rect key="frame" x="96" y="364" width="222" height="30"/>
+                                <rect key="frame" x="96" y="383.5" width="222" height="30"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="30"/>
                                 <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="CtH-69-HpS">
-                                <rect key="frame" x="103.5" y="553.5" width="207" height="72"/>
+                                <rect key="frame" x="103.5" y="584" width="207" height="72"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYx-kf-T5d">
                                         <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
@@ -604,7 +604,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placeholder text placeholder text placeholder text " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-Td-FIM">
-                                <rect key="frame" x="51" y="698" width="253.5" height="34"/>
+                                <rect key="frame" x="51" y="737.5" width="253.5" height="34"/>
                                 <fontDescription key="fontDescription" name="Young" family="Young" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

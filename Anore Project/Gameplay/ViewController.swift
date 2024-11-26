@@ -8,6 +8,8 @@
 
 import UIKit
 import AudioKit
+import SoundpipeAudioKit
+import AudioKitEX
 
 class ViewController: UIViewController {
     //( ͡° ͜ʖ ͡°)
@@ -38,9 +40,10 @@ class ViewController: UIViewController {
     var score = 0
     
     //AudioKit declaration
-    var mic: AKMicrophone!
-    var tracker: AKFrequencyTracker!
-    var silence: AKBooster!
+    var engine: AudioEngine!
+    var mic: AudioEngine.InputNode!
+    var tracker: PitchTap!
+    var silence: Fader!
     
     //timer blm dipakai
     var scoringDelayTimer =  Timer()
@@ -60,6 +63,9 @@ class ViewController: UIViewController {
     var width: CGFloat = 0
     var height: CGFloat = 0
     
+    let refreshRate: Double = 60
+    var isPaused = false
+
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -73,14 +79,15 @@ class ViewController: UIViewController {
     }
     
     @objc func handleForeground() {
+        guard !isPaused else { return }
         updateUITimer.invalidate()
         AudioHelper.shared.stopAudio()
-        do {
-            try AKManager.stop()
-        } catch {
-            AKLog("error")
-        }
-        _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false, block: { (Timer) in
+        engine.stop()
+        
+        resetAudio()
+        configure()
+
+        let resetTimer = Timer.scheduledTimer(withTimeInterval: 1/refreshRate, repeats: false, block: { (Timer) in
             self.configureNotesDidLoad()
             self.configureNotesDidAppear()
             self.setupAudioKitAudioSession()
@@ -89,6 +96,7 @@ class ViewController: UIViewController {
             self.view.bringSubviewToFront(self.pauseView)
             self.view.bringSubviewToFront(self.indicate)
         })
+        resetTimer.fire()
     }
     
     fileprivate func configureLabel() {
@@ -113,6 +121,7 @@ class ViewController: UIViewController {
         pauseView.isHidden = true
         switch sender.tag {
         case 1:
+            isPaused = false
             startUpdateUITimer()
             AudioHelper.shared.audioPlayer.play()
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
@@ -122,36 +131,42 @@ class ViewController: UIViewController {
             
         case 2:
             //do retry
+            isPaused = false
             updateUITimer.invalidate()
             AudioHelper.shared.stopAudio()
-            do {
-                try AKManager.stop()
-            } catch {
-                AKLog("error")
+            engine.stop()
+            resetAudio()
+            configure()
+            
+//            let retryTimer = Timer.scheduledTimer(withTimeInterval: 1/refreshRate, repeats: false, block: { (Timer) in
+//                self.configureNotesDidLoad()
+//                self.configureNotesDidAppear()
+//                self.setupAudioKitAudioSession()
+//                self.startUpdateUITimer()
+//                self.view.bringSubviewToFront(self.overlayView)
+//                self.view.bringSubviewToFront(self.pauseView)
+//                self.view.bringSubviewToFront(self.indicate)
+//            })
+//            retryTimer.fire()
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                configureNotesDidLoad()
+                configureNotesDidAppear()
+                setupAudioKitAudioSession()
+                startUpdateUITimer()
+                view.bringSubviewToFront(self.overlayView)
+                view.bringSubviewToFront(self.pauseView)
+                view.bringSubviewToFront(self.indicate)
             }
-            _ = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false, block: { (Timer) in
-                self.configureNotesDidLoad()
-                self.configureNotesDidAppear()
-                self.setupAudioKitAudioSession()
-                self.startUpdateUITimer()
-                self.view.bringSubviewToFront(self.overlayView)
-                self.view.bringSubviewToFront(self.pauseView)
-                self.view.bringSubviewToFront(self.indicate)
-            })
- 
             print(sender.tag)
         case 3:
             //open the are you sure tab
-            
+            isPaused = false
             //go to home
             updateUITimer.invalidate()
             AudioHelper.shared.stopAudio()
-            do {
-                try AKManager.stop()
-            } catch {
-                AKLog("error")
-            }
-            
+            engine.stop()
+                        
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .horizontal
             let nextVc = MenuViewController(collectionViewLayout: layout)
@@ -271,17 +286,18 @@ class ViewController: UIViewController {
     }
     
     fileprivate func startUpdateUITimer() {
-        updateUITimer = Timer.scheduledTimer(timeInterval: 0.01,
+        updateUITimer = Timer.scheduledTimer(timeInterval: 1/refreshRate,
                                              target: self,
                                              selector: #selector(updateUI),
                                              userInfo: nil,
                                              repeats: true)
+        updateUITimer.fire()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        switch AKSettings.session.recordPermission {
+        switch Settings.session.recordPermission {
         case .undetermined:
             print("undetermid")
             
@@ -309,10 +325,29 @@ class ViewController: UIViewController {
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        resetAudio()
+    }
+    
+    func resetAudio() {
+        mic.stop()
+        tracker.stop()
+        silence.stop()
+        engine.stop()
+        engine.avEngine.reset()
+        
+        engine = nil
+        mic = nil
+        tracker = nil
+        silence = nil
+    }
+    
     fileprivate func setupAudioKitAudioSession() {
         do {
-            AKManager.output = silence
-            try AKManager.start()
+            engine.stop()
+            engine.output = silence
+            try engine.start()
             AudioHelper.shared.configureAudioSession()
             switch song.songName {
             case "nina bobo":
@@ -333,7 +368,8 @@ class ViewController: UIViewController {
                 AudioHelper.shared.playAudio(fileName: "", type: "wav")
             }
         } catch {
-            AKLog("error")
+//            AKLog("error")
+            print("Error setting up audio session", error.localizedDescription)
         }
     }
     
@@ -368,7 +404,7 @@ class ViewController: UIViewController {
         for (index, note) in notes.enumerated() { //notes.enumerated()
             
             view.addSubview(note)
-            
+            note.translatesAutoresizingMaskIntoConstraints = false
             //            let previousLeading = index == 0 ? view.trailingAnchor : notes[index-1].trailingAnchor
             let previousLeading = index == 0 ? verticalLine.centerXAnchor : notes[index-1].trailingAnchor
             //            let previousDistance = index == 0 ? 0 : notes[index-1].note.distance
@@ -376,12 +412,9 @@ class ViewController: UIViewController {
             note.widthAnchor.constraint(equalToConstant: CGFloat(note.duration*noteLength)).isActive = true
             note.heightAnchor.constraint(equalToConstant: self.height/CGFloat((noteNumber-1))*0.8).isActive = true
             note.leadingAnchor.constraint(equalTo: previousLeading, constant: CGFloat(previousDistance)).isActive = true
-//            note.centerYAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -(CGFloat(getCentsInterval(voiceFrequency: Double(note.note?.frequency ?? 0), minFrequency, maxFrequency))*height)).isActive = true
+            //            note.centerYAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -(CGFloat(getCentsInterval(voiceFrequency: Double(note.note?.frequency ?? 0), minFrequency, maxFrequency))*height)).isActive = true
             note.centerYAnchor.constraint(equalTo: baseView.topAnchor, constant: CGFloat(getCentsInterval(voiceFrequency: Double(note.note?.frequency ?? 0), maxFrequency, minFrequency))*height).isActive = true
-//            note.centerYAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -0).isActive = true
-
-            note.translatesAutoresizingMaskIntoConstraints = false
-            
+            //            note.centerYAnchor.constraint(equalTo: baseView.bottomAnchor, constant: -0).isActive = true
         }
     }
     
@@ -431,9 +464,21 @@ class ViewController: UIViewController {
     func configure() {
 //        AKSettings.audioInputEnabled = true
 
-        mic = AKMicrophone()
-        tracker = AKFrequencyTracker(mic)
-        silence = AKBooster(tracker, gain: 0)
+//        mic = AKMicrophone()
+//        tracker = AKFrequencyTracker(mic)
+//        silence = AKBooster(tracker, gain: 0)
+        engine = AudioEngine()
+        
+        mic = engine.input
+        tracker = .init(mic, handler: { left, right in
+//            print(left)
+//            print(right)
+        })
+        //        silence = AKBooster(tracker, gain: 1)
+        silence = Fader(mic, gain: 0)
+        //        AKSettings.audioInputEnabled = true
+        try? Settings.setSession(category: .playAndRecord, with: .defaultToSpeaker)
+        tracker.start()
     }
     
     //configure UI
@@ -448,10 +493,10 @@ class ViewController: UIViewController {
     
     @objc func updateUI() {
         let thresholdFrequency: Double = 30.0
-        if tracker.amplitude > 0.1 && tracker.frequency > Double(minFrequency) - thresholdFrequency && tracker.frequency < Double(maxFrequency) + thresholdFrequency {
-            frequencyLabel.text = String(format: "%0.1f", tracker.frequency)
+        if tracker.amplitude > 0.1 && Double(tracker.leftPitch) > Double(minFrequency) - thresholdFrequency && Double(tracker.leftPitch) < Double(maxFrequency) + thresholdFrequency {
+            frequencyLabel.text = String(format: "%0.1f", tracker.leftPitch)
 
-            var frequency = Float(tracker.frequency)
+            var frequency = Float(tracker.leftPitch)
             while (frequency > Float(MusicConstants.noteFrequencies[MusicConstants.noteFrequencies.count-1])) {
                 frequency = frequency / 2.0
             }
@@ -469,12 +514,12 @@ class ViewController: UIViewController {
                     minDistance = distance
                 }
             }
-            let octave = Int(log2f(Float(tracker.frequency) / frequency))
+            let octave = Int(log2f(tracker.leftPitch / frequency))
             //            noteNameWithSharpsLabel.text = "\(noteNamesWithSharps[index])\(octave)"
             //            noteNameWithFlatsLabel.text = "\(noteNamesWithFlats[index])\(octave)"
             //            print("\(noteNameWithSharpsLabel.text!) f=\(tracker.frequency) A=\(tracker.amplitude)")
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
-                self.indicate.center.y = self.height + self.baseView.frame.origin.y - self.getCentsInterval(voiceFrequency: self.tracker.frequency, self.minFrequency, self.maxFrequency) * self.height
+                self.indicate.center.y = self.height + self.baseView.frame.origin.y - self.getCentsInterval(voiceFrequency: Double(self.tracker.leftPitch), self.minFrequency, self.maxFrequency) * self.height
             }, completion: nil)
         } else {
             UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
@@ -494,7 +539,7 @@ class ViewController: UIViewController {
 //    }
     
     func getCentsInterval(voiceFrequency: Double, _ minFrequency: Float, _ maxFrequency: Float) -> CGFloat {
-        let f1 = CGFloat(log2(voiceFrequency/minFrequency) * 1200)
+        let f1 = CGFloat(log2(Float(voiceFrequency)/minFrequency) * 1200)
         let f2 = CGFloat(log2(maxFrequency/minFrequency) * 1200)
         let cent = f1/f2
         return cent
@@ -512,8 +557,8 @@ class ViewController: UIViewController {
 
         for note in notes {
             let startPoint = CGPoint(x: note.center.x, y: note.center.y)
-            let endPoint = CGPoint(x: note.center.x - 1, y: note.center.y)
-            let duration = 0.01
+            let endPoint = CGPoint(x: note.center.x - (100 * 1/refreshRate), y: note.center.y)
+            let duration: TimeInterval = 1/refreshRate
 
             let animation = constructAnimation(startPoint: startPoint, endPoint: endPoint, duration: duration)
             note.layer.add(animation, forKey: "pos")
@@ -522,9 +567,15 @@ class ViewController: UIViewController {
             if note.frame.origin.x * 1.2 < verticalLine.center.x - verticalLine.frame.width/2 {
                 note.backgroundColor = .lightGray
                 note.alpha = 0.5
+            } else {
+                note.backgroundColor = note.giveColor()
+                note.alpha = 1
             }
             if note.frame.maxX <= verticalLine.center.x - 10 {
-                note.isHidden = true
+//                note.isHidden = true
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
+                    note.alpha = 0
+                }
             }
         }
 
@@ -534,7 +585,7 @@ class ViewController: UIViewController {
         let animation = CABasicAnimation(keyPath: "position")
         animation.fromValue = startPoint
         animation.toValue = endPoint
-        animation.duration = 0.01
+        animation.duration = duration
         return animation
     }
     
@@ -583,11 +634,9 @@ class ViewController: UIViewController {
             
             print("True \(score), False \(notes.count-score), \(notes.count)")
             print("End of Game")
-            do {
-                try AKManager.stop()
-            } catch {
-                print("Error")
-            }
+            engine.stop()
+            engine.avEngine.reset()
+            
             updateUITimer.invalidate()
             AudioHelper.shared.stopAudio()
             //put function here to present next VC beforehand prepare data for segue
@@ -604,6 +653,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pause(_ sender: UIButton) {
+        isPaused = true
         updateUITimer.invalidate()
         AudioHelper.shared.pauseAudio()
         overlayView.isHidden = false
